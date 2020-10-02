@@ -1,0 +1,21 @@
+<br>
+<br>
+<br>
+
+<center>
+<h3> Modifier le produit </h3>
+
+    <br>
+
+  <%= form_with model: @product, local: true, url: "/admin/products/#{@product.id}", method: :patch do |f| %>
+    
+    <p> <%= f.text_field :description, :value => @product.description %> </p>
+    <p> <%= f.text_field :price, :value => @product.price %> </p>
+    <p> <%= f.text_field :year, :value => @product.year %> </p>
+    <p> <%= f.text_field :season, :value => @product.season %> </p>
+    
+    <br>
+
+    <%= f.submit("Continuer") %>
+
+ <% end %>

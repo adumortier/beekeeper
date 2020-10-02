@@ -1,0 +1,24 @@
+<br>
+<% if @bookings.empty? %>
+  <h3> Vous n'avez pas encore de réservations </h3>
+<% else %>
+  <% @bookings.each do |booking| %>
+
+    <% if !booking.booking_products.empty?%>
+    
+      <div id="booking-<%= booking.id %>">
+        <p> Commande passée le <%= booking.created_at.strftime("%d/%m/%Y") %> </p>
+
+        <% booking.booking_products.each do |booking_product| %>
+          <p> - <%= booking_product.quantity%> <%=booking_product.product.description %> </p>
+          <p><%= button_to "Annuler", "/reservation/#{booking_product.id}", method: :delete %></p>
+          <hr>
+        <% end %>
+      </div>
+    <% end %>
+
+  <% end %>
+<% end %>
+
+<p><%= button_to "Réservez des pots !", "/reservation/new", method: :get %></p>
+

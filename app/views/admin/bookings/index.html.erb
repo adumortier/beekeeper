@@ -1,0 +1,71 @@
+
+
+<div id="printemps">
+  <% if @bookings_spring.empty? %>
+    <h3> Vous n'avez pas encore de réservations pour la récolte de printemps </h3>
+  <% else %>
+    
+      <h4> Réservations pour la récolte de printemps </h4>
+      <div class="my-5"></div>
+      <table class="table table-hover">
+        <tr>
+          <th class="align-middle"><%= sortable "printemps", "users.last_name", "Client" %></th>
+          <th class="align-middle"><%= sortable "printemps", "users.email", "Email" %></th>
+          <th class="align-middle"><%= sortable "printemps", "created_at", "Date commande" %></th>
+          <% @spring_products.each do |product| %>
+            <th class="align-middle"><%= product.description %></th>
+          <% end %>
+          
+        </tr>
+        <% @bookings_spring.each do |booking| %>
+          <tr id="booking-<%= booking.id %>">
+            <td class="align-middle"><%= link_to booking.user.first_name + ' ' + booking.user.last_name, "/admin/users/#{booking.user.id}" %></td>
+            <td class="align-middle"><%= booking.user.email %></td>
+            <td class="align-middle"><%= booking.created_at.strftime("%d/%m/%Y") %></td>
+            <% booking.booking_products.each do |booking_product| %>
+              <% if booking_product.product.season == 'printemps'  %>
+                <td class="align-middle"><%= booking_product.quantity %></td>
+              <% end %>
+            <% end %>
+            
+        <% end %>
+      </table>
+    
+  <% end %>
+</div>
+<br><br>
+
+<div id="ete">
+  <% if @bookings_summer.empty? %>
+    <h3> Vous n'avez pas encore de réservations pour la récolte d'été </h3>
+  <% else %>
+    <h4> Réservations pour la récolte d'été </h4>
+
+    <div class="my-5"></div>
+
+    <table class="table table-hover">
+    <tr>
+      <th class="align-middle"><%= sortable "été", "users.last_name", "Client" %></th>
+      <th class="align-middle"><%= sortable "été", "users.email", "Email" %></th>
+      <th class="align-middle"><%= sortable "été", "created_at", "Date commande" %></th>
+      <% @summer_products.each do |product| %>
+        <th class="align-middle"><%= product.description %></th>
+      <% end %>
+      
+    </tr>
+    <% @bookings_summer.each do |booking| %>
+      <tr id="booking-<%= booking.id %>">
+        <td class="align-middle"><%= link_to booking.user.first_name + ' ' + booking.user.last_name, "/admin/users/#{booking.user.id}" %></td>
+        <td class="align-middle"><%= booking.user.email %></td>
+        <td class="align-middle"><%= booking.created_at.strftime("%d/%m/%Y") %></td>
+        <% booking.booking_products.each do |booking_product| %>
+          <% if booking_product.product.season == 'été'  %>
+            <td class="align-middle"><%= booking_product.quantity %></td>
+          <% end %>
+        <% end %>
+        
+    <% end %>
+    </table>
+  <% end %>
+
+</div>

@@ -1,0 +1,144 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/alexis/Documents/perso/beekeeper/app/models/user.rb": {
+        "lines": [
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/alexis/Documents/perso/beekeeper/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/alexis/Documents/perso/beekeeper/app/models/product.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/alexis/Documents/perso/beekeeper/app/models/booking.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/alexis/Documents/perso/beekeeper/app/models/booking_product.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/alexis/Documents/perso/beekeeper/app/controllers/admin/bookings_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/alexis/Documents/perso/beekeeper/app/controllers/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/alexis/Documents/perso/beekeeper/app/controllers/admin/users_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1601223461
+  }
+}

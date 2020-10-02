@@ -1,0 +1,13 @@
+<div id="printemps">
+  <% @bookings_spring.each do |booking| %>
+  <div id="booking-<%= booking.id %>">
+    <p> Commande passée le <%= booking.created_at.strftime("%d/%m/%Y") %> </p>
+    <p> - Client: <%= booking.user.first_name + ' ' + booking.user.last_name %> Tel.: <%= booking.user.phone_number%>
+    </p>
+    <p> - Email: <%= booking.user.email%> </p>
+    <p> - <%= pluralize(booking.count_750g, 'pot') + ' de 750g' %> </p>
+    <p> - <%= pluralize(booking.count_1kg, 'pot') + ' de 1kg' %> </p>
+  </div>
+  <hr>
+  <% end %>
+</div>
