@@ -1,7 +1,7 @@
 
 
 <br>
-  <h4><i class="fa fa-address-card" aria-hidden="true"></i> Profil utilisateur </h4>
+  <h4><i class="fa fa-address-card" aria-hidden="true"></i> Profil client </h4>
   <br><br>
   <p><i class="fa fa-user-o" aria-hidden="true"></i>   <%=@user.first_name.capitalize %> <%=@user.last_name.capitalize %> </p>
   <p><i class="fa fa-envelope-open-o" aria-hidden="true"></i>   <%=@user.email%> </p>
@@ -23,15 +23,17 @@
 
     <% @bookings.each do |booking| %>
       <% booking.booking_products.each do |booking_product| %>
-        <tr>
-          <td class="align-middle"><%= booking_product.created_at.strftime("%d/%m/%Y") %></td>
-          <td class="align-middle"><%= booking_product.product.description %></td> 
-          <td class="align-middle"><%= booking_product.product.season %></td>
-          <td class="align-middle"><%= booking_product.product.year %></td>
-          <td class="align-middle"><%= booking_product.quantity %></td>
-        </tr>
+        <% if booking_product.quantity != 0 %>
+          <tr>
+            <td class="align-middle"><%= booking_product.created_at.strftime("%d/%m/%Y") %></td>
+            <td class="align-middle"><%= booking_product.product.description %></td> 
+            <td class="align-middle"><%= booking_product.product.season %></td>
+            <td class="align-middle"><%= booking_product.product.year %></td>
+            <td class="align-middle"><%= booking_product.quantity %></td>
+          </tr>
+        <% end %>
       <% end %>
     <% end %>
-        
     </table>
+     <a class="btn btn-outline-secondary" href=<%="/admin//users/#{@user.id}/reservation/new"%> > <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp; Ajouter une réservation</a>
 </div>
