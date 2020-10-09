@@ -38,4 +38,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def load_users
+    User.where(role: 0).order("#{params[:sort]} #{params[:direction]}")
+  end
+    
 end

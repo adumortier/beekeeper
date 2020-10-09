@@ -1,0 +1,14 @@
+<br>
+<br>
+
+<center>
+
+  <%= form_for @booking, url: "/admin/users/#{@user.id}/reservation", html: { method: :post } do |f| %>
+    <% @products.each do |product| %>
+      <%= f.text_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0' %> <%= f.label product.description %> <%= f.label product.season %> <%= f.label product.year %>
+    <br>
+    <% end %> 
+    <%= f.submit("Envoyer") %>
+  <% end %> 
+  
+</center>
