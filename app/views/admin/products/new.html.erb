@@ -2,20 +2,5 @@
 <br>
 <br>
 
-<center>
-<h3> Ajouter un produit </h3>
+<%= render "partials/product_form", locals: { verb: "Ajouter", product: @product, url: "/admin/products", action: :post } %>
 
-    <br>
-    
-    <%= form_for @product, url: '/admin/products', html: { method: :post } do |f| %>
-      <p> <%= f.text_field :description, :value => @product[:description], placeholder: 'Description *'   %> </p>
-      <p> <%= f.text_field :price, :value => @product[:price], placeholder: 'Prix *' %> </p>
-      <p> <%= f.text_field :year, :value => @product[:year], placeholder: 'Année *' %> </p>
-      <p> <%= f.text_field :season, :value => @product[:season], placeholder: 'Saison *' %> </p>
-      <br>
-
-    <%= f.submit("Continuer") %>
-
-  <% end %> 
-
-</center>
