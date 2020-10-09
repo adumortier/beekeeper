@@ -1,0 +1,15 @@
+<center>
+
+  <h3> <%= locals[:verb] %> le produit </h3>
+  <br>
+  <%= form_with model: locals[:product], local: true, url: locals[:url], method: locals[:action] do |f| %>
+    <p> <%= f.text_field :description, :value => locals[:product].description, placeholder: ('Description *' if locals[:action] == :post) %> </p>
+    <p> <%= f.text_field :price, :value => locals[:product].price, placeholder: ('Prix *' if locals[:action] == :post) %> </p>
+    <p> <%= f.text_field :year, :value => locals[:product].year,  placeholder: ('Année *' if locals[:action] == :post) %> </p>
+    <p> <%= f.text_field :season, :value => locals[:product].season,  placeholder: ('Saison *' if locals[:action] == :post) %> </p>
+    <br>
+    <%= f.submit("Continuer") %>
+ <% end %>
+
+</center>
+ 
