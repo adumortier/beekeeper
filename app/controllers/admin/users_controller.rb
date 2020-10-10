@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < BaseController
 
   def show
     @user = User.find(params[:id])

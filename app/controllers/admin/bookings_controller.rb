@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-class Admin::BookingsController < ApplicationController
+class Admin::BookingsController < BaseController
 
   def index
     @spring_products = Product.where({season: 'printemps', year: Time.new.year})
