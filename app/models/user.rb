@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :phone_number, telephone_number: {country: :FR, types: [:fixed_line, :mobile], message: "Votre numero de téléphone n'est pas valide"}
 
   has_many :bookings, dependent: :destroy
+  has_many :posts
+  
   has_secure_password
 
   enum role: %w(default admin)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_10_112853) do
+ActiveRecord::Schema.define(version: 2020_10_10_121623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 2020_10_10_112853) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "description"
     t.float "price"
@@ -75,4 +84,5 @@ ActiveRecord::Schema.define(version: 2020_10_10_112853) do
   add_foreign_key "booking_products", "bookings"
   add_foreign_key "booking_products", "products"
   add_foreign_key "bookings", "users"
+  add_foreign_key "posts", "users"
 end

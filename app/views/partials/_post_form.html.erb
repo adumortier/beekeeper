@@ -1,0 +1,13 @@
+<center>
+
+  <h3> <%= locals[:verb] %> le post </h3>
+  <br>
+  <%= form_with model: locals[:post], local: true, url: locals[:url], method: locals[:action] do |f| %>
+    <p> <%= f.text_area :title, :value => locals[:post].title, :cols => "40", placeholder: ('Titre *' if locals[:action] == :post) %> </p>
+    <p> <%= f.text_area :content, :value => locals[:post].content, :cols => "40", :rows => "10", placeholder: ('Contenu *' if locals[:action] == :post) %> </p>
+    <p> <%= f.file_field :images, multiple: true %> </p> 
+    <br>
+    <%= f.submit("Continuer") %>
+ <% end %>
+
+</center>

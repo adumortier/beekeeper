@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
     resources :products, except: :show
     resources :users
+    resources :posts
     
     get '/users/:id/reservation/new', to: 'bookings#new'
     post '/users/:id/reservation', to: 'bookings#create'

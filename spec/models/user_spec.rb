@@ -12,6 +12,7 @@ RSpec.describe User, type: :model do
 
   describe 'relationships' do 
     it { should have_many :bookings}
+    it { should have_many :posts}
   end 
 
 end
