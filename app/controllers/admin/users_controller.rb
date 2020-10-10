@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class Admin::UsersController < BaseController
+class Admin::UsersController < Admin::BaseController
 
   def show
     @user = User.find(params[:id])
@@ -14,16 +14,16 @@ class Admin::UsersController < BaseController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to "/admin/users/#{@user.id}"
+    redirect_to admin_user_path
   end
 
   def index
     @users = (params[:sort].present? ? load_users : User.where(role: 0))
   end
 
-  def delete
+  def destroy
     User.find(params[:id]).destroy
-    redirect_to "/admin/users"
+    redirect_to admin_users_path
   end
 
   def new
@@ -34,10 +34,10 @@ class Admin::UsersController < BaseController
     @user = User.create(user_params)
     if @user.valid?
       flash[:success] = "Le nouvel utilisateur a été ajouté"
-      redirect_to "/admin/users"
+      redirect_to admin_users_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence
-      redirect_to '/admin/users/new'
+      redirect_to new_admin_user_path
     end
   end
 

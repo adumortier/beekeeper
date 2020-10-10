@@ -1,6 +1,4 @@
-class Admin::ProductsController < BaseController
-
-  before_action :require_admin
+class Admin::ProductsController < Admin::BaseController
   
   def index
     @products = Product.all
@@ -16,26 +14,22 @@ class Admin::ProductsController < BaseController
   
   def create
     Product.create(product_params)
-    redirect_to '/admin/products'
+    redirect_to admin_products_path
   end
   
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to '/admin/products'
+    redirect_to admin_products_path
   end
   
   def update
     @product = Product.find(params[:id])
     @product.update(product_params)
-    redirect_to '/admin/products'
+    redirect_to admin_products_path
   end
   
   private
-
-  def require_admin
-    render file: "/public/404" unless current_admin?
-  end
 
   def product_params
     params.require('product').permit(:description, :price, :year, :season)

@@ -11,10 +11,10 @@ class UsersController < ApplicationController
       flash[:welcome] = "Bienvenue #{@user.first_name}!"
       flash[:registered] = "Réservez vos pots!"
       session[:user] = @user.id
-      redirect_to "/"
+      redirect_to root_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence
-      redirect_to '/register'
+      redirect_to register_path
     end
   end
 
@@ -27,10 +27,10 @@ class UsersController < ApplicationController
     @user.update(user_params)
     if @user.save
       flash[:success] = "Your profile has been updated"
-      redirect_to '/profile'
+      redirect_to profile_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence
-      redirect_to '/profile/edit'
+      redirect_to profile_edit_path
     end
   end
 

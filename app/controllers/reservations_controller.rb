@@ -18,14 +18,14 @@ class ReservationsController < ApplicationController
       quantity = booking_params[product.description + '_' + product.season]
       @booking.booking_products.create(product: product, quantity: quantity)
     end
-    redirect_to '/reservation'
+    redirect_to reservation_path
   end
 
   def destroy
     booking_product = BookingProduct.find(params[:id])
     booking_product.destroy
     flash['success'] = 'Votre réservation a été annulée'
-    redirect_to '/reservation'
+    redirect_to reservation_path
   end
 
   private
