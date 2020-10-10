@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-class Admin::BookingsController < ApplicationController
+class Admin::BookingsController < Admin::BaseController
 
   def index
     @spring_products = Product.where({season: 'printemps', year: Time.new.year})
@@ -28,7 +28,7 @@ class Admin::BookingsController < ApplicationController
       quantity = (booking_params[product.description + '_' + product.season].empty? ? 0 : booking_params[product.description + '_' + product.season])
       @booking.booking_products.create(product: product, quantity: quantity)
     end
-    redirect_to "/admin/users/#{user.id}"
+    redirect_to admin_user_path
   end
 
   private

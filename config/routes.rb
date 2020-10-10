@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  get '/', to: 'welcome#index'
+  get '/', to: 'welcome#index', as: 'root'
   get '/about', to: 'about#index'
   
   get '/register', to: 'users#new'
@@ -26,20 +26,8 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index'
     get '/bookings', to: 'bookings#index'
 
-    get '/products', to: 'products#index'
-    post 'products', to: 'products#create'
-    delete 'products/:id', to: 'products#destroy'
-    get '/products/new', to: 'products#new'
-    get '/products/:id/edit', to: 'products#edit'
-    patch '/products/:id', to: 'products#update'
-
-    get '/users/new', to: 'users#new'
-    get '/users/:id', to: 'users#show'
-    get '/users/:id/edit', to: 'users#edit'
-    patch '/users/:id', to: 'users#update'
-    get '/users', to: 'users#index'
-    delete '/users/:id', to: 'users#delete'
-    post '/users', to: 'users#create'
+    resources :products, except: :show
+    resources :users
     
     get '/users/:id/reservation/new', to: 'bookings#new'
     post '/users/:id/reservation', to: 'bookings#create'

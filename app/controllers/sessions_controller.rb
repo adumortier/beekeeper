@@ -12,15 +12,15 @@ class SessionsController < ApplicationController
       flash[:success] = "Bienvenue #{user.first_name}!"
     else
       flash[:error] = "Email ou mot de passe incorrect"
-      redirect_to '/login'
-    end    
-    redirect_to current_admin ? '/admin' : '/'
+      redirect_to login_path and return
+    end
+    redirect_to current_admin ? admin_path : root_path
   end
 
   def destroy
     session[:user] = nil
     flash[:success] = "Vous avez été déconnecté(e)"
-    redirect_to '/'
+    redirect_to root_path
   end
 
 end
