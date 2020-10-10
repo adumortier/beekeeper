@@ -1,0 +1,26 @@
+<br>
+<br>
+<br>
+
+<h4> <i class="fa fa-newspaper-o" aria-hidden="true"></i> Vos Posts </h4>
+
+<br>
+<br>
+
+<% @posts.each do |post| %>
+  <div id= <%="post-#{post.id}" %> >
+    <h4> <b> <%= post.title %> </b></h4>
+    <br> <br>
+    <p> <%= post.content %> </p>
+    <div class="img-wrap">
+    <img src=<%= url_for(@posts.last.images[0]) %> class="img-fluid" alt="Responsive image"  >
+    </div>
+    <br> <br>
+    <a href= <%="/admin/posts/#{post.id}" %> data-method="delete"> <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Effacer</a>
+    <hr>
+  </div>
+<% end %>
+
+<br>
+<br>
+<a class="btn btn-outline-secondary" href='/admin/posts/new'><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp; Ajouter un post</a>
