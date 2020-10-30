@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Store files on Amazon S3.
-  config.active_storage.service = :amazon
+  config.active_storage.service = :google
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
