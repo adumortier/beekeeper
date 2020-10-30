@@ -2,9 +2,9 @@ test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
 
-local:
-  service: Disk
-  root: <%= Rails.root.join("storage") %>
+#local:
+#  service: Disk
+#  root: <%= Rails.root.join("storage") %>
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
@@ -33,9 +33,14 @@ local:
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
 
-amazon:
-  service: S3
-  access_key_id: ""
-  secret_access_key: ""
-  bucket: ""
-  region: "" # e.g. 'us-east-1'
+google_dev:
+  service: GCS
+  project: beekeeper-292318
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].to_json %>
+  bucket: admin-images
+
+google:
+  service: GCS
+  project: beekeeper-292318
+  credentials: <%= Rails.application.credentials.gcskey.as_json %>
+  bucket: admin-images
