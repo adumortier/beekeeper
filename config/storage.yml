@@ -42,5 +42,5 @@ google_dev:
 google:
   service: GCS
   project: beekeeper-292318
-  credentials: <%= Rails.application.credentials.gcskey.as_json %>
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].to_json %>
   bucket: admin-images
