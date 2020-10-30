@@ -1,9 +1,35 @@
-<br>
-<br>
-<br>
-<br>
 <center>
-<h1> Bienvenue chez "Les Filles d'Antoine" </h1>
 
+<div id="show_bg"> 
+  <div class="hero-text-style">
+    Les Filles d'Antoine
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
 </center>
+
+<h2> <b> Les dernières nouvelles </b></h2>
+
+<br>
+<br>
+
+<% @posts.each do |post| %>
+  <div id= <%="post-#{post.id}" %> >
+    <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
+    <br> <br>
+    <p> <%= post.content %> </p>
+    <div class="img-wrap">
+      <img src=<%= url_for(post.images[0]) %> class="img-fluid rounded float-left" max-width="50%" alt="Responsive image" > 
+    </div>
+    <br> <br>
+    <hr>
+  </div>
+  
+<% end %>
+
+
 
