@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# This is the docker start script for the development environment.
+# It should execute all necessary steps to present you a nice and
+# fresh application.
+
+# Exit immediately when a non-zero return value occurs.
+set -e
+
+CONN="postgres://$DATABASE_USER:$DATABASE_PW@$DATABASE_HOST/$DEV_DATABASE"
+
+# Check if pid file exists and remove it on every startup, because it
+# might block the startup process.
+test -f tmp/pids/server.pid && rm tmp/pids/server.pid
+
+# Set the dev environment (should be the default).
+export RAILS_ENV=development
+
+
+gem install bundler -v 2.1.4
+# Install all gems
+bundle _2.1.4_ install
+
+# Wait for the database to be up and running
+# while ! pg_isready -h $DATABASE_HOST -q
+# do
+#   echo "Waiting for database $DATABASE_HOST to be up and running"
+#   sleep 1
+# done
+
+# Check if the database already exists by connecting to the database.
+if psql $CONN -q -c '\q' 2> /dev/null
+then
+  # If it exists run any missing migrations
+  bundle exec rake db:migrate
+else
+  # If it does not exists. Setup the database.
+  bundle exec rake db:setup
+fi
+
+# Also do this for the test db.
+# bundle  rake db:setup RAILS_ENV=test
+
+# Finally start the server. The port should be the same as
+# the one exposed in the docker-compose.yml file.
+bundle  exec rails server -b 0.0.0.0 -p 3000

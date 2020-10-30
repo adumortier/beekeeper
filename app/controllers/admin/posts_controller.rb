@@ -8,9 +8,19 @@ class Admin::PostsController < Admin::BaseController
     @post = Post.new
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
   def create
     post = current_user.posts.create(post_params)
     post.images.attach(post_params[:images])
+    redirect_to admin_posts_path
+  end
+
+  def update
+    post = Post.find(params[:id])
+    post.update(post_params)
     redirect_to admin_posts_path
   end
 
