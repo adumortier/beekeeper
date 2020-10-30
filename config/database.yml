@@ -17,6 +17,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  # host: <%= ENV.fetch('DATABASE_HOST', 'localhost') %>
+  host: localhost
+  username: postgres
+  password: password
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -24,7 +28,6 @@ default: &default
 development:
   <<: *default
   database: beekeeper_development
-
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
