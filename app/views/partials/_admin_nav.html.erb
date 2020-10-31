@@ -1,20 +1,21 @@
-<nav class="navbar navbar-expand-lg fixed-top"" style="background-color: #F9FC8F;">
-  
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" <%=link_to "Les Filles d'Antoine", '/' %></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" <%=link_to "Tableau de bord", '/admin' %></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" <%= link_to "#{current_user.first_name.capitalize}", "/profile" %></a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" <%= link_to "Déconnexion", "/logout" %> </a>
-      </li>
-    </ul>
-  </div>
-</nav>  
+
+
+<div class="sidenav">
+  <a href="/">Les Filles d'Antoine</a>
+  <br>
+  <br>
+  <a href="/profile"> <i class="fa fa-address-card" aria-hidden="true"></i> Mon profil</a>
+  <br>
+  <a href="/admin/users"> <i class="fa fa-users" aria-hidden="true"></i> Clients</a>
+  <br>
+  <a href="/admin/bookings"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Réservations</a>
+  <br>
+  <a href="/admin/products"> <i class="fa fa-cubes" aria-hidden="true"></i> Produits</a>
+  <br>
+  <a href="/admin/posts"> <i class="fa fa-newspaper-o" aria-hidden="true"></i> Posts</a>
+  <br>
+  <br>
+  <br>
+  <a href="/logout"> <i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
+</div>
+
