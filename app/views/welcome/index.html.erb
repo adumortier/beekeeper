@@ -19,14 +19,21 @@
 
 <% @posts.each do |post| %>
   <div id= <%="post-#{post.id}" %> >
-    <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
-    <br> <br>
-    <p> <%= post.content %> </p>
-    <div class="img-wrap">
-      <img src=<%= url_for(post.images[0]) %> class="img-fluid rounded float-left" max-width="50%" alt="Responsive image" > 
+    <div class="card img-responsive" style="width: 100rem;">
+      <div class="card-header">
+        <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
+      </div>
+      <br> 
+      <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">
+        <%= post.content %>
+      </div>
+      <br>
+      <div style="float: left;">
+        <%= image_tag(post.images[0], size: '500', class: "img-responsive", style: "padding-bottom: 30px; padding-left: 30px; padding-right: 30px;") %>
+      </div>
     </div>
     <br> <br>
-    <hr>
+    
   </div>
   
 <% end %>
