@@ -17,7 +17,8 @@ class Admin::BookingsController < Admin::BaseController
   def new
     @user = User.find(params[:id])
     @booking = @user.bookings.new
-    @products = Product.where(year: Time.new.year)
+    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps')
+    @products_summer = Product.where(year: Time.new.year).where(season: 'été')
   end
 
   def create

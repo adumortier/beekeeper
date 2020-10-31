@@ -9,27 +9,32 @@
 
   </head>
 
-
-  <body style="padding-right: 50px;
-  padding-left: 50px;" >
-  
-    <% if current_user %>
-      <% if current_user.admin? %>
-        <%= render "partials/admin_nav" %>
-      <% else %>
-        <%= render "partials/current_user_nav" %>
-      <% end %>  
-    <% else %>
-      <%= render "partials/visitor_nav" %>
-    <% end %>
-    <br><br><br><br><br><br>
     <% flash.each do |name, msg| %>
       <div class= "<%=name%>-flash alert alert-primary" role="alert">
         <%= msg %>
       </div>
     <% end %>
 
-    <%= yield %>
+  
+    <% if current_user %>
+      <% if current_user.admin? %>
+        <%= render "partials/admin_nav" %>
+         <body class="main" >
+        <%= yield %>
+        </body>
+      <% else %>
+        <%= render "partials/current_user_nav" %>
+         <body style="padding-right: 50px; padding-left: 50px;" >
+        <%= yield %>
+        </body>
+      <% end %>  
+    <% else %>
+      <%= render "partials/visitor_nav" %>
+       <body style="padding-right: 50px; padding-left: 50px;" >
+        <%= yield %>
+        </body>
+    <% end %>
 
-  </body>
+    
+
 </html>
