@@ -1,15 +1,41 @@
-<br>
-<br>
-
 <center>
-  <%= form_for @booking, url: '/reservation', html: { method: :post } do |f| %>
+<br>
+<br>
+<br>
+<br>
 
-    <% @products.each do |product| %>
-      <%= f.text_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0' %> <%= f.label product.description %> <%= f.label product.season %> <%= f.label product.year %>
-    <br>
-    <% end %> 
+<%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
+  <div class="my-5">
+      <table class="table table-hover" style="width:30%">
+      <tr>
+        <th class="align-middle"> Printemps <%= Time.new.year %> </th>
+        <th class="align-middle"> Quantité </th>
+      </tr>
+      <% @products_spring.each do |product| %>
+        <tr id="product-<%= product.id %>">
+          <td class="align-middle"><%= f.label product.description %></td>
+          <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0' %></td>
+        </tr>
+      <% end %>
+      </table>
 
-    <%= f.submit("Envoyer") %>
+    </div>
 
-<% end %> 
+  <div class="my-5">
+      <table class="table table-hover" style="width:30%">
+      <tr>
+        <th style="align-middle"> Eté <%= Time.new.year %> </th>
+        <th style="align-middle"> Quantité </th>
+      </tr>
+      <% @products_summer.each do |product| %>
+        <tr id="product-<%= product.id %>">
+          <td class="align-middle"><%= f.label product.description %></td>
+          <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0' %></td>
+        </tr>
+      <% end %>
+      </table>
+  </div>
+  <%= f.submit("Envoyer") %>
+<% end %>
+
 </center>
