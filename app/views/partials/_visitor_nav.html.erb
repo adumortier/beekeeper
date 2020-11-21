@@ -1,17 +1,14 @@
-<nav class="navbar navbar-expand-lg fixed-top"" style="background-color: #F9FC8F;">
-  
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" <%=link_to "Accueil", '/'%></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" <%= link_to "Créer un compte", "/register" %></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" <%= link_to "Connexion", "/login" %></a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<div id="mySidenav" class="sidenav_visitor">
+  </br>
+  </br>
+  <a href="/"><%= image_tag "logo.png" %>  </a>
+  </br>
+  <a href="/"onclick="closeNav()" >Accueil</a>
+  </br>
+  <a href="/products" onclick="closeNav()">Les produits</a>
+  </br>
+  <a href="/register" onclick="closeNav()">Créer un compte</a>
+  </br>
+  <a href="/login" onclick="closeNav()">Connexion</a>
+</div>
 

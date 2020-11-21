@@ -1,24 +1,36 @@
 <br>
+<br>
+<br>
+<br>
 <% if @bookings.empty? %>
   <h3> Vous n'avez pas encore de réservations </h3>
 <% else %>
+  <h4> <i class="fa fa-calendar" aria-hidden="true"></i> Mes Réservations </h4>
+    <div class="my-5"></div>
   <% @bookings.each do |booking| %>
-
     <% if !booking.booking_products.empty?%>
-    
-      <div id="booking-<%= booking.id %>">
-        <p> Commande passée le <%= booking.created_at.strftime("%d/%m/%Y") %> </p>
-
-        <% booking.booking_products.each do |booking_product| %>
-          <p> - <%= booking_product.quantity%> <%=booking_product.product.description %> </p>
-          <p><%= button_to "Annuler", "/reservation/#{booking_product.id}", method: :delete %></p>
-          <hr>
-        <% end %>
-      </div>
+     <h5> <%= booking.created_at.strftime("%d/%m/%Y") %> </h5>
+      <table class="table table-hover" style="width: 50%">
+      <tr>
+        <th class="align-middle" style="width: 5%"> Description </th>
+        <th class="align-middle" style="width: 5%"> Récolte</th>
+        <th class="align-middle" style="width: 5%"> Quantité  </th>
+        <th class="align-middle" style="width: 5%"></th>
+      </tr>
+      <% booking.booking_products.each do |booking_product| %>
+        <tr id="product-<%= booking_product.product.id %>">
+          <td class="align-middle"><i class="fa fa-plus-circle" aria-hidden="true"></i>  <%= booking_product.product.description  %></td>
+          <td class="align-middle"><%= booking_product.product.season + ' ' + booking_product.product.year.to_s  %></td>  
+          <td class="align-middle"><%= booking_product.quantity %></td>
+          <td class="align-middle"> <a href= <%="/reservation/#{booking_product.id}" %> data-method="delete"> <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Annuler</a> </td>
+          </td>
+        </tr>
+      <% end %>
+      </table>
+      </br>
     <% end %>
-
   <% end %>
 <% end %>
+<a class="btn btn-outline-secondary" href="/reservation/new"> Réservez des pots !</a>
 
-<p><%= button_to "Réservez des pots !", "/reservation/new", method: :get %></p>
 

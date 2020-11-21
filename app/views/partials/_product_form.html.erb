@@ -6,7 +6,11 @@
     <p> <%= f.text_field :description, :value => locals[:product].description, placeholder: ('Description *' if locals[:action] == :post) %> </p>
     <p> <%= f.text_field :price, :value => locals[:product].price, placeholder: ('Prix *' if locals[:action] == :post) %> </p>
     <p> <%= f.text_field :year, :value => locals[:product].year,  placeholder: ('Année *' if locals[:action] == :post) %> </p>
-    <p> <%= f.text_field :season, :value => locals[:product].season,  placeholder: ('Saison *' if locals[:action] == :post) %> </p>
+    <%= f.label :season, 'printemps', :value => true  %>
+    <%= f.radio_button :season, 'printemps' %>
+    &nbsp;&nbsp;
+    <%= f.label :season, 'été', :value => false %>
+    <%= f.radio_button :season, 'été', :checked => true %> 
     <br>
     <%= f.submit("Continuer") %>
  <% end %>

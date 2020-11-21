@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::ProductsController < Admin::BaseController
   
   def index
@@ -13,8 +14,14 @@ class Admin::ProductsController < Admin::BaseController
   end
   
   def create
-    Product.create(product_params)
-    redirect_to admin_products_path
+    @product = Product.create(product_params)
+    if @product.valid?
+      flash[:succeeded] = "Votre nouveau produit a été crée"
+      redirect_to admin_products_path
+    else
+      flash[:error] = @product.errors.full_messages.to_sentence
+      redirect_to admin_products_path
+    end
   end
   
   def destroy
