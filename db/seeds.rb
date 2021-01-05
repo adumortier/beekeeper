@@ -9,15 +9,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@product1 = Product.create!(description: 'pot de 1kg', price: 13.5, year: Time.new.year, season: 'printemps')
-@product2 = Product.create!(description: 'pot de 750g', price: 7, year: Time.new.year, season: 'printemps')
-@product3 = Product.create!(description: 'pot de 1kg', price: 14.0, year: Time.new.year, season: 'été')
-@product4 = Product.create!(description: 'pot de 750g', price: 7, year: Time.new.year, season: 'été') 
+@product1 = Product.create!(description: 'pot de 1kg', price: 13.5, year: Time.new.year, season: 'printemps', status: 'active')
+@product2 = Product.create!(description: 'pot de 500g', price: 7, year: Time.new.year, season: 'printemps', status: 'active')
+@product3 = Product.create!(description: 'pot de 1kg', price: 14.0, year: Time.new.year, season: 'été', status: 'active')
+@product4 = Product.create!(description: 'pot de 500g', price: 7, year: Time.new.year, season: 'été', status: 'active') 
 
 @admin_user = User.create!(first_name: "Antoine",
                                 last_name: "Dumortier",
                                 phone_number: "0302932084",
                                 email: "antoine@example.com",
+                                address: "61 rue de Philadelphie, 02300 Villequier-Aumont",
                                 password: "pass",
                                 role: 1
                               )
@@ -26,6 +27,7 @@
                                 last_name: "Dumo",
                                 phone_number: "0302932084",
                                 email: "alex@example.com",
+                                address: "71 Elm Street, 02139 Cambridge",
                                 password: "pass",
                                 role: 0
                               )
@@ -38,6 +40,7 @@
                                 last_name: "Boles",
                                 phone_number: "0679157920",
                                 email: "steve@example.com",
+                                address: "54 Park Street, 43929 San Francisco",
                                 password: "pass",
                                 role: 0
                               )
@@ -51,6 +54,7 @@
                                 last_name: "Johns",
                                 phone_number: "0678158926",
                                 email: "millie@example.com",
+                                address: "12 Market Street, 23010 Denver",
                                 password: "pass",
                                 role: 0
                               )
@@ -63,6 +67,7 @@
                                 last_name: "Dumortier",
                                 phone_number: "0323380681",
                                 email: "elisabeth@example.com",
+                                address: "4 rue du Touquet, 02300 Villequier-Aumont",
                                 password: "pass",
                                 role: 0
                               )

@@ -1,0 +1,34 @@
+</br>
+</br>
+</br>
+</br>
+</br>
+<h3> Récolte printemps <%=Date.current.year%> </h3> </br>
+  <% @products_spring.each do |product| %>
+  <div class="card img-responsive" style="width: 100rem;">
+    <div class="card-header">
+      <h3> <b> <%= product.description %> </b></h3>
+    </div>
+    <br> 
+    
+    <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">
+    </div>
+    <br>
+  </div>
+  </br>
+<% end %>
+
+<h3> Récolte été <%=Date.current.year%>  </h3> </br>
+  <% @products_spring.each do |product| %>
+  <div class="card img-responsive" style="width: 100rem;">
+    <div class="card-header">
+      <h3> <b> <%= product.description %> </b></h3>
+    </div>
+    <br> 
+    <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">
+    </div>
+    <br>
+  </div>
+  </br>
+<% end %>
+

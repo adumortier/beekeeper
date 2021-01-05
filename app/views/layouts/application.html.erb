@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html style="font-size: 80%;">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>Beekeeper</title>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -15,26 +16,56 @@
       </div>
     <% end %>
 
-  
     <% if current_user %>
       <% if current_user.admin? %>
         <%= render "partials/admin_nav" %>
-         <body class="main" >
-        <%= yield %>
+        <body class="main" >
+          <%= yield %>
         </body>
       <% else %>
         <%= render "partials/current_user_nav" %>
-         <body style="padding-right: 50px; padding-left: 50px;" >
-        <%= yield %>
+        <body style="padding-right: 50px; padding-left: 50px;" >
+          <%= yield %>
         </body>
       <% end %>  
+
     <% else %>
-      <%= render "partials/visitor_nav" %>
-       <body style="padding-right: 50px; padding-left: 50px;" >
+      <% if browser_info.mobile? %>
+        <%= render "partials/visitor_mobile_nav" %>
+        <body id="main" style="padding-right: 50px; padding-left: 50px;" >
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
+        <script>
+          function openNav() {
+            document.getElementById("mySidenav").style.width = "100%";
+          }
+          /* Close/hide the sidenav */
+          function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+          }
+        </script>
         <%= yield %>
         </body>
-    <% end %>
 
-    
+      <% else %>
+
+        <%= render "partials/visitor_nav" %>
+        
+        <body id="main" style="padding-right: 50px; padding-left: 50px;" >
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
+
+          <script>
+            function openNav() {
+              document.getElementById("mySidenav").style.width = "100%";
+            }
+            /* Close/hide the sidenav */
+            function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+            }
+          </script>
+          <%= yield %>
+          
+        </body>
+      <% end %>
+    <% end %>
 
 </html>
