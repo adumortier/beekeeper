@@ -6,13 +6,17 @@
   </div>
 </div>
 
-<%= image_tag("main_background.jpg", class: "img-responsive") %>
-
 <br>
 <br>
 <br>
 <br>
 </center>
+
+<% if @browser_mobile %>
+  <h3> you are on a mobile </h3>
+<% else %>
+  <h3> you are on a desktop </h3>
+<% end %>
 
 <h2> <b> Les dernières nouvelles </b></h2>
 
