@@ -8,8 +8,8 @@ class ReservationsController < ApplicationController
 
   def new
     @booking = current_user.bookings.new
-    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps')
-    @products_summer = Product.where(year: Time.new.year).where(season: 'été')
+    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps').where(status: 'active')
+    @products_summer = Product.where(year: Time.new.year).where(season: 'été').where(status: 'active')
   end
 
   def create

@@ -1,21 +1,45 @@
 
-
 <div class="sidenav">
+  <center> <%= image_tag "logo.png" %> </center> 
+  <table class="table" style="width: 60%">
+  <tr>
+    <th style="border: 0" class="align-middle" style="width: 2%">  </th>
+    <th style="border: 0" class="align-middle" style="width: 93%">  </th>
+    <th style="border: 0" class="align-middle" style="width: 10%">  </th>
+  </tr>
 
-  <a href="/"><%= image_tag "logo.png" %>  </a>
-  <br>
-  <a href="/profile"> <i class="fa fa-address-card" aria-hidden="true"></i> Profil</a>
-  <br>
-  <a href="/admin/users"> <i class="fa fa-users" aria-hidden="true"></i> Clients</a>
-  <br>
-  <a href="/admin/bookings"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Réservations</a>
-  <br>
-  <a href="/admin/products"> <i class="fa fa-cubes" aria-hidden="true"></i> Produits</a>
-  <br>
-  <a href="/admin/posts"> <i class="fa fa-newspaper-o" aria-hidden="true"></i> Posts</a>
-  <br>
-  <br>
-  <br>
-  <a href="/logout"> <i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
+  <tr>
+    <td style="padding-left:40px; padding-right:0px;border-top: 0" class="align-middle"> <a href="/profile" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></td>
+    <td style="text-align:left;border-top: 0"> <a href="/profile" > Profil </a> </td>
+    <td style="border-top: 0"> <a href="/profile" ><i class="fa fa-angle-right" aria-hidden="true"></i></a> </td>
+  </tr>
+
+  <tr>
+    <td style="padding-left:40px; padding-right:0px;border-top: 0" class="align-middle"> <a href="/admin/users" ><i class="fa fa-users " aria-hidden="true"></i> </a> </td>
+    <td style="text-align:left;border-top: 0" class="text-left"> <a href="/admin/users" >Clients</a> </td>
+    <td style="border-top: 0" class="align-middle"> <a href="/admin/users" ><i class="fa fa-angle-right" aria-hidden="true"></i></a> </td>
+  </tr>
+  <tr>
+    <td style="padding-left:40px; padding-right:0px;border-top: 0" class="align-middle"> <a href="/admin/bookings" ><i class="fa fa-calendar-check-o" aria-hidden="true"></i></a></td>
+    <td style="text-align:left;border-top: 0" class="text-left"> <a href="/admin/bookings" >Réservations</a> </td>
+    <td style="border-top: 0" class="align-middle"> <a href="/admin/bookings" ><i class="fa fa-angle-right" aria-hidden="true"></i></a> </td>
+  </tr>
+  <tr>
+    <td style="padding-left:40px; padding-right:0px;border-top: 0" class="align-middle"> <a href="/admin/products" ><i class="fa fa-cubes" aria-hidden="true"></i></a></td>
+    <td style="text-align:left;border-top: 0" class="text-left"> <a href="/admin/products" >Produits</a> </td>
+    <td style="border-top: 0" class="align-middle"> <a href="/admin/products" ><i class="fa fa-angle-right" aria-hidden="true"></i></a> </td>
+  </tr>
+  <tr>
+    <td style="padding-left:40px; padding-right:0px;border-top: 0" class="align-middle"> <a href="/admin/posts" ><i class="fa fa-newspaper-o" aria-hidden="true"></i></a></td>
+    <td style="text-align:left;border-top: 0" class="text-left"> <a href="/admin/posts" >Posts</a> </td>
+    <td style="border-top: 0" class="align-middle"> <a href="/admin/posts" ><i class="fa fa-angle-right" aria-hidden="true"></i></a> </td>
+  </tr>
+  <tr>
+    <td style="padding-left:40px; padding-right:0px;border-top: 0" class="align-middle"> <a href="/logout" ><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
+    <td style="text-align:left;border-top: 0" class="text-left"> <a href="/logout" >Déconnexion</a> </td>
+    <td style="border-top: 0" class="align-middle">  </td>
+  </tr>
+
+  </table>
+
 </div>
-
