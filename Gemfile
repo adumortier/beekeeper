@@ -38,6 +38,7 @@ gem 'bootstrap'
 gem "jquery-rails"
 gem "turbolinks", "~> 5"
 gem "bootstrap4-datetime-picker-rails"
+gem "browser", require: ["browser/browser", "browser/aliases"]
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
