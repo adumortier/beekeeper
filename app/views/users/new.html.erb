@@ -19,6 +19,8 @@
 
     <p> <%= f.text_field :phone_number, :value => @user[:phone_number], placeholder: ' Téléphone *' %>  </p>
 
+    <p> <%= f.text_field :address, :value => @user[:address], placeholder: ' Adresse *' %>  </p>
+
     <p> <%= f.password_field :password, :value => @user[:password], placeholder: ' Mot de passe *' %>  </p>
 
     <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: ' Mot de passe *' %>  </p>
