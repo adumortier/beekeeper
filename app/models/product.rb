@@ -1,4 +1,7 @@
+# encoding: UTF-8
 class Product < ApplicationRecord
+
+  enum status: %w(active inactive)
 
   validates_presence_of :description, :price, :season, :year
   validates_numericality_of :year, on: :create
@@ -11,4 +14,12 @@ class Product < ApplicationRecord
 
   has_many :booking_products
   has_many :bookings, through: :booking_products, dependent: :destroy
+
+  def action
+    if status == 'active'
+      'désactiver'
+    else
+      'activer'
+    end
+  end
 end
