@@ -5,6 +5,7 @@
     <p> <i class="fa fa-user-o" aria-hidden="true"></i> <%= f.text_field :first_name, :value => @user.first_name %> <%= f.text_field :last_name, :value => @user.last_name %> </p>
     <p> <i class="fa fa-envelope-open-o" aria-hidden="true"></i> <%= f.text_field :email, :value => @user.email %> </p>
     <p> <i class="fa fa-phone" aria-hidden="true"></i> <%= f.text_field :phone_number, :value => @user.phone_number %> </p>
+    <p> <i class="fa fa-home" aria-hidden="true"></i> <%= f.text_field :address, :value => @user.address %> </p>
     <%= f.submit("Continuer") %>
 <% end %>
 <br><br>

@@ -6,6 +6,7 @@
   <p><i class="fa fa-user-o" aria-hidden="true"></i>   <%=@user.first_name.capitalize %> <%=@user.last_name.capitalize %> </p>
   <p><i class="fa fa-envelope-open-o" aria-hidden="true"></i>   <%=@user.email%> </p>
   <p><i class="fa fa-phone" aria-hidden="true"></i>   <%=@user.phone_number%> </p>
+  <p><i class="fa fa-home" aria-hidden="true"></i>   <%=@user.address%> </p>
   <a href= <%="/admin/users/#{@user.id}/edit" %> %><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Modifier</a>
   <br><br><br> 
 
