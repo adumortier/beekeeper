@@ -12,6 +12,13 @@
     <%= f.label :season, 'été', :value => false %>
     <%= f.radio_button :season, 'été', :checked => true %> 
     <br>
+
+    <%= f.label :status, 'actif', :value => true  %>
+    <%= f.radio_button :status, 'actif' %>
+    &nbsp;&nbsp;
+    <%= f.label :status, 'inactif', :value => false %>
+    <%= f.radio_button :status, 'inactif', :checked => true %> 
+    <br>
     <%= f.submit("Continuer") %>
  <% end %>
 
