@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :current_admin, :login, :bookings_spring, :bookings_summer
+  helper_method :current_user, :current_admin, :login, :bookings_spring, :bookings_summer, :browser_info
 
   def current_user
     @current_user ||= User.find(session[:user]) if session[:user]
@@ -23,6 +23,11 @@ class ApplicationController < ActionController::Base
 
   def bookings_summer
     @bookings_summer ||= Booking.joins(:products).where(products: {season:'été'}).where(products: {year:Time.new.year}).distinct
+  end
+
+  def browser_info
+    Browser::Base.include(Browser::Aliases)
+    Browser.new(request.env["HTTP_USER_AGENT"])
   end
 
   private 
