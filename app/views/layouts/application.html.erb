@@ -23,16 +23,34 @@
           <%= yield %>
         </body>
       <% else %>
-        <%= render "partials/current_user_nav" %>
-        <body style="padding-right: 50px; padding-left: 50px;" >
+        <% if browser_info.mobile? %>
+          <%= render "partials/current_user_mobile_nav" %>
+          <body id="main" style="padding-right: 10px; padding-left: 10px;" >
+          <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
+          <script>
+            function openNav() {
+              document.getElementById("mySidenav").style.width = "100%";
+            }
+            /* Close/hide the sidenav */
+            function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+            }
+          </script>
           <%= yield %>
-        </body>
+          </body>
+
+        <% else %>
+          <%= render "partials/current_user_nav" %>
+          <body style="padding-right: 50px; padding-left: 50px;" >
+            <%= yield %>
+          </body>
+        <% end %>  
       <% end %>  
 
     <% else %>
       <% if browser_info.mobile? %>
         <%= render "partials/visitor_mobile_nav" %>
-        <body id="main" style="padding-right: 50px; padding-left: 50px;" >
+        <body id="main" style="padding-right: 10px; padding-left: 10px;" >
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
         <script>
           function openNav() {

@@ -1,0 +1,32 @@
+<div id="mySidenav" class="sidenav_visitor_mobile">
+  <center> <%= image_tag "logo.png" %> </center> 
+  <table class="table" style="width: 100%">
+  <tr>
+    <th style="border: 0" class="align-middle" style="width: 2%">  </th>
+    <th style="border: 0" class="align-middle" style="width: 93%">  </th>
+    <th style="border: 0" class="align-middle" style="width: 5%">  </th>
+  </tr>
+  <tr  >
+    <td style="border-top: 1px dashed #818181" class="align-middle"> <a href="/"onclick="closeNav()" ><i class="fa fa-home " aria-hidden="true"></i> </a> </td>
+    <td style="border-top: 1px dashed #818181" class="text-left"> <a href="/"onclick="closeNav()" >Accueil</a> </td>
+    <td style="border-top: 1px dashed #818181" class="align-middle"> <a href="/"onclick="closeNav()" ><i class="fa fa-angle-right" aria-hidden="true"></i></a> </td>
+  </tr>
+  <tr>
+    <td style="border-top: 1px dashed #818181" class="align-middle"> <a href="/profile"onclick="closeNav()" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></td>
+    <td style="border-top: 1px dashed #818181" class="text-left"> <a href="/profile"onclick="closeNav()" > <%= current_user.first_name.capitalize %> </a> </td>
+    <td style="border-top: 1px dashed #818181" class="align-middle"> <a href="/profile"onclick="closeNav()" ><i class="fa fa-angle-right" aria-hidden="true"></i></a> </td>
+  </tr>
+  <tr>
+    <td style="border-top: 1px dashed #818181" class="align-middle"> <a href="/reservation"onclick="closeNav()" ><i class="fa fa-calendar" aria-hidden="true"></i></a></td>
+    <td style="border-top: 1px dashed #818181" class="text-left"> <a href="/reservation"onclick="closeNav()" >Mes Réservations</a> </td>
+    <td style="border-top: 1px dashed #818181" class="align-middle"> <a href="/reservation"onclick="closeNav()" ><i class="fa fa-angle-right" aria-hidden="true"></i></a> </td>
+  </tr>
+  <tr>
+    <td style="border-top: 1px dashed #818181; border-bottom: 1px dashed #818181" class="align-middle"> <a href="/logout"onclick="closeNav()" ><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
+    <td style="border-top: 1px dashed #818181; border-bottom: 1px dashed #818181" class="text-left"> <a href="/logout"onclick="closeNav()" >Déconnexion</a> </td>
+    <td style="border-top: 1px dashed #818181; border-bottom: 1px dashed #818181" class="align-middle"> <a href="/logout"onclick="closeNav()" ><i class="fa fa-angle-right" aria-hidden="true"></i></a> </td>
+  </tr>
+
+  </table>
+
+</div>
