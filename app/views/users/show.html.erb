@@ -1,13 +1,12 @@
-<br><br>
-<h4> <i class="fa fa-address-card" aria-hidden="true"></i> Mon profil </h4>
+<br><br><br><br>
+
+  <h4><i class="fa fa-address-card" aria-hidden="true"></i> Profil</h4>
+  <br> <br>
+  <p><i class="fa fa-user-o" aria-hidden="true"></i>   <%=@user.first_name.capitalize %> <%=@user.last_name.capitalize %> </p>
+  <p><i class="fa fa-envelope-open-o" aria-hidden="true"></i>   <%=@user.email%> </p>
+  <p><i class="fa fa-phone" aria-hidden="true"></i>   <%=@user.phone_number%> </p>
+  <p><i class="fa fa-map-o" aria-hidden="true"></i>   <%=@user.address%> </p>
 <br>
-<p>Prénom: <%=@user.first_name.capitalize %> </p>
-<p>Nom: <%=@user.last_name.capitalize %> </p>
-<p>Email: <%=@user.email%> </p>
-<p>Numéro de téléphone: <%=@user.phone_number%> </p>
-<p>Adresse: <%=@user.address%> </p>
-
-
 <a class="btn btn-outline-secondary" href='/profile/edit'><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Modifier</a>
 
 <a class="btn btn-outline-secondary" href='/user/password/edit'><i class="fa fa-key fa-fw" aria-hidden="true"></i>&nbsp; Changer de mot de passe</a>

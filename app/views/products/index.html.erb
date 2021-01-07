@@ -3,32 +3,23 @@
 </br>
 </br>
 </br>
-<h3> Récolte printemps <%=Date.current.year%> </h3> </br>
-  <% @products_spring.each do |product| %>
-  <div class="card img-responsive" style="width: 100rem;">
-    <div class="card-header">
-      <h3> <b> <%= product.description %> </b></h3>
-    </div>
-    <br> 
-    
-    <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">
-    </div>
-    <br>
-  </div>
-  </br>
+<% unless @products_spring.empty? %>
+  <h4> Pour la récolte printemps <%=Date.current.year%>, vous pouvez réserver les produits suivants: </h4> </br>
+    <% @products_spring.each do |product| %>
+      <div>
+        <h4> <%= product.description %> </h4>
+      </div>
+      </br>
+    <% end %>
 <% end %>
 
-<h3> Récolte été <%=Date.current.year%>  </h3> </br>
+<% unless @products_summer.empty? %>
+  <h4> Pour la récolte été <%=Date.current.year%>, vous pouvez réserver les produits suivants: </h4> </br>
   <% @products_summer.each do |product| %>
-  <div class="card img-responsive" style="width: 100rem;">
-    <div class="card-header">
-      <h3> <b> <%= product.description %> </b></h3>
+    <div>
+      <h4> <%= product.description %> </h4>
     </div>
-    <br> 
-    <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">
-    </div>
-    <br>
-  </div>
-  </br>
+    </br>
+  <% end %>
 <% end %>
 

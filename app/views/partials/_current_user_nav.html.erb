@@ -1,20 +1,24 @@
-<nav class="navbar navbar-expand-lg fixed-top"" style="background-color: #F9FC8F;">
+<nav class="navbar navbar-expand-lg fixed-top"" style="background-color: #fada5b">
   
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
+
       <li class="nav-item">
-        <a class="nav-link" <%=link_to "Les Filles d'Antoine", '/'%></a>
+        <a class="nav-link" href="/"> <i class="fa fa-home" aria-hidden="true"></i> Accueil </a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" <%= link_to "#{current_user.first_name.capitalize}", "/profile" %></a>
+        <a class="nav-link"  href="/reservation"> <i class="fa fa-calendar" aria-hidden="true"></i>  Mes Réservations </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/profile"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= current_user.first_name.capitalize %> </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/logout"> <i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion </a>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link" <%= link_to "Mes Réservations", "/reservation"%> </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" <%= link_to "Déconnexion", "/logout" %> </a>
-      </li>
     </ul>
   </div>
 </nav>  
