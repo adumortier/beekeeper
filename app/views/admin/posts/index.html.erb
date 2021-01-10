@@ -11,7 +11,7 @@
 <br>
 <% @posts.each do |post| %>
   <div id= <%="post-#{post.id}" %> >
-    <div class="card img-responsive" style="width: 100rem;">
+    <div class="card img-responsive" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
       <div class="card-header">
         <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
         <a href= <%="/admin/posts/#{post.id}" %> data-method="delete"> <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Effacer</a>
