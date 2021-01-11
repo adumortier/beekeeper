@@ -1,4 +1,4 @@
-<div class="top-nav-content">
+<div class="top-nav-content"></div>
 <% if @bookings.empty? %>
   <h3> Vous n'avez pas encore de réservations </h3>
 <% else %>
@@ -29,8 +29,10 @@
       </br>
     <% end %>
   <% end %>
-<% end %>
-<a class="btn btn-outline-secondary" href="/reservation/new"> Réservez du miel !</a>
+  <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
+    <a class="btn btn-outline-secondary" href="/reservation/new"> Réservez du miel !</a>
+  </div>
 </div>
+<% end %>
 
 
