@@ -1,16 +1,12 @@
 
-<br>
-<br>
-<br>
-<br>
-<br><br><br>
-
+<div class="top-nav-content"> </div>
 <% if (!@products_spring.empty? || !@products_summer.empty?) %>
-  <h5> Passez votre commande </h5>
+  <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar" aria-hidden="true"></i> Réservez votre miel </h4>
+  <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
   <%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
     <% unless @products_spring.empty? %>
       <div class="my-5">
-        <table class="table table-hover" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
+        <table class="table table-hover" style="width: <%=browser_info.mobile? ? 100 : 80%>%">
           <tr>
             <th class="align-middle" style="width: 70%"> Printemps <%= Time.new.year %> </th>
             <th class="align-middle" style="width: 30%"> Quantité </th>
@@ -42,10 +38,11 @@
       </div>
     <% end %>
     <%= f.submit("Réserver") %>
+    </div>
     <br>
     <br>
     <br>
-    <h5> Vous serez contacté(e) quand vos pots seront disponibles. </h5>
+    <h5 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> Vous serez contacté(e) quand vos pots seront disponibles. </h5>
   <% end %>
 <% else %>
   <h5> <i class="fa fa-frown-o" aria-hidden="true"></i>  Désolé, il n'y a pas de pots disponibles pour le moment. Revenez nous rendre visite bientôt! </h5>

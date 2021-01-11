@@ -42,7 +42,7 @@
 
         <% else %>
           <%= render "partials/current_user_nav" %>
-          <body id="main" style="padding-top: 30px;" >
+          <body id="main">
             <%= yield %>
           </body>
         <% end %>  
@@ -68,7 +68,7 @@
       <% else %>
 
         <%= render "partials/visitor_nav" %>
-        <body id="main" style="padding-top: 30px;" >
+        <body id="main">
         
           <%= yield %>
         </body>
