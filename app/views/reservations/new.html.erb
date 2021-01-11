@@ -14,7 +14,7 @@
           <% @products_spring.each do |product| %>
             <tr id="product-<%= product.id %>">
               <td class="align-middle"><%= f.label product.description %></td>
-              <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0', max: 100, style:"width:40px" %></td>
+              <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0', max: 100, min: 0, style:"width:40px" %></td>
             </tr>
           <% end %>
         </table>
@@ -31,7 +31,7 @@
           <% @products_summer.each do |product| %>
             <tr id="product-<%= product.id %>">
               <td class="align-middle"><%= f.label product.description %></td>
-              <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0', max: 100, style:"width:40px" %></td>
+              <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0', max: 100, min: 0, style:"width:40px" %></td>
             </tr>
           <% end %>
           </table>

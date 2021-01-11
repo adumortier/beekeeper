@@ -10,13 +10,6 @@
 
   </head>
 
-    <% flash.each do |name, msg| %>
-      <br><br><br>
-      <div class= "<%=name%>-flash alert alert-primary" role="alert">
-        <%= msg %>
-      </div>
-    <% end %>
-
     <% if current_user %>
       <% if current_user.admin? %>
         <%= render "partials/admin_nav" %>
@@ -68,8 +61,8 @@
       <% else %>
 
         <%= render "partials/visitor_nav" %>
+      
         <body id="main">
-        
           <%= yield %>
         </body>
 
