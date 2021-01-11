@@ -1,8 +1,7 @@
 <center>
 <br>
 <br>
-<br>
-<br>
+
 <div id="show_bg"> 
   <div class="hero-text-style">
     Les Filles d'Antoine
@@ -16,14 +15,14 @@
 </center>
 
 <% unless @posts.empty? %>
-  <h2> <b> <i class="fa fa-newspaper-o" aria-hidden="true"></i>  Les news... </b></h2>
+  <h2 class="products"> <b> <i class="fa fa-newspaper-o" aria-hidden="true"></i>  Les news... </b></h2>
 
   <br>
   <br>
 
   <% @posts.each do |post| %>
-    <div id= <%="post-#{post.id}" %> >
-      <div class="card img-responsive" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
+    <div id= <%="post-#{post.id}" %> style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%" >
+      <div class="card img-responsive">
         <div class="card-header">
           <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
         </div>
@@ -32,7 +31,7 @@
           <%= post.content %>
         </div>
         <br>
-        <div style="float: center;">
+        <div style="center;">
           <%= image_tag(post.images[0], size: '500', class: "img-responsive", style: "padding-bottom: 30px; padding-left: 30px; padding-right: 30px;") %>
         </div>
       </div>
