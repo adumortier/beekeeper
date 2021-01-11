@@ -3,33 +3,41 @@
 </br>
 </br>
 </br>
-<% unless @products_spring.empty? %>
-  <h4> Pour la récolte printemps <%=Date.current.year%>, vous pouvez réserver les produits suivants: </h4> </br>
-    <% @products_spring.each do |product| %>
-      <div>
-        <h4> <%= product.description %> </h4>
-      </div>
-      </br>
-    <% end %>
-<% end %>
 
-<% unless @products_summer.empty? %>
-  <h4> Pour la récolte été <%=Date.current.year%>, vous pouvez réserver les produits suivants: </h4> </br>
-  <% @products_summer.each do |product| %>
-    <div>
-      <h4> <%= product.description %> </h4>
-    </div>
-    </br>
-  <% end %>
-<% end %>
+<h5 class="products"> Le miel de printemps </h5>
 
+<p class="products"> Les trois premiers mois de l’année sont caractérisés par une reprise progressive de la végétation et du développement des ruches. Les premières belles journées procurent aux abeilles du pollen de noisetier et de saule. </p> 
+
+<p class="products"> En avril, avec l’allongement des jours et l’augmentation des températures, les fleurs commencent à produire plus de nectar.</p> 
+
+<p class="products"> Nous récoltons généralement le miel de printemps lorsque les aubépines commencent à défleurir. Il n'y a que quelques jours entre la fin des aubépines et le début de l'acacia. Chaque année c'est la course pour récolter ce miel, l'extraire des cadres et reposer les hausses avant que l'acacia ne s'ouvre. </p> 
+</br>
+
+<h5 class="products"> Le miel d'été </h5>
+
+<p class="products"> Les trois premiers mois de l’année sont caractérisés par une reprise progressive de la végétation et du développement des ruches. Les premières belles journées procurent aux abeilles du pollen de noisetier et de saule. </p> 
+
+<p class="products"> En avril, avec l’allongement des jours et l’augmentation des températures, les fleurs commencent à produire plus de nectar.</p> 
+
+<p class="products"> Nous récoltons généralement le miel de printemps lorsque les aubépines commencent à défleurir. Il n'y a que quelques jours entre la fin des aubépines et le début de l'acacia. Chaque année c'est la course pour récolter ce miel, l'extraire des cadres et reposer les hausses avant que l'acacia ne s'ouvre. </p> 
+
+</br>
+
+<h5 class="products"> Les pots d'Antoine </h5>
+
+<p class="products"> Les miels de printemps et d'été sont tous deux disponibles dans des pots de 500g ou de 1kg. Les deux types de pots sont en plastique alimentaire. </p> 
+
+<p class="products"> La quantité de miel produite varie d'année en année, de saison en saison. Le miel est donc distributé dans l'ordre des réservations et nous vous invitons à réserver dès maintenant pour la prochaine saison. </p> 
+</br>
+
+<div class="products">
 <a class="btn btn-outline-warning" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-rocket" aria-hidden="true"></i> &nbsp; Réservez des pots</a>
-
+</div>
 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h6 class="modal-title w-100" id="exampleModalLabel">Connectez-vous pour réserver des pots...</h6>
+        <h5 class="modal-title w-100" id="exampleModalLabel">D'abord, il faut vous connecter...</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
