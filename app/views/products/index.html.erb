@@ -23,11 +23,7 @@
   <% end %>
 <% end %>
 
-<a class="btn btn-outline-secondary" href='/'><i class="fa fa-rocket" aria-hidden="true"></i>&nbsp; Réservez des pots</a>
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Réservez des pots
-</button>
+<a class="btn btn-outline-warning" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-rocket" aria-hidden="true"></i> &nbsp; Réservez des pots</a>
 
 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -39,19 +35,19 @@
         </button>
       </div>
       <div class="modal-body">
-        Pour réserver des pots, il faut vous connecter...
+        Connectez-vous pour réserver des pots...
         
       </div>
       <div class="modal-footer justify-content-between" style='text-align:center'>
         
           <div>
             Je n'ai pas encore de compte <br><br>
-            <a href="/register" class="btn btn-outline-primary mr-auto" role="button" aria-pressed="true">Je m'inscris</a>
+            <a href="/register" class="btn btn-outline-primary" role="button" aria-pressed="true">Je m'inscris</a>
             <br><br>
             ~  OU  ~
             <br><br>
             J'ai déjà un compte <br><br>
-            <a href="/login" class="btn btn-outline-primary  mr-auto" role="button" aria-pressed="true">Je me connecte</a>
+            <a href="/login" class="btn btn-outline-primary" role="button" aria-pressed="true">Je me connecte</a>
           </div>
         
       </div>
