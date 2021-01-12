@@ -1,12 +1,20 @@
 <center>
 <br>
 <br>
-
-<div id="show_bg"> 
-  <div class="hero-text-style">
-    Les Filles d'Antoine
+<% if browser_info.mobile? %>
+  <div id="show_bg_mobile"> 
+    <div class="hero-text-style-mobile">
+      Les Filles d'Antoine
+    </div>
   </div>
-</div>
+<% else %>
+  <div id="show_bg"> 
+    <div class="hero-text-style">
+      Les Filles d'Antoine
+    </div>
+  </div>
+<% end %>
+
 <br>
 <br>
 <br>
@@ -21,7 +29,7 @@
 
   <% @posts.each do |post| %>
     <div id= <%="post-#{post.id}" %> style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%" >
-      <div class="card img-responsive">
+      <div class="card img-responsive border-white">
         <div class="card-header">
           <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
         </div>
