@@ -35,6 +35,7 @@
   padding-bottom: 7%;
   padding-left: 200px;
   text-align: center;
+  font-family: 'pacifico';
 }
 
 #show_bg {
@@ -80,6 +81,22 @@
   size: 200;
   background-repeat: no-repeat;
   position: relative;
+}
+
+.reg-content-text {
+  font-family: 'lato-regular';
+}
+
+.reg-content-text-bold {
+  font-family: 'lato-bold';
+}
+
+p {
+  font-family: 'lato-regular';
+}
+
+h3,h4,h5,h6 {
+  font-family: 'lato-bold';
 }
 
 .products {
@@ -193,4 +210,19 @@
 }
 .alert-container {
   position: relative;
+}
+
+@font-face {
+  font-family: 'pacifico';
+  src:font-url('Pacifico-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'lato-bold';
+  src:font-url('Lato-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'lato-regular';
+  src:font-url('Lato-Regular.ttf');
 }
