@@ -1,6 +1,11 @@
 <center>
-<br>
-<br>
+<% if !browser_info.mobile? %>
+  <br>
+  <br>
+<% else %>
+  <br>
+<% end %>
+
 <% if browser_info.mobile? %>
   <div id="show_bg_mobile"> 
     <div class="hero-text-style-mobile">
@@ -15,10 +20,11 @@
   </div>
 <% end %>
 
-<br>
-<br>
-<br>
-
+<% if !browser_info.mobile? %>
+  <br>
+  <br>
+  <br>
+<% end %>
 <br>
 </center>
 
