@@ -1,5 +1,11 @@
-<div id="mySidenav" class="sidenav_visitor_mobile">
-  <center> <%= image_tag "logo.png" %> </center> 
+<div id="mySidenav" class="sidenav_mobile">
+
+  <center>  
+    <div class=<%=browser_info.mobile? ? "hero-text-mobile-nav" : "hero-text"%> >
+      Les Filles d'Antoine
+    </div>    
+  </center> 
+
   <table class="table" style="width: 100%">
   <tr>
     <th style="border: 0" class="align-middle" style="width: 2%">  </th>
