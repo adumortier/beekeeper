@@ -19,17 +19,17 @@
      <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
       <table class="table table-hover" style="width: <%=browser_info.mobile? ? 100 : 50%>%;">
       <tr>
-        <th class="align-middle" style="width: 4%"> Produit </th>
-        <th class="align-middle" style="width: 9%"> Récolte</th>
-        <th class="align-middle" style="width: 5%"> Quantité  </th>
+        <th class="align-middle" style="width: 15%"> Produit </th>
+        <th class="align-middle" style="width: 30%"> Récolte</th>
+        <th class="align-middle" style="width: 4%"> Quantité </div>  </th>
         <th class="align-middle" style="width: 5%"></th>
       </tr>
       <% booking.booking_products.each do |booking_product| %>
         <tr id="product-<%= booking_product.product.id %>">
           <td class="align-middle">  <%= booking_product.product.description  %></td>
           <td class="align-middle"><%= booking_product.product.season + ' ' + booking_product.product.year.to_s  %></td>  
-          <td class="align-middle"><%= booking_product.quantity %></td>
-          <td class="align-middle"> <a href= <%="/reservation/#{booking_product.id}" %> data-method="delete"> <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Annuler</a> </td>
+          <td class="align-middle" style="text-align:center"><%= booking_product.quantity %></td>
+          <td class="align-middle"> <a href= <%="/reservation/#{booking_product.id}" %> data-method="delete">  Annuler</a> </td>
           </td>
         </tr>
       <% end %>

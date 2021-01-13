@@ -1,5 +1,5 @@
 <center>
-<div class="top-nav-content">
+<div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
   <h3> Modifier votre mot de passe </h3>
   <br>
   <%= form_with model: @user, url: '/user/password', local: true, method: :patch do |f| %>
@@ -9,3 +9,4 @@
     <%= f.submit("Enregistrer") %>
   <% end %>
  </div>
+ </center>
