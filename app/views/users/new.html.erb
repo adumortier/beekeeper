@@ -1,7 +1,7 @@
-
 <center>
 
-<div class="top-nav-content">
+<div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
+
   <h3> Créez votre compte </h3>
   <br>
   <%= form_for @user, url: '/users', html: { method: :post } do |f| %>

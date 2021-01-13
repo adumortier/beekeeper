@@ -1,4 +1,4 @@
-<div class="top-nav-content"></div>
+<div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
 
 <% if @bookings.empty? %>
   <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%; padding-bottom: 50px">

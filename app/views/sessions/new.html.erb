@@ -1,6 +1,6 @@
 
 <center>
-<div class='top-nav-content'>
+  <div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
   <h3> Connectez-vous </h3>
   <br>
   <%= form_tag '/login' do %>
