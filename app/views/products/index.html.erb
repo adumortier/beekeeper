@@ -14,6 +14,15 @@
           En avril, avec l’allongement des jours et l’augmentation des températures, les fleurs commencent à produire plus de nectar.
         </div>
         <br>
+        <center>
+          <div>
+            <% if current_user %>
+              <a class="btn btn-outline-warning" role="button" aria-pressed="true" href="/reservation/new"> <i class="fa fa-rocket" aria-hidden="true"></i> &nbsp; Réservez du miel !</a>
+            <% else %>
+              <a class="btn btn-outline-warning" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-rocket" aria-hidden="true"></i> &nbsp; Réservez du miel !</a>
+            <% end %>
+          </div>
+        </center>
       </div>
       <br> <br>
 
@@ -30,6 +39,15 @@
           En avril, avec l’allongement des jours et l’augmentation des températures, les fleurs commencent à produire plus de nectar.
         </div>
         <br>
+        <center>
+          <div>
+            <% if current_user %>
+              <a class="btn btn-outline-warning" role="button" aria-pressed="true" href="/reservation/new"> <i class="fa fa-rocket" aria-hidden="true"></i> &nbsp; Réservez du miel !</a>
+            <% else %>
+              <a class="btn btn-outline-warning" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-rocket" aria-hidden="true"></i> &nbsp; Réservez du miel !</a>
+            <% end %>
+          </div>
+        </center>
       </div>
       <br> <br>
 
@@ -45,30 +63,27 @@
         <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">
           La quantité de miel produite varie d'année en année, de saison en saison. Le miel est donc distribué dans l'ordre des réservations et dans la limite des stocks disponibles. Nous vous invitons donc à réserver dès maintenant pour la prochaine saison.
         </div>
+        <center>
+          <div>
+            <% if current_user %>
+              <a class="btn btn-outline-warning" role="button" aria-pressed="true" href="/reservation/new"> <i class="fa fa-rocket" aria-hidden="true"></i> &nbsp; Réservez du miel !</a>
+            <% else %>
+              <a class="btn btn-outline-warning" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-rocket" aria-hidden="true"></i> &nbsp; Réservez du miel !</a>
+            <% end %>
+          </div>
+        </center>
       </div>
       <br> <br>
     </div>
 </div>
 
-<% if current_user %>
-  <center>
-  <div class="products">
-    <a class="btn btn-outline-warning" role="button" aria-pressed="true" href="/reservation/new"> <i class="fa fa-rocket" aria-hidden="true"></i> &nbsp; Réservez du miel !</a>
-  </div>
-  </center>
-<% else %>
-  <center>
-  <div>
-    <a class="btn btn-outline-warning" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-rocket" aria-hidden="true"></i> &nbsp; Réservez du miel !</a>
-  </div>
-  </center>
-<% end %>
+  
 
 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h5 class="modal-title w-100" id="exampleModalLabel">D'abord, il faut vous connecter...</h5>
+        <h5 class="modal-title w-100" id="exampleModalLabel">Connectez-vous pour réserver...</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
