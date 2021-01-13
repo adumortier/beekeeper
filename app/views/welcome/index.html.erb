@@ -1,43 +1,26 @@
 <center>
-<% if !browser_info.mobile? %>
-  <br>
-  <br>
-<% else %>
-  <br>
-<% end %>
 
-<% if browser_info.mobile? %>
-  <div id="show_bg_mobile"> 
-    <div class="hero-text-style-mobile">
-      Les Filles d'Antoine
-    </div>
+  <div id=<%=browser_info.mobile? ? "bg_mobile" : "bg" %> > 
+      <div class=<%=browser_info.mobile? ? "hero-text-mobile" : "hero-text"%> >
+        Les Filles d'Antoine
+      </div>
   </div>
-<% else %>
-  <div id="show_bg"> 
-    <div class="hero-text-style">
-      Les Filles d'Antoine
-    </div>
-  </div>
-<% end %>
 
-<% if !browser_info.mobile? %>
-  <br>
-  <br>
-  <br>
-<% end %>
-<br>
 </center>
 
 <% unless @posts.empty? %>
-  <h2 class="products"> <b> <i class="fa fa-newspaper-o" aria-hidden="true"></i>  Les news... </b></h2>
-  <br>
-  <br>
+
+  <h3 style="font-family: 'lato-bold';padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%; padding-bottom: <%=browser_info.mobile? ? 25 : 20%>px">  <i class="fa fa-newspaper-o" aria-hidden="true"></i>  Les news... </h3>
 
   <% @posts.each do |post| %>
     <div id= <%="post-#{post.id}" %> style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%" >
       <div class="card img-responsive border-white">
         <div class="card-header">
-          <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
+          <% if browser_info.mobile? %>
+            <h5> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h5>
+          <% else %>
+            <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
+          <% end %>
         </div>
         <br> 
         <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">

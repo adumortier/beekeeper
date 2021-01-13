@@ -20,7 +20,7 @@
         <% if browser_info.mobile? %>
           <%= render "partials/current_user_mobile_nav" %>
           <body id="main" style="padding-right: 5px; padding-left: 5px;" >
-          <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
+          <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
           <script>
             function openNav() {
               document.getElementById("mySidenav").style.width = "100%";
@@ -45,7 +45,7 @@
       <% if browser_info.mobile? %>
         <%= render "partials/visitor_mobile_nav" %>
         <body id="main" style="padding-right: 5px; padding-left: 5px;" >
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
+        <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
         <script>
           function openNav() {
             document.getElementById("mySidenav").style.width = "100%";
@@ -59,7 +59,6 @@
         </body>
 
       <% else %>
-
         <%= render "partials/visitor_nav" %>
       
         <body id="main">

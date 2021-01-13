@@ -27,7 +27,7 @@
   max-width: 480px;
 }
 
-.hero-text-style {
+.hero-text {
   color: rgb(255, 255, 255);
   font-size: 70px;
   padding-top: 8%;
@@ -49,7 +49,7 @@
 //   font-family: 'pacifico';
 // }
 
-#show_bg {
+#bg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), asset-data-url("background.jpg");
   width: 100%;
   height: 10%; 
@@ -58,35 +58,29 @@
   position: relative;
   background-size: cover;
   background-attachment: fixed;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 
-#show_bg_mobile {
+#bg_mobile {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), asset-data-url("background_mobile.jpg");
   width: 100%;
-  height: 15%; 
-  // background-position: center;
   background-repeat: no-repeat;
-  // position: relative;
   background-size: cover;
   background-attachment: scroll;
+  margin-top: 20px;
+  margin-bottom: 25px;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
-  .hero-text-style-mobile {
+  .hero-text-mobile {
     color: #fcf8f8;
     font-size: 50px;
-    // position: absolute;
     width:80%;
-    // padding-top: 8%;
-    // padding-right: 200px;
-    // padding-bottom: 7%;
-    // padding-left: 200px;
     text-align: center;
     font-family: 'pacifico';
   }
 }
-
-
 
 .top-nav-content {
   margin-top: 120px;
@@ -110,7 +104,7 @@ p {
   font-family: 'lato-regular';
 }
 
-h3,h4,h5,h6 {
+h2,h3,h4,h5,h6 {
   font-family: 'lato-bold';
 }
 
@@ -185,6 +179,7 @@ h3,h4,h5,h6 {
   background-color:#febf43;
   overflow-x: hidden;
   padding-top: 5px;
+  transition: 0.3s;
 }
 
 .sidenav_visitor_mobile a {
