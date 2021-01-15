@@ -5,7 +5,7 @@
 
 <%= form_for @booking, url: "/admin/users/#{@user.id}/reservation", html: { method: :post } do |f| %>
   <div class="my-5">
-      <table class="table table-hover" style="width:30%">
+      <table class="table table-hover" style="width:15%">
       <tr>
         <th class="align-middle"> Printemps <%= Time.new.year %> </th>
         <th class="align-middle"> Quantité </th>
@@ -34,7 +34,7 @@
       <% end %>
       </table>
   </div>
-  <%= f.submit("Envoyer") %>
+  <%= f.submit "Envoyer", class: "btn btn-primary" %>
 <% end %>
 
 </center>

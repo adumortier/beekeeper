@@ -6,7 +6,7 @@
     <p> <i class="fa fa-envelope-open-o" aria-hidden="true"></i> <%= f.text_field :email, :value => @user.email %> </p>
     <p> <i class="fa fa-phone" aria-hidden="true"></i> <%= f.text_field :phone_number, :value => @user.phone_number %> </p>
     <p> <i class="fa fa-home" aria-hidden="true"></i> <%= f.text_field :address, :value => @user.address %> </p>
-    <%= f.submit("Continuer") %>
+    <%= f.submit "Continuer", class: "btn btn-primary" %>
 <% end %>
 <br><br>
 <h4><i class="fa fa-shopping-basket" aria-hidden="true"></i> Historique des réservations </h4>

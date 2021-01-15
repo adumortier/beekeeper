@@ -136,6 +136,11 @@ h2,h3,h4,h5,h6 {
       display: block;
 }
 
+.link {
+      text-decoration: none;
+      color: #818181;
+}
+
 .navbar-nav > li{
   padding-left:30px;
   padding-right:30px;
@@ -160,6 +165,10 @@ h2,h3,h4,h5,h6 {
       font-size: 15px;
       color: #818181;
       display: block;
+}
+
+.btn-warning {
+    background-color: #febf43 !important;
 }
 
 .sidenav_visitor {

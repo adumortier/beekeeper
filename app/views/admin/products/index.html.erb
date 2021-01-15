@@ -10,8 +10,8 @@
         <th class="align-middle" style="width: 20%"> Description </th>
         <th class="align-middle" style="width: 15%"> Prix </th>
         <th class="align-middle" style="width: 17%"> Saison  </th>
-        <th class="align-middle" style="width: 13%"> Année  </th>
-        <th class="align-middle" style="width: 13%"> Status  </th>
+        <th class="align-middle" style="width: 13%; text-align:center;"> Année  </th>
+        <th class="align-middle" style="width: 13%; text-align:center;"> Status  </th>
         <th style="width: 13%"></th>
         <th style="width: 10%"></th>
       </tr>
@@ -20,12 +20,12 @@
           <td class="align-middle"><%= product.description %></td>
           <td class="align-middle"><%= product.price %></td>
           <td class="align-middle"><%= product.season %></td>
-          <td class="align-middle"><%= product.year %></td>
+          <td class="align-middle" style="text-align:center;"><%= product.year %></td>
           
           <% if product.status == 'active'%>
-            <td class="align-middle"><span class="badge badge-pill badge-success">actif</span> </td>
+            <td class="align-middle" style="text-align:center;"><span class="badge badge-pill badge-success">actif</span> </td>
           <% else %>
-            <td class="align-middle" style="text-align:left"><span class="badge badge-pill badge-secondary">inactif</span> </td>
+            <td class="align-middle" style="text-align:center;"><span class="badge badge-pill badge-secondary">inactif</span> </td>
           <% end %>
           <td class="align-middle"> <a href= <%="/admin/products/#{product.id}/edit " %>><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Modifier</a> </td>
           <td class="align-middle"> <a href= <%="/admin/products/#{product.id}" %> data-method="delete"> <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Effacer</a> </td>

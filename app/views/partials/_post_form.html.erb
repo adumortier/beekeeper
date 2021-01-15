@@ -7,7 +7,7 @@
     <p> <%= f.text_area :content, :value => locals[:post].content, :cols => "40", :rows => "10", placeholder: ('Contenu *' if locals[:action] == :post) %> </p>
     <p> <%= f.file_field :images, multiple: true %> </p> 
     <br>
-    <%= f.submit("Continuer") %>
+    <%= f.submit "Continuer", class: "btn btn-primary" %>
  <% end %>
 
 </center>
