@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.valid?
       flash[:welcome] = "Bienvenue #{@user.first_name}!"
-      flash[:registered] = "Réservez vos pots!"
       session[:user] = @user.id
       redirect_to root_path
     else
@@ -26,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(user_params)
     if @user.save
-      flash[:success] = "Your profile has been updated"
+      flash[:success] = "Votre profil a été mis à jour"
       redirect_to profile_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence

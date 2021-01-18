@@ -1,28 +1,14 @@
-<br>
-<br>
-<br>
-
-
 <center>
+<div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
 <h3> Modifier votre profil </h3>
 
-    <br>
-
+  <br>
   <%= form_with model: @user, local: true, url: '/profile', method: :patch do |f| %>
-    
     <p> <%= f.text_field :first_name, :value => @user.first_name %> </p>
-
-    
     <p> <%= f.text_field :last_name, :value => @user.last_name %> </p>
-
     <p> <%= f.text_field :email, :value => @user.email %> </p>
-
     <p> <%= f.text_field :phone_number, :value => @user.phone_number %> </p>
-
     <p> <%= f.text_field :address, :value => @user.address %> </p>
-
     <br>
-
-    <%= f.submit("Enregistrer") %>
-
- <% end %>
+    <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+  <% end %>

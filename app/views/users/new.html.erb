@@ -1,31 +1,22 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-
 <center>
 
-  <h3> Créer votre compte </h3>
+<div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
+
+  <h3> Créez votre compte </h3>
   <br>
   <%= form_for @user, url: '/users', html: { method: :post } do |f| %>
 
     
     <p> <%= f.text_field :first_name, :value => @user[:first_name], placeholder: ' Prénom *' %> </p>
-
     <p> <%= f.text_field :last_name, :value => @user[:last_name], placeholder: ' Nom *' %>  </p>
-
     <p> <%= f.text_field :email, :value => @user[:email], placeholder: ' Email *' %>  </p>
-
     <p> <%= f.text_field :phone_number, :value => @user[:phone_number], placeholder: ' Téléphone *' %>  </p>
-
     <p> <%= f.text_field :address, :value => @user[:address], placeholder: ' Adresse *' %>  </p>
-
     <p> <%= f.password_field :password, :value => @user[:password], placeholder: ' Mot de passe *' %>  </p>
-
     <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: ' Mot de passe *' %>  </p>
     <br>
-    <p> <%= f.submit("Continuer") %>  </p>
+    <p> <%= f.submit "Continuer", class: "btn btn-primary" %>  </p>
   <% end %> 
+</div>
 
 </center>

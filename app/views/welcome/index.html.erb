@@ -1,46 +1,40 @@
 <center>
 
-<div id="show_bg"> 
-  <div class="hero-text-style">
-    Les Filles d'Antoine
+  <div id=<%=browser_info.mobile? ? "bg_mobile" : "bg" %> > 
+      <div class=<%=browser_info.mobile? ? "hero-text-mobile" : "hero-text"%> >
+        Les Filles d'Antoine
+      </div>
   </div>
-</div>
 
-<br>
-<br>
-<br>
-<br>
 </center>
 
+<% unless @posts.empty? %>
 
-<h3> <%= browser_info %> </h3>
-<h3> Mobile? <%= browser_info.mobile? %> </h3>
-<h3> Tablet? <%= browser_info.tablet? %> </h3>
+  <h3 style="font-family: 'lato-bold';padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%; padding-bottom: <%=browser_info.mobile? ? 25 : 20%>px">  <i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;&nbsp; Les news... </h3>
 
-<h2> <b> Les dernières nouvelles </b></h2>
-
-<br>
-<br>
-
-<% @posts.each do |post| %>
-  <div id= <%="post-#{post.id}" %> >
-    <div class="card img-responsive" style="width: 100rem;">
-      <div class="card-header">
-        <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
+  <% @posts.each do |post| %>
+    <div id= <%="post-#{post.id}" %> style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%" >
+      <div class="card img-responsive border-white">
+        <div class="card-header">
+          <% if browser_info.mobile? %>
+            <h5> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h5>
+          <% else %>
+            <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
+          <% end %>
+        </div>
+        <br> 
+        <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">
+          <%= post.content %>
+        </div>
+        <br>
+        <div style="center;">
+          <%= image_tag(post.images[0], size: '500', class: "img-responsive", style: "padding-bottom: 30px; padding-left: 30px; padding-right: 30px;") %>
+        </div>
       </div>
-      <br> 
-      <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">
-        <%= post.content %>
-      </div>
-      <br>
-      <div style="float: left;">
-        <%= image_tag(post.images[0], size: '500', class: "img-responsive", style: "padding-bottom: 30px; padding-left: 30px; padding-right: 30px;") %>
-      </div>
+      <br> <br>
     </div>
-    <br> <br>
     
-  </div>
-  
+  <% end %>
 <% end %>
 
 

@@ -1,14 +1,54 @@
-<div id="mySidenav" class="sidenav_visitor">
-  </br>
-  </br>
-  <a href="/"><%= image_tag "logo.png" %>  </a>
-  </br>
-  <a href="/"onclick="closeNav()" >Accueil</a>
-  </br>
-  <a href="/products" onclick="closeNav()">Les produits</a>
-  </br>
-  <a href="/register" onclick="closeNav()">Créer un compte</a>
-  </br>
-  <a href="/login" onclick="closeNav()">Connexion</a>
-</div>
+<nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #febf43">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon navbar-dark"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav  ml-auto">
+      
+        
 
+      <li class="nav-item">
+        <a class="nav-link" href="/"> <i class="fa fa-home" aria-hidden="true"></i> Accueil </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  href="/products"> <i class="fa fa-star-o" aria-hidden="true"></i> Les Produits d'Antoine </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-pressed="true" role="button" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-calendar" aria-hidden="true"></i> Réserver du miel</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login"> <i class="fa fa-sign-in" aria-hidden="true"></i> Connexion </a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
+
+
+
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title w-100" id="exampleModalLabel">Connectez-vous pour réserver...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-footer justify-content-between" style='text-align:center'>
+        
+          <div style="padding-top:40px; padding-bottom:40px;">
+            Je n'ai pas encore de compte <br><br>
+            <a href="/register" class="btn btn-outline-primary" role="button" aria-pressed="true">Je m'inscris</a>
+            <br><br>
+            ~  OU  ~
+            <br><br>
+            J'ai déjà un compte <br><br>
+            <a href="/login" class="btn btn-outline-primary" role="button" aria-pressed="true">Je me connecte</a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

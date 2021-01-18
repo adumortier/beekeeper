@@ -6,20 +6,21 @@
     <p> <%= f.text_field :description, :value => locals[:product].description, placeholder: ('Description *' if locals[:action] == :post) %> </p>
     <p> <%= f.text_field :price, :value => locals[:product].price, placeholder: ('Prix *' if locals[:action] == :post) %> </p>
     <p> <%= f.text_field :year, :value => locals[:product].year,  placeholder: ('Année *' if locals[:action] == :post) %> </p>
-    <%= f.label :season, 'printemps', :value => true  %>
-    <%= f.radio_button :season, 'printemps' %>
-    &nbsp;&nbsp;
-    <%= f.label :season, 'été', :value => false %>
-    <%= f.radio_button :season, 'été', :checked => true %> 
-    <br>
-
-    <%= f.label :status, 'actif', :value => true  %>
-    <%= f.radio_button :status, 'actif' %>
-    &nbsp;&nbsp;
-    <%= f.label :status, 'inactif', :value => false %>
-    <%= f.radio_button :status, 'inactif', :checked => true %> 
-    <br>
-    <%= f.submit("Continuer") %>
+    <table class="table" style="width:16%">
+      <tr>
+        <th class="align-middle" style="border: 0"> </th>
+        <th class="align-middle" style="border: 0"> </th>
+      </tr>
+      <tr>
+        <td class="align-middle" style="text-align:right; border-top: 0"> <%= f.label :season, 'printemps', :value => true  %> <%= f.radio_button :season, 'printemps', :checked => (locals[:product].season == 'printemps') %> </td>
+        <td class="align-middle" style="text-align:right; border-top: 0"> <%= f.label :season, 'été', :value => false %> <%= f.radio_button :season, 'été', :checked => (locals[:product].season == 'été') %>  </td>
+      </tr>
+      <tr>
+        <td class="align-middle" style="text-align:right; border-top: 0"> <%= f.label :status, 'actif', :value => true  %> <%= f.radio_button :status, 'active', :checked => (locals[:product].status == 'active') %> </td>
+        <td class="align-middle" style="text-align:right; border-top: 0"> <%= f.label :status, 'inactif', :value => false %> <%= f.radio_button :status, 'inactive', :checked => (locals[:product].status == 'inactive') %> </td>
+      </tr>
+    </table>
+    <%= f.submit "Continuer", class: "btn btn-primary" %>
  <% end %>
 
 </center>

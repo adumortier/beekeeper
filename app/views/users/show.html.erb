@@ -1,13 +1,19 @@
-<br><br>
-<h4> <i class="fa fa-address-card" aria-hidden="true"></i> Mon profil </h4>
-<br>
-<p>Prénom: <%=@user.first_name.capitalize %> </p>
-<p>Nom: <%=@user.last_name.capitalize %> </p>
-<p>Email: <%=@user.email%> </p>
-<p>Numéro de téléphone: <%=@user.phone_number%> </p>
-<p>Adresse: <%=@user.address%> </p>
+<div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
 
+<h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp; Mon Profil</h4>
+
+<br> <br>
+
+<p style="padding-left: <%=browser_info.mobile? ? 2 : 10%>%; padding-right: <%=browser_info.mobile? ? 2 : 10%>%"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.first_name.capitalize %> <%=@user.last_name.capitalize %> </p>
+<p style="padding-left: <%=browser_info.mobile? ? 2 : 10%>%; padding-right: <%=browser_info.mobile? ? 2 : 10%>%"><i class="fa fa-envelope-open-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.email%> </p>
+<p style="padding-left: <%=browser_info.mobile? ? 2 : 10%>%; padding-right: <%=browser_info.mobile? ? 2 : 10%>%"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.phone_number%> </p>
+<p style="padding-left: <%=browser_info.mobile? ? 2 : 10%>%; padding-right: <%=browser_info.mobile? ? 2 : 10%>%"><i class="fa fa-map-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.address%> </p>
+
+<br>
+
+<div style="padding-left: <%=browser_info.mobile? ? 2 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
 
 <a class="btn btn-outline-secondary" href='/profile/edit'><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Modifier</a>
+<a class="btn btn-outline-secondary" href='/user/password/edit'><i class="fa fa-lock" aria-hidden="true"></i>&nbsp; Changer mot de passe</a> 
 
-<a class="btn btn-outline-secondary" href='/user/password/edit'><i class="fa fa-key fa-fw" aria-hidden="true"></i>&nbsp; Changer de mot de passe</a>
+<div>

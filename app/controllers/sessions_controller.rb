@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       flash[:error] = "Email ou mot de passe incorrect"
       redirect_to login_path and return
     end
-    redirect_to root_path
+    redirect_to (current_user.admin? ? root_path : reservation_path)
   end
 
   def destroy

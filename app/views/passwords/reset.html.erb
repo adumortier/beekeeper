@@ -1,0 +1,12 @@
+<center>
+<div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
+  <h3> Réinitaliser votre mot de passe  </h3>
+  <br>
+  <%= form_with model: @user, url: "/passwords/#{params[:id]}", local: true, method: :patch do |f| %>
+    <p> <%= f.password_field :password, :value => @user[:password], placeholder: 'Mot de passe *'  %> </p>
+    <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: 'Confirmation *'  %> </p>
+    <br>
+    <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+  <% end %>
+ </div>
+ </center>

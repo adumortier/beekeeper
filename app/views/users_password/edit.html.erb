@@ -1,18 +1,12 @@
-<br>
-<br>
-<br>
-
-
 <center>
-<h3> Modifier votre mot de passe </h3>
-
+<div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
+  <h3> Modifiez votre mot de passe  </h3>
   <br>
   <%= form_with model: @user, url: '/user/password', local: true, method: :patch do |f| %>
-
-    
     <p> <%= f.password_field :password, :value => @user[:password], placeholder: 'Mot de passe *'  %> </p>
     <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: 'Confirmation *'  %> </p>
-
-    <%= f.submit("Enregistrer") %>
-
- <% end %>
+    <br>
+    <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+  <% end %>
+ </div>
+ </center>
