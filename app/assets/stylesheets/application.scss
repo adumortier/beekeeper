@@ -82,6 +82,13 @@
   margin-bottom: 25px;
 }
 
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
+
 @media only screen and (min-width: 320px) and (max-width: 767px) {
   .hero-text-mobile {
     color: #fcf8f8;
@@ -98,6 +105,15 @@
 
 .top-nav-content-mobile {
   margin-top: 30px;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
 }
 
 #post_image {

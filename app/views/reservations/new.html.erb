@@ -37,11 +37,14 @@
           </table>
       </div>
     <% end %>
-    <%= f.submit "Réserver", class: "btn btn-primary" %>
+    <% if browser_info.mobile? %>
+      <center> <%= f.submit "Réserver", class: "btn btn-primary" %> </center>
+    <% else %>
+      <%= f.submit "Réserver", class: "btn btn-primary" %>
+    <% end %>
     </div>
     <br>
-    <br>
-    <br>
+
     <h5 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> Vous serez contacté(e) quand vos pots seront disponibles. </h5>
   <% end %>
 <% else %>

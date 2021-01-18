@@ -19,6 +19,11 @@ Rails.application.routes.draw do
   get '/user/password/edit', to: 'users_password#edit'
   patch '/user/password', to: 'users_password#update'
 
+  get '/passwords/new', to: 'passwords#new'
+  post '/passwords', to: 'passwords#create'
+  get '/passwords/reset/:id', to: 'passwords#reset'
+  patch '/passwords/:id', to: 'passwords#update'
+
   get '/reservation', to: 'reservations#index'
   get '/reservation/new', to: 'reservations#new'
   post '/reservation', to: 'reservations#create'
