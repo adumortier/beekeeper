@@ -5,18 +5,18 @@
     <h4> Vous n'avez pas encore de réservations </h4>
     <br>
     <br>
-    <a class="btn btn-warning btn-lg" href="/reservation/new"> <i class="fa fa-gift" aria-hidden="true"></i>Réservez du miel</a>
+    <a class="btn btn-warning btn-lg" href="/reservation/new"> <i class="fa fa-gift" aria-hidden="true"></i>&nbsp;&nbsp; Réservez du miel</a>
     
   </div>
 <% else %>
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Nouvelle Réservation </h4>
   <br><br>
-  <center>
+  
   <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%; padding-bottom: 20px">
       <%= image_tag 'bee.svg', :style => "width:20px;"%> &nbsp;&nbsp;
-      <a class="btn btn-warning btn-lg link" href="/reservation/new"> <i class="fa fa-gift" aria-hidden="true"></i> Réservez du miel</a>
+      <a class="btn btn-warning btn-lg link" href="/reservation/new"> <i class="fa fa-gift" aria-hidden="true"></i>&nbsp;&nbsp; Réservez du miel</a>
   </div>
-  </center>
+  
   <br><br>
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp; Mes Réservations </h4>
   
