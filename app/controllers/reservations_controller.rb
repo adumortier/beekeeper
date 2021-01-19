@@ -19,6 +19,9 @@ class ReservationsController < ApplicationController
       quantity = booking_params[product.description + '_' + product.season]
       @booking.booking_products.create(product: product, quantity: quantity)
     end
+    unless (@booking.booking_products.pluck(:quantity).empty?) || (@booking.booking_products.pluck(:quantity).sum == 0)
+      current_user.send_booking_confirmation(@booking) 
+    end
     redirect_to reservation_path
   end
 
