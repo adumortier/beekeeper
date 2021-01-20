@@ -2,23 +2,33 @@
 <html style="font-size: 80%;">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>Beekeeper</title>
+    <title>Les Filles d'Antoine</title>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%= favicon_link_tag asset_path('bee.svg') %>
   </head>
 
     <% if current_user %>
       <% if current_user.admin? %>
         <%= render "partials/admin_nav" %>
         <body class="main" >
+        <% flash.each do |type, msg| %>
+          <div class="alert alert-admin alert-info">
+            <%= msg %>
+          </div>
+        <% end %>
           <%= yield %>
         </body>
       <% else %>
         <% if browser_info.mobile? %>
           <%= render "partials/current_user_mobile_nav" %>
+          <% flash.each do |type, msg| %>
+            <div class="alert alert-info alert-fixed">
+              <%= msg %>
+            </div>
+          <% end %>
           <body id="main" style="padding-right: 5px; padding-left: 5px;" >
           <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
           <script>
@@ -35,6 +45,11 @@
 
         <% else %>
           <%= render "partials/current_user_nav" %>
+            <% flash.each do |type, msg| %>
+              <div class="alert alert-<%=type%> alert-fixed" >
+                <%= msg %>
+              </div>
+            <% end %>
           <body id="main">
             <%= yield %>
           </body>
@@ -44,6 +59,11 @@
     <% else %>
       <% if browser_info.mobile? %>
         <%= render "partials/visitor_mobile_nav" %>
+        <% flash.each do |type, msg| %>
+            <div class="alert alert-info alert-fixed-mobile">
+              <%= msg %>
+            </div>
+          <% end %>
         <body id="main" style="padding-right: 5px; padding-left: 5px;" >
         <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
         <script>
@@ -60,8 +80,12 @@
 
       <% else %>
         <%= render "partials/visitor_nav" %>
-      
         <body id="main">
+        <% flash.each do |type, msg| %>
+          <div class="alert alert-<%=type%> alert-fixed" >
+            <%= msg %>
+          </div>
+        <% end %>
             <%= yield %>
           <div id="page-container">
             <div id="content-wrap">

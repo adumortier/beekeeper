@@ -48,6 +48,26 @@
     margin-bottom: 20px;
   }
 
+.alert-fixed {
+    position:fixed; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9999; 
+    border-radius:0px;
+    margin-top: 65px;
+}
+
+.alert-fixed-mobile {
+    position:fixed; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9999; 
+    border-radius:0px;
+    margin-top: 35px;
+}
+
 // .hero-text-style-mobile {
 //   color: rgb(255, 255, 255);
 //   font-size: 40px;
@@ -104,7 +124,7 @@
 }
 
 .top-nav-content-mobile {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 #page-container {
@@ -247,6 +267,19 @@ h2,h3,h4,h5,h6 {
   margin-top: 70px;     /* Same as the width of the sidenav */
   padding: 0px 10px;
 }
+
+.alert-admin {
+  top: 0px; 
+  left: 0px; 
+  width: 100%;
+  z-index:9999;   
+  position:fixed; 
+  border-radius:0px;
+  margin-top: 40px;
+  margin-left: 310px;   /* Same as the width of the sidenav */
+  
+}
+
 
 #main {
   transition: margin-left .5s;

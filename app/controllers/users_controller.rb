@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       session[:user] = @user.id
       redirect_to root_path
     else
-      flash[:error] = @user.errors.full_messages.to_sentence
+      flash[:danger] = @user.errors.full_messages.to_sentence
       redirect_to register_path
     end
   end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       flash[:success] = "Votre profil a été mis à jour"
       redirect_to profile_path
     else
-      flash[:error] = @user.errors.full_messages.to_sentence
+      flash[:danger] = @user.errors.messages.values[0][0]
       redirect_to profile_edit_path
     end
   end
