@@ -22,4 +22,27 @@ class UserMailer < ApplicationMailer
     )
   end
 
+  def confirm_booking_change(user, booking)
+    @user = user
+    @booking = booking
+  
+    mail(
+      reply_to: ENV["GMAIL_USERNAME"],
+      to: @user.email,
+      subject: "Les Filles d'Antoine | Modification de réservation"
+    )
+  end
+
+
+  def confirm_admin_booking(user, booking)
+    @user = user
+    @booking = booking
+  
+    mail(
+      reply_to: ENV["GMAIL_USERNAME"],
+      to: @user.email,
+      subject: "Les Filles d'Antoine | Confirmation de réservation"
+    )
+  end
+
 end

@@ -2,8 +2,10 @@
 
 class ReservationsController < ApplicationController
 
+  after_action :set_cache_buster, only: :create 
+
   def index
-    @bookings = current_user.bookings.order(created_at: :desc)
+    @bookings = current_user.bookings.order(created_at: :asc)
   end
 
   def new
@@ -20,15 +22,18 @@ class ReservationsController < ApplicationController
       @booking.booking_products.create(product: product, quantity: quantity)
     end
     unless (@booking.booking_products.pluck(:quantity).empty?) || (@booking.booking_products.pluck(:quantity).sum == 0)
-      current_user.send_booking_confirmation(@booking) 
+      current_user.send_booking_confirmation(@booking)
+      flash['success'] = 'Votre réservation a été enregistrée.'
     end
-    redirect_to reservation_path
+    redirect_to root_path
   end
 
   def destroy
     booking_product = BookingProduct.find(params[:id])
+    booking = booking_product.booking
     booking_product.destroy
-    flash['success'] = 'Votre réservation a été annulée'
+    flash['success'] = 'Votre modification a été prise en compte. Nous vous envoyons un email de confirmation.'
+    current_user.send_change_confirmation(booking)
     redirect_to reservation_path
   end
 

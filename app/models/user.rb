@@ -26,6 +26,14 @@ class User < ApplicationRecord
     UserMailer.confirm_booking(self, booking).deliver
   end
 
+  def send_change_confirmation(booking)
+    UserMailer.confirm_booking_change(self, booking).deliver
+  end
+
+  def send_admin_booking_confirmation(booking)
+    UserMailer.confirm_admin_booking(self, booking).deliver
+  end
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64

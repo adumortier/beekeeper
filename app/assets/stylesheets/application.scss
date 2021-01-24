@@ -56,6 +56,8 @@
     z-index:9999; 
     border-radius:0px;
     margin-top: 65px;
+    text-align: center;
+    font-size: 15px;
 }
 
 .alert-fixed-mobile {
@@ -276,8 +278,7 @@ h2,h3,h4,h5,h6 {
   position:fixed; 
   border-radius:0px;
   margin-top: 40px;
-  margin-left: 310px;   /* Same as the width of the sidenav */
-  
+  margin-left: 310px;
 }
 
 

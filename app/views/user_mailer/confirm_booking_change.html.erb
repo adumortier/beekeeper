@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+  <body>
+    Bonjour <%= @user.first_name %>, <br>
+
+    <p> La modification de votre réservation de miel du <%= @booking.created_at.strftime("%d/%m/%Y") %> sur les Filles d'Antoine a bien été prise en compte. </p>
+
+    <% unless @booking.booking_products.empty? %>
+      <p> Votre réservation : </p>
+
+      <ul>
+      <% @booking.booking_products.each do |booking_product| %>
+        <% unless booking_product.quantity.nil? || booking_product.quantity == 0%>
+          <li> <%= booking_product.quantity.to_s%>  &#215; <%= booking_product.product.description + ' - ' + booking_product.product.season + ' ' + booking_product.product.year.to_s %> </li>
+        <% end %>
+      <% end %>
+      </ul>
+    <% end %>
+    <p> Vous pouvez retirer certains produits de votre réservation ou en effectuer une nouvelle sur la page 'Mes Réservations' de votre compte. </p>
+
+    <p> Cordialement, </p>
+
+    <p> Antoine (et ses filles) </p>
+
+    <% if Rails.env.production? %>
+      <%= link_to "Les Filles d'Antoine", "https://www.lesfillesdantoine.com" %>  
+    <% else %>
+      <%= link_to "Les Filles d'Antoine", "http://localhost:3000" %>  
+    <% end %>
+
+  </body>
+
+</html>

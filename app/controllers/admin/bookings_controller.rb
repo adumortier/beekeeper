@@ -29,6 +29,8 @@ class Admin::BookingsController < Admin::BaseController
       quantity = (booking_params[product.description + '_' + product.season].empty? ? 0 : booking_params[product.description + '_' + product.season])
       @booking.booking_products.create(product: product, quantity: quantity)
     end
+    user.send_admin_booking_confirmation(@booking)
+    flash['success'] = "Un email a été envoyé à #{user.first_name + ' ' + user.last_name} pour confirmer la réservation."
     redirect_to admin_user_path
   end
 

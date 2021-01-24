@@ -46,5 +46,13 @@ class ApplicationController < ActionController::Base
   def load_users
     User.where(role: 0).order("#{params[:sort]} #{params[:direction]}")
   end
+
+  protected
+
+  def set_cache_buster
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "#{1.year.ago}"
+  end
     
 end
