@@ -12,7 +12,7 @@ class UsersPasswordController < ApplicationController
       flash[:success] = 'Votre mot de passe a été mis à jour'
       redirect_to profile_path and return
     else 
-      flash[:danger] = 'Le mot de passe et la confirmation sont différents'
+      flash[:danger] = 'Le mot de passe et la confirmation doivent être identiques.'
       redirect_to user_password_edit_path
     end
   end

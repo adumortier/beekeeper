@@ -4,9 +4,14 @@ class PasswordsController < ApplicationController
 
   def create
     user = User.find_by_email(params[:email])
-    user.send_password_reset if user
-    flash[:notice] = 'E-mail sent with password reset instructions.'
-    redirect_to root_path
+    if user
+      user.send_password_reset 
+      flash[:success] = 'Un email vous a été envoyé avec des instructions.'
+      redirect_to root_path
+    else
+      flash[:danger] = 'Cet email ne correspond à aucun utilsateur existant.'
+      redirect_to passwords_new_path
+    end
   end
 
   def reset
@@ -16,21 +21,22 @@ class PasswordsController < ApplicationController
   def update
   @user = User.find_by_password_reset_token!(params[:id])
   if @user.password_reset_sent_at < 2.hour.ago
-    flash[:notice] = 'La réinitialisation du mot de passe a expiré.'
+    flash[:danger] = 'La réinitialisation du mot de passe a expiré.'
     redirect_to passwords_new_path
   elsif @user.update(user_params)
-    flash[:notice] = 'Votre mot de passe a été réinitialisé'
+    flash[:success] = 'Votre mot de passe a été réinitialisé.'
     session[:user] = @user.id
     redirect_to root_path
   else
-    render :edit
+    flash[:danger] = 'Le mot de passe et la confirmation doivent être identiques.'
+    redirect_to "/passwords/reset/#{params[:id]}"
   end
 end
 
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:password)
+    params.require(:user).permit(:password, :password_confirmation)
   end
 
 end
