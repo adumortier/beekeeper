@@ -33,9 +33,9 @@ class ReservationsController < ApplicationController
     booking = booking_product.booking
     booking_product.destroy
     if browser_info.mobile?
-      flash['success'] = 'Votre modification a été prise en compte. Nous vous envoyons un email de confirmation.'
-    else
       flash['success'] = 'Votre modification a été prise en compte.'
+    else
+      flash['success'] = 'Votre modification a été prise en compte. Nous vous envoyons un email de confirmation.'
     end
     current_user.send_change_confirmation(booking)
     redirect_to reservation_path
