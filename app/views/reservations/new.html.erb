@@ -6,12 +6,14 @@
   <%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
     <% unless @products_spring.empty? %>
       <div class="my-5">
-        <table class="table table-hover" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
+        <table class="table table-hover table-sm" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
+        <thead class="thead-light">
           <tr>
-            <th class="align-middle" style="width: 50%"> RÉCOLTE PRINTEMPS <%= Time.new.year %> </th>
+            <th class="align-middle" style="width: 50%"> PRINTEMPS <%= Time.new.year %> </th>
             <th class="align-middle" style="width: 30"> Prix Unité </th>
             <th class="align-middle" style="width: 20%"> Quantité </th>
           </tr>
+        </thead>
           <% @products_spring.each do |product| %>
             <tr id="product-<%= product.id %>">
               <td class="align-middle"><%= product.description %></td>
@@ -25,12 +27,14 @@
 
     <% unless @products_summer.empty? %>
       <div class="my-5">
-          <table class="table table-hover" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
+          <table class="table table-hover table-sm" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
+          <thead class="thead-light">
           <tr>
-            <th class="align-middle" style="width: 50%"> RÉCOLTE ÉTÉ <%= Time.new.year %> </th>
+            <th class="align-middle" style="width: 50%"> ÉTÉ <%= Time.new.year %> </th>
             <th class="align-middle" style="width: 30%"> Prix Unité </th>
             <th class="align-middle" style="width: 20%"> Quantité </th>
           </tr>
+          </thead>
           <% @products_summer.each do |product| %>
             <tr id="product-<%= product.id %>">
               <td class="align-middle"><%= product.description %></td>

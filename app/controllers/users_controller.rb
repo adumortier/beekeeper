@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(user_params)
     if @user.save
-      flash[:success] = "Votre profil a été mis à jour"
+      flash[:success] = "Votre profil a été mis à jour."
       redirect_to profile_path
     else
       flash[:danger] = @user.errors.messages.values[0][0]

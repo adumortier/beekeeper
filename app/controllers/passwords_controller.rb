@@ -6,7 +6,11 @@ class PasswordsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user
       user.send_password_reset 
-      flash[:success] = 'Un email vous a été envoyé avec des instructions.'
+      if browser_info.mobile?
+        flash[:success] = 'Nous vous avons envoyé un email.'
+      else
+        flash[:success] = 'Un email vous a été envoyé avec des instructions.'
+      end
       redirect_to root_path
     else
       flash[:danger] = 'Cet email ne correspond à aucun utilsateur existant.'
