@@ -30,7 +30,11 @@
       <tr>
         <th class="align-middle" style="width: 15%"> Produit </th>
         <th class="align-middle" style="width: 30%"> Récolte</th>
-        <th class="align-middle" style="width: 4%"> Quantité </div>  </th>
+        <% if browser_info.mobile? %>
+          <th class="align-middle" style="width: 4%"> Qté </div>  </th>
+        <% else %>
+          <th class="align-middle" style="width: 4%"> Quantité </div>  </th>
+        <% end %>
         <th class="align-middle" style="width: 5%"></th>
       </tr>
       </thead>
