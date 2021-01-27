@@ -18,3 +18,5 @@
 //= require bootstrap
 //= require_tree .
 //= require tempusdominus-bootstrap-4.js
+//= require jquery-mask-plugin
+$.jMaskGlobals.watchDataMask = true;
