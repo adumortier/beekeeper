@@ -3,6 +3,8 @@
 <% if (!@products_spring.empty? || !@products_summer.empty?) %>
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Réservez votre miel </h4>
   <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
+  <br>
+  <div class="alert alert-primary" style="width: <%=browser_info.mobile? ? 100 : 50%>%; font-weight:bold; text-align:center" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g de miel en cadeau !</div> 
   <%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
     <% unless @products_spring.empty? %>
       <div class="my-5">
@@ -45,18 +47,19 @@
           </table>
       </div>
     <% end %>
-
-    <div class="alert alert-warning" style="width: <%=browser_info.mobile? ? 100 : 50%>%; font-weight:bold; text-align:center" > <i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp;&nbsp;5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;&nbsp; 500g de miel en cadeau !&nbsp;&nbsp;<i class="fa fa-heart-o" aria-hidden="true"></i></div> 
-    <br>
     <% if browser_info.mobile? %>
       <center> <%= f.submit "Confirmer", class: "btn btn-primary" %> </center>
     <% else %>
       <%= f.submit "Confirmer", class: "btn btn-primary" %>
     <% end %>
     </div>
-    <br>
+    <br><br>
+  <% if browser_info.mobile? %>
+    <center>  <p style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> Vous serez contacté(e) quand vos pots seront prêts. </p> </center> 
+  <% else %>
+    <p style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> Vous serez contacté(e) quand vos pots seront prêts. </p> 
+  <% end %>
 
-    <h5 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> Vous serez contacté(e) quand vos pots seront disponibles. </h5>
   <% end %>
 <% else %>
   <h5> <i class="fa fa-frown-o" aria-hidden="true"></i>  Désolé, il n'y a pas de pots disponibles pour le moment. Revenez nous rendre visite bientôt! </h5>

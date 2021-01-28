@@ -12,10 +12,17 @@
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Nouvelle Réservation </h4>
   <br><br>
   
-  <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%; padding-bottom: 20px">
-      <a class="btn btn-warning btn-lg link" href="/reservation/new">Réservez du miel</a>
-  </div>
-  
+  <% if browser_info.mobile? %>
+    <center>
+    <div style="padding-left:0%; padding-right:0%; padding-bottom: 20px">
+        <a class="btn btn-warning btn-lg link" href="/reservation/new">Réservez du miel</a>
+    </div>
+    </center>
+  <% else %>
+    <div style="padding-left:10%; padding-right:10%; padding-bottom: 20px">
+        <a class="btn btn-warning btn-lg link" href="/reservation/new">Réservez du miel</a>
+    </div>
+  <% end %>
   <br><br>
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp; Mes Réservations </h4>
   
