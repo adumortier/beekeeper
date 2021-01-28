@@ -50,7 +50,7 @@
           <td class="align-middle">  <%= booking_product.product.description  %></td>
           <td class="align-middle"><%= booking_product.product.season + ' ' + booking_product.product.year.to_s  %></td>  
           <td class="align-middle" style="text-align:center"><%= booking_product.quantity %></td>
-          <td class="align-middle"> <a href= <%="/reservation/#{booking_product.id}" %> data-method="delete">  Annuler</a> </td>
+          <td class="align-middle"> <a href= <%="/reservation/#{booking_product.id}"%> class=" badge badge-pill badge-primary" data-method="delete">  annuler</a> </td>
           </td>
         </tr>
       <% end %>
@@ -62,5 +62,6 @@
 </div>
 
 <% end %>
+
 
 
