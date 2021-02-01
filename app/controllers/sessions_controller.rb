@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
+    user = User.find_by(email: params[:email].downcase)
     if user && user.authenticate(params[:password])
       login(user)
-      flash[:success] = "Bienvenue #{user.first_name}!"
+      flash[:success] = "Bienvenue #{user.first_name} !"
     else
-      flash[:error] = "Email ou mot de passe incorrect"
+      flash[:danger] = "Email ou mot de passe incorrect."
       redirect_to login_path and return
     end
     redirect_to (current_user.admin? ? root_path : reservation_path)
@@ -19,7 +19,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user] = nil
-    flash[:success] = "Vous avez été déconnecté(e)"
     redirect_to root_path
   end
 

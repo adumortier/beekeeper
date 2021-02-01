@@ -2,30 +2,43 @@
 
 class ReservationsController < ApplicationController
 
+  after_action :set_cache_buster, only: :create 
+
   def index
-    @bookings = current_user.bookings.order(created_at: :desc)
+    @bookings = current_user.bookings.order(created_at: :asc)
   end
 
   def new
     @booking = current_user.bookings.new
-    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps').where(status: 'active')
-    @products_summer = Product.where(year: Time.new.year).where(season: 'été').where(status: 'active')
+    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps').where(status: 'active').order(price: :asc)
+    @products_summer = Product.where(year: Time.new.year).where(season: 'été').where(status: 'active').order(price: :asc)
   end
 
   def create
     products = Product.where('year = ?', Time.new.year)
-    @booking = current_user.bookings.create
+    
+    @booking = current_user.bookings.create!(comment: booking_params[:comment])
     products.each do |product|
       quantity = booking_params[product.description + '_' + product.season]
       @booking.booking_products.create(product: product, quantity: quantity)
     end
-    redirect_to reservation_path
+    unless (@booking.booking_products.pluck(:quantity).empty?) || (@booking.booking_products.pluck(:quantity).sum == 0)
+      current_user.send_booking_confirmation(@booking)
+      flash['success'] = 'Votre réservation a été enregistrée.'
+    end
+    redirect_to root_path
   end
 
   def destroy
     booking_product = BookingProduct.find(params[:id])
+    booking = booking_product.booking
     booking_product.destroy
-    flash['success'] = 'Votre réservation a été annulée'
+    if browser_info.mobile?
+      flash['success'] = 'Votre modification a été prise en compte.'
+    else
+      flash['success'] = 'Votre modification a été prise en compte. Nous vous envoyons un email de confirmation.'
+    end
+    current_user.send_change_confirmation(booking)
     redirect_to reservation_path
   end
 
@@ -33,7 +46,7 @@ class ReservationsController < ApplicationController
 
   def booking_params
     product_description = Product.all.pluck(:description,:season).map {|prod| prod.join('_')}
-    params.require(:booking).permit(product_description)
+    params.require(:booking).permit(product_description, :comment)
   end
 
 end

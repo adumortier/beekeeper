@@ -1,12 +1,13 @@
 <br><br><br><br>
 
-<h4><i class="fa fa-users" aria-hidden="true"></i> Mes clients </h4>
+<h4><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;Mes clients </h4>
   
     <div class="my-5"></div>
-      <table class="table table-hover" style="width: 80%">
+      <table class="table table-hover" style="width: 100%">
       <tr>
         <th class="align-middle"> <%= sortable_user "last_name", "Nom" %> </th>
         <th class="align-middle"> <%= sortable_user "email", "Email" %>  </th>
+        <th class="align-middle"> Adresse </th>
         <th class="align-middle" style="text-align:center;"> Téléphone  </th>
         <th class="align-middle" style="text-align:center;"> <%= sortable_user "created_at", "Membre depuis:" %>  </th>
         <th></th>
@@ -16,6 +17,7 @@
         <tr id="user-<%= user.id %>">
           <td class="align-middle"><%= link_to user.first_name.capitalize + ' ' + user.last_name.capitalize, "/admin/users/#{user.id}" %></td>
           <td class="align-middle"><%= user.email %></td>
+          <td class="align-middle"><%=user.address%>, <%=user.zip_code%> <%=user.city.capitalize%></td>
           <td class="align-middle" style="text-align:center;"><%= user.phone_number %></td>
           <td class="align-middle" style="text-align:center;"><%= user.created_at.strftime("%d/%m/%Y") %></td>
           <td class="align-middle"> <a href= <%="/admin/users/#{user.id}/edit" %>><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Modifier</a> </td>

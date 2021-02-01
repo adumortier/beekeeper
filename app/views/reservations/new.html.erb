@@ -3,17 +3,23 @@
 <% if (!@products_spring.empty? || !@products_summer.empty?) %>
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Réservez votre miel </h4>
   <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
+  <br>
+  <div class="alert btn-danger" style="width: <%=browser_info.mobile? ? 100 : 50%>%; font-weight:bold; text-align:center" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g de miel en cadeau !</div> 
   <%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
     <% unless @products_spring.empty? %>
       <div class="my-5">
-        <table class="table table-hover" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
+        <table class="table table-hover table-sm" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
+        <thead class="thead-light">
           <tr>
-            <th class="align-middle" style="width: 70%"> RÉCOLTE PRINTEMPS <%= Time.new.year %> </th>
-            <th class="align-middle" style="width: 30%"> Quantité </th>
+            <th class="align-middle" style="width: 50%"> PRINTEMPS <%= Time.new.year %> </th>
+            <th class="align-middle" style="width: 30"> Prix Unité </th>
+            <th class="align-middle" style="width: 20%"> Quantité </th>
           </tr>
+        </thead>
           <% @products_spring.each do |product| %>
             <tr id="product-<%= product.id %>">
-              <td class="align-middle"><%= f.label product.description %></td>
+              <td class="align-middle"><%= product.description %></td>
+              <td class="align-middle"><%= "#{product.price} €" %> </td>
               <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0', max: 100, min: 0, style:"width:40px" %></td>
             </tr>
           <% end %>
@@ -23,30 +29,48 @@
 
     <% unless @products_summer.empty? %>
       <div class="my-5">
-          <table class="table table-hover" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
+          <table class="table table-hover table-sm" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
+          <thead class="thead-light">
           <tr>
-            <th class="align-middle" style="width: 70%"> RÉCOLTE ÉTÉ <%= Time.new.year %> </th>
-            <th class="align-middle" style="width: 30%"> Quantité </th>
+            <th class="align-middle" style="width: 50%"> ÉTÉ <%= Time.new.year %> </th>
+            <th class="align-middle" style="width: 30%"> Prix Unité </th>
+            <th class="align-middle" style="width: 20%"> Quantité </th>
           </tr>
+          </thead>
           <% @products_summer.each do |product| %>
             <tr id="product-<%= product.id %>">
-              <td class="align-middle"><%= f.label product.description %></td>
+              <td class="align-middle"><%= product.description %></td>
+              <td class="align-middle"><%= "#{product.price} €" %></td>
               <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0', max: 100, min: 0, style:"width:40px" %></td>
             </tr>
           <% end %>
           </table>
       </div>
     <% end %>
+
+
     <% if browser_info.mobile? %>
-      <center> <%= f.submit "Réserver", class: "btn btn-primary" %> </center>
+      <%= f.text_area :comment, :value => @booking[:comment], placeholder: 'Ajouter un commentaire (optionnel)', style: "width:100%" %> <br>
+      <center> <%= f.submit "Confirmer", class: "btn btn-primary" %> </center>
     <% else %>
-      <%= f.submit "Réserver", class: "btn btn-primary" %>
+      <%= f.text_area :comment, :value => @booking[:comment], placeholder: '   Ajouter un commentaire (optionnel)', style: "width:50%" %> <br><br>
+      <div style='width:50%; text-align:right; padding-right:45px'>
+      <a class="btn btn-outline-secondary" href="/"> Annuler</a>
+      <%= f.submit "Confirmer", class: "btn btn-primary"%>
+      </div>
     <% end %>
     </div>
-    <br>
+    <br><br>
+  <% if browser_info.mobile? %>
+    <center>  <p style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> vous serez contacté(e) quand vos pots seront prêts </p> </center> 
+  <% else %>
+    <div style='width:50%; text-align:right'>
+      <p style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"><i> vous serez contacté(e) quand vos pots seront prêts </i></p> 
+    </div>  
+  <% end %>
 
-    <h5 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> Vous serez contacté(e) quand vos pots seront disponibles. </h5>
   <% end %>
 <% else %>
   <h5> <i class="fa fa-frown-o" aria-hidden="true"></i>  Désolé, il n'y a pas de pots disponibles pour le moment. Revenez nous rendre visite bientôt! </h5>
 <% end %>
+

@@ -5,18 +5,26 @@
     <h4> Vous n'avez pas encore de réservations </h4>
     <br>
     <br>
-    <a class="btn btn-warning btn-lg" href="/reservation/new"> <i class="fa fa-gift" aria-hidden="true"></i>Réservez du miel</a>
+    
+      <a class="btn btn-warning btn-lg" href="/reservation/new"> Réservez du miel</a>
+    
     
   </div>
 <% else %>
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Nouvelle Réservation </h4>
   <br><br>
-  <center>
-  <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%; padding-bottom: 20px">
-      <%= image_tag 'bee.svg', :style => "width:20px;"%> &nbsp;&nbsp;
-      <a class="btn btn-warning btn-lg link" href="/reservation/new"> <i class="fa fa-gift" aria-hidden="true"></i> Réservez du miel</a>
-  </div>
-  </center>
+  
+  <% if browser_info.mobile? %>
+    <center>
+    <div style="padding-left:0%; padding-right:0%; padding-bottom: 20px">
+        <a class="btn btn-warning btn-lg link" href="/reservation/new">Réservez du miel</a>
+    </div>
+    </center>
+  <% else %>
+    <div style="padding-left:12%; padding-right:10%; padding-bottom: 20px">
+        <a class="btn btn-warning btn-lg link" href="/reservation/new">Réservez du miel</a>
+    </div>
+  <% end %>
   <br><br>
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp; Mes Réservations </h4>
   
@@ -26,19 +34,25 @@
     <% if !booking.booking_products.empty?%>
      <h5 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <%= booking.created_at.strftime("%d/%m/%Y") %> </h5>
      <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
-      <table class="table table-hover" style="width: <%=browser_info.mobile? ? 100 : 50%>%;">
+      <table class="table table-hover table-sm" style="width: <%=browser_info.mobile? ? 100 : 50%>%;">
+      <thead class="thead-light">
       <tr>
         <th class="align-middle" style="width: 15%"> Produit </th>
         <th class="align-middle" style="width: 30%"> Récolte</th>
-        <th class="align-middle" style="width: 4%"> Quantité </div>  </th>
+        <% if browser_info.mobile? %>
+          <th class="align-middle" style="width: 4%"> Qté </div>  </th>
+        <% else %>
+          <th class="align-middle" style="width: 4%"> Quantité </div>  </th>
+        <% end %>
         <th class="align-middle" style="width: 5%"></th>
       </tr>
+      </thead>
       <% booking.booking_products.each do |booking_product| %>
         <tr id="product-<%= booking_product.product.id %>">
           <td class="align-middle">  <%= booking_product.product.description  %></td>
           <td class="align-middle"><%= booking_product.product.season + ' ' + booking_product.product.year.to_s  %></td>  
           <td class="align-middle" style="text-align:center"><%= booking_product.quantity %></td>
-          <td class="align-middle"> <a href= <%="/reservation/#{booking_product.id}" %> data-method="delete">  Annuler</a> </td>
+          <td class="align-middle"> <a href= <%="/reservation/#{booking_product.id}"%> class=" badge badge-pill badge-primary" data-method="delete">  annuler</a> </td>
           </td>
         </tr>
       <% end %>
@@ -50,5 +64,6 @@
 </div>
 
 <% end %>
+
 
 

@@ -41,19 +41,19 @@
         </div>
         <br> 
         <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">
-          Les miels de printemps et d'été sont tous deux disponibles dans des pots de 500g ou de 1kg. Les pots sont tous en plastique alimentaire.
+          Les miels de printemps et d'été sont tous deux disponibles en pots de 500g ou de 1kg. Les pots sont tous en plastique alimentaire.
         </div>
         <br>
         <div class="text-justify" style="padding-left: 30px; padding-right: 30px; float:right;">
           La quantité de miel produite varie d'année en année, de saison en saison. Le miel est donc distribué dans l'ordre des réservations et dans la limite des stocks disponibles. Nous vous invitons donc à réserver dès maintenant pour la prochaine saison.
         </div>
-        <br> <br>
+        <br> <br><br>
         <center>
           <div>
             <% if current_user %>
-              <a class="btn btn-warning btn-lg link" href="/reservation/new"> <i class="fa fa-gift" aria-hidden="true"></i> Réservez du miel</a>
+              <a class="btn btn-warning btn-lg link" href="/reservation/new"> Réservez du miel</a>
             <% else %>
-              <a class="btn btn-warning btn-lg link" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModal"> <i class="fa fa-gift" aria-hidden="true"></i> Réservez du miel</a>
+              <a class="btn btn-warning btn-lg link" role="button" aria-pressed="true" data-toggle="modal" data-target="#exampleModal">Réservez du miel</a>
             <% end %>
           </div>
           <br> <br>
@@ -61,8 +61,6 @@
       </div>
     </div>
 </div>
-
-  
 
 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

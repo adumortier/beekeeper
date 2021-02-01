@@ -1,5 +1,6 @@
+
 Rails.application.routes.draw do
-  
+
   get '/', to: 'welcome#index', as: 'root'
   get '/about', to: 'about#index'
   

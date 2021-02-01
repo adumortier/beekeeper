@@ -48,6 +48,70 @@
     margin-bottom: 20px;
   }
 
+.alert-fixed {
+    position:fixed; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:2; 
+    border-radius:0px;
+    margin-top: 65px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'lato-bold';
+}
+
+.popover {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+textarea {
+  resize: none;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  font-family: 'lato-regular';
+  outline: none;
+  overflow: auto;
+}
+
+input[type=text]:focus {
+  background-color: rgb(253, 248, 241);
+}
+
+input[type=text] {
+  height: 30px;
+  width: 170px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-family: 'lato-regular';
+}
+
+input[type=password] {
+  height: 30px;
+  width: 170px;
+  border: 2px solid #ccc;
+  border-radius: 5px
+}
+input[type=number] {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.alert-fixed-mobile {
+    position:sticky; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:0; 
+    border-radius:0px;
+    margin-top: 35px;
+}
+
 // .hero-text-style-mobile {
 //   color: rgb(255, 255, 255);
 //   font-size: 40px;
@@ -104,7 +168,7 @@
 }
 
 .top-nav-content-mobile {
-  margin-top: 30px;
+  margin-top: 45px;
 }
 
 #page-container {
@@ -247,6 +311,18 @@ h2,h3,h4,h5,h6 {
   margin-top: 70px;     /* Same as the width of the sidenav */
   padding: 0px 10px;
 }
+
+.alert-admin {
+  top: 0px; 
+  left: 0px; 
+  width: 100%;
+  z-index:9999;   
+  position:fixed; 
+  border-radius:0px;
+  margin-top: 40px;
+  margin-left: 310px;
+}
+
 
 #main {
   transition: margin-left .5s;

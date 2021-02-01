@@ -1,13 +1,14 @@
+<br><br><br><br>
 
 
-<br>
   <h4><i class="fa fa-address-card" aria-hidden="true"></i> Profil client </h4>
   <br><br>
   <p><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.first_name.capitalize %> <%=@user.last_name.capitalize %> </p>
   <p><i class="fa fa-envelope-open-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.email%> </p>
   <p><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.phone_number%> </p>
-  <p><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.address%> </p>
-  <a href= <%="/admin/users/#{@user.id}/edit" %> %><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Modifier</a>
+  <p><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.address%>,&nbsp;&nbsp;<%=@user.zip_code%> &nbsp;&nbsp;<%=@user.city.capitalize%> </p>
+  <br>
+  <a href= <%="/admin/users/#{@user.id}/edit" %> class="btn btn-outline-secondary" %> Modifier</a>
   <br><br><br> 
 
 <h4><i class="fa fa-shopping-basket" aria-hidden="true"></i> Historique des réservations </h4>
@@ -36,5 +37,5 @@
       <% end %>
     <% end %>
     </table>
-     <a class="btn btn-outline-secondary" href=<%="/admin//users/#{@user.id}/reservation/new"%> > <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp; Ajouter une réservation</a>
+     <a class="btn btn-outline-secondary" href=<%="/admin/users/#{@user.id}/reservation/new"%> > <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp; Ajouter une réservation</a>
 </div>

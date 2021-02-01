@@ -1,12 +1,15 @@
-<br>
+<br><br><br><br>
   <h4><i class="fa fa-address-card" aria-hidden="true"></i> Modifier profil </h4>
   <br><br>
   <%= form_with model: @user, local: true, url: "/admin/users/#{@user.id}", method: :patch do |f| %>
     <p> <i class="fa fa-user-o" aria-hidden="true"></i> <%= f.text_field :first_name, :value => @user.first_name %> <%= f.text_field :last_name, :value => @user.last_name %> </p>
     <p> <i class="fa fa-envelope-open-o" aria-hidden="true"></i> <%= f.text_field :email, :value => @user.email %> </p>
-    <p> <i class="fa fa-phone" aria-hidden="true"></i> <%= f.text_field :phone_number, :value => @user.phone_number %> </p>
-    <p> <i class="fa fa-home" aria-hidden="true"></i> <%= f.text_field :address, :value => @user.address %> </p>
-    <%= f.submit "Continuer", class: "btn btn-primary" %>
+    <p> <i class="fa fa-phone" aria-hidden="true"></i> <%= f.text_field :phone_number, :data => {:mask=> '09 99 99 99 99'}, :value => @user.phone_number %> </p>
+    <p> <i class="fa fa-home" aria-hidden="true"></i> <%= f.text_field :address, :value => @user.address %> <%= f.text_field :zip_code, :value => @user.zip_code %> <%= f.text_field :city, :value => @user.city %> </p>
+    <br>
+    <div style="padding-left:15px">
+      <%= f.submit "Continuer", class: "btn btn-primary" %>
+    </div>
 <% end %>
 <br><br>
 <h4><i class="fa fa-shopping-basket" aria-hidden="true"></i> Historique des réservations </h4>

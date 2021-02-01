@@ -37,7 +37,7 @@
 
    <center>
     <div style="width:50px;" >
-      <%= image_tag('bee.svg') %>
+      <%= image_tag "logo.png",:style => "width:50px" %>
     </div>    
   </center> 
 
@@ -63,8 +63,9 @@
             <br><br>
             J'ai déjà un compte <br><br>
             <a href="/login" class="btn btn-outline-primary" role="button" aria-pressed="true">Je me connecte</a>
+            <br><br>
+            <%= link_to "Mot de passe oublié ?", passwords_new_path%>
           </div>
-        
       </div>
     </div>
   </div>

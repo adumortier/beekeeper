@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #febf43">
   
+  <%= image_tag 'logo.png', :style => "width:35px; margin-left:30px" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon navbar-dark"></span>
   </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
     <ul class="navbar-nav  ml-auto">
       
         
@@ -19,7 +20,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/login"> <i class="fa fa-sign-in" aria-hidden="true"></i> Connexion </a>
-      </li>    
+      </li>
     </ul>
   </div>  
 </nav>
@@ -46,6 +47,8 @@
             <br><br>
             J'ai déjà un compte <br><br>
             <a href="/login" class="btn btn-outline-primary" role="button" aria-pressed="true">Je me connecte</a>
+            <br><br>
+            <%= link_to "Mot de passe oublié ?", passwords_new_path%>            
           </div>
         
       </div>
