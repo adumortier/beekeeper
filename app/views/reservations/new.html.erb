@@ -50,7 +50,7 @@
 
 
     <% if browser_info.mobile? %>
-      <%= f.text_area :comment, :value => @booking[:comment], placeholder: 'Ajouter un commentaire (optionnel)', style: "width:100%" %> <br>
+      <%= f.text_area :comment, :value => @booking[:comment], placeholder: 'Ajouter un commentaire (optionnel)', style: "width:100%" %> <br><br>
       <center> <%= f.submit "Confirmer", class: "btn btn-primary" %> </center>
     <% else %>
       <%= f.text_area :comment, :value => @booking[:comment], placeholder: '   Ajouter un commentaire (optionnel)', style: "width:50%" %> <br><br>
