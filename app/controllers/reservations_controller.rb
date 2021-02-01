@@ -10,13 +10,14 @@ class ReservationsController < ApplicationController
 
   def new
     @booking = current_user.bookings.new
-    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps').where(status: 'active')
-    @products_summer = Product.where(year: Time.new.year).where(season: 'été').where(status: 'active')
+    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps').where(status: 'active').order(price: :asc)
+    @products_summer = Product.where(year: Time.new.year).where(season: 'été').where(status: 'active').order(price: :asc)
   end
 
   def create
     products = Product.where('year = ?', Time.new.year)
-    @booking = current_user.bookings.create
+    
+    @booking = current_user.bookings.create!(comment: booking_params[:comment])
     products.each do |product|
       quantity = booking_params[product.description + '_' + product.season]
       @booking.booking_products.create(product: product, quantity: quantity)
@@ -45,7 +46,7 @@ class ReservationsController < ApplicationController
 
   def booking_params
     product_description = Product.all.pluck(:description,:season).map {|prod| prod.join('_')}
-    params.require(:booking).permit(product_description)
+    params.require(:booking).permit(product_description, :comment)
   end
 
 end

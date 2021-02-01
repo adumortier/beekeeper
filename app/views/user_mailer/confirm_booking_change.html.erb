@@ -8,7 +8,7 @@
     <p> La modification de votre réservation de miel du <%= @booking.created_at.strftime("%d/%m/%Y") %> sur les Filles d'Antoine a bien été prise en compte. </p>
 
     <% unless @booking.booking_products.empty? %>
-      <p> Votre réservation : </p>
+      <p> Description : </p>
 
       <ul>
       <% @booking.booking_products.each do |booking_product| %>
@@ -18,7 +18,7 @@
       <% end %>
       </ul>
     <% end %>
-    <p> Vous pouvez retirer certains produits de vos réservations ou en effectuer de nouvelles sur la page 'Mes Réservations' de votre compte. </p>
+    <p> Vous pouvez annuler tout ou partie de vos réservations sur la page 'Mes Réservations' de votre compte. </p>
 
     <p> Cordialement, </p>
   

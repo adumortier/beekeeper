@@ -4,7 +4,7 @@
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Réservez votre miel </h4>
   <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
   <br>
-  <div class="alert alert-primary" style="width: <%=browser_info.mobile? ? 100 : 50%>%; font-weight:bold; text-align:center" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g de miel en cadeau !</div> 
+  <div class="alert btn-danger" style="width: <%=browser_info.mobile? ? 100 : 50%>%; font-weight:bold; text-align:center" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g de miel en cadeau !</div> 
   <%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
     <% unless @products_spring.empty? %>
       <div class="my-5">
@@ -47,17 +47,26 @@
           </table>
       </div>
     <% end %>
+
+
     <% if browser_info.mobile? %>
+      <%= f.text_area :comment, :value => @booking[:comment], placeholder: 'Ajouter un commentaire (optionnel)', style: "width:100%" %> <br>
       <center> <%= f.submit "Confirmer", class: "btn btn-primary" %> </center>
     <% else %>
+      <%= f.text_area :comment, :value => @booking[:comment], placeholder: '   Ajouter un commentaire (optionnel)', style: "width:50%" %> <br><br>
+      <div style='width:50%; text-align:right; padding-right:45px'>
+      <a class="btn btn-outline-secondary" href="/"> Annuler</a>
       <%= f.submit "Confirmer", class: "btn btn-primary"%>
+      </div>
     <% end %>
     </div>
     <br><br>
   <% if browser_info.mobile? %>
-    <center>  <p style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> Vous serez contacté(e) quand vos pots seront prêts. </p> </center> 
+    <center>  <p style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> vous serez contacté(e) quand vos pots seront prêts </p> </center> 
   <% else %>
-    <p style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> Vous serez contacté(e) quand vos pots seront prêts. </p> 
+    <div style='width:50%; text-align:right'>
+      <p style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"><i> vous serez contacté(e) quand vos pots seront prêts </i></p> 
+    </div>  
   <% end %>
 
   <% end %>

@@ -18,7 +18,9 @@
                                 last_name: "Dumortier",
                                 phone_number: "0302932084",
                                 email: "antoine@example.com",
-                                address: "61 rue de Philadelphie, 02300 Villequier-Aumont",
+                                address: "61 rue de Philadelphie",
+                                city: "Villequier-Aumont",
+                                zip_code: "02300",
                                 password: "pass",
                                 role: 1
                               )
@@ -27,7 +29,9 @@
                                 last_name: "Dumo",
                                 phone_number: "0302932084",
                                 email: "alex@example.com",
-                                address: "71 Elm Street, 02139 Cambridge",
+                                address: "71 Elm Street",
+                                city: "Cambridge",
+                                zip_code: "02139",
                                 password: "pass",
                                 role: 0
                               )
@@ -40,7 +44,9 @@
                                 last_name: "Boles",
                                 phone_number: "0679157920",
                                 email: "steve@example.com",
-                                address: "54 Park Street, 43929 San Francisco",
+                                address: "54 Park Street",
+                                city: "San Francisco",
+                                zip_code: "43929",
                                 password: "pass",
                                 role: 0
                               )
@@ -54,7 +60,9 @@
                                 last_name: "Johns",
                                 phone_number: "0678158926",
                                 email: "millie@example.com",
-                                address: "12 Market Street, 23010 Denver",
+                                address: "12 Market Street",
+                                city: "Denver",
+                                zip_code: "23010",
                                 password: "pass",
                                 role: 0
                               )
@@ -68,6 +76,8 @@
                                 phone_number: "0323380681",
                                 email: "elisabeth@example.com",
                                 address: "4 rue du Touquet, 02300 Villequier-Aumont",
+                                city: "Villequier-Aumont",
+                                zip_code: "02300",
                                 password: "pass",
                                 role: 0
                               )

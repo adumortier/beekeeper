@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.valid?
-      flash[:welcome] = "Bienvenue #{@user.first_name}!"
+      flash[:success] = "Bienvenue #{@user.first_name} !"
       session[:user] = @user.id
       redirect_to root_path
     else
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :address, :phone_number, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :address, :city, :zip_code, :phone_number, :password, :password_confirmation)
   end
 end
 

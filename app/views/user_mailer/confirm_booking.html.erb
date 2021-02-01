@@ -7,7 +7,7 @@
 
     <p> Votre réservation de miel sur les Filles d'Antoine a bien été prise en compte. </p>
 
-    <p> Votre réservation : </p>
+    <p> Description : </p>
 
     <ul>
     <% @booking.booking_products.each do |booking_product| %>
@@ -16,9 +16,15 @@
       <% end %>
     <% end %>
     </ul>
-    <p> Vous pouvez retirer certains produits de votre réservation ou en effectuer une nouvelle sur la page 'Mes Réservations' de votre compte. </p>
 
-    <p><i> Note: La quantité de miel produite varie d'année en année, de saison en saison. Le miel est donc distribué dans l'ordre des réservations et dans la limite des stocks disponibles. </i>  </p>
+    <% if @booking.has_comment? %>
+      <p> Commentaire : </p>
+      <p> <i> " <%= @booking.comment %> "</i> </p>
+    <% end %>
+
+    <p> Vous pouvez annuler tout ou partie de vos réservations sur la page 'Mes Réservations' de votre compte. </p>
+
+    <p> Note : la quantité de miel produite varie d'année en année, de saison en saison. Le miel est donc distribué dans l'ordre des réservations et dans la limite des stocks disponibles.  </p>
 
     <p> Cordialement, </p>
 

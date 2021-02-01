@@ -1,11 +1,13 @@
 # encoding: UTF-8
 class User < ApplicationRecord
 
-  validates_presence_of :first_name, :message => "Merci de renseigner votre prénom"
-  validates_presence_of :last_name, :message => "Merci de renseigner votre nom"
-  validates_presence_of :address, :message => "Votre addresse n'est pas valide"
+  validates_presence_of :first_name, :message => "Merci de renseigner votre prénom."
+  validates_presence_of :last_name, :message => "Merci de renseigner votre nom."
+  validates_presence_of :address, :message => "Votre addresse n'est pas valide."
+  validates_presence_of :city, :message => "Merci de renseigner votre ville."
+  validates_presence_of :zip_code, :message => "Merci de renseigner votre code postal."
   validates :email, uniqueness: true, presence: true
-  validates_confirmation_of :password, :message => "Passwords should match"
+  validates_confirmation_of :password, :message => "Le mot de passe et la confirmation doivent être identiques."
   validates :phone_number, telephone_number: {country: :FR, types: [:fixed_line, :mobile], message: "Votre numéro de téléphone n'est pas valide"}
 
   has_many :bookings, dependent: :destroy
