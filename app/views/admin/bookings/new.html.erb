@@ -7,8 +7,8 @@
   <div class="my-5">
     <table class="table table-hover" style="width:40%">
       <tr>
-        <th class="align-middle" style="width: 70%"> RÉCOLTE PRINTEMPS <%= Time.new.year %> </th>
-        <th class="align-middle" style="width: 30%"> Quantité </th>
+        <th class="align-middle" style="width: 200px"> RÉCOLTE PRINTEMPS <%= Time.new.year %> </th>
+        <th class="align-middle" style="width: 15px"> Quantité </th>
       </tr>
       <% @products_spring.each do |product| %>
         <tr id="product-<%= product.id %>">
@@ -24,8 +24,8 @@
  <div class="my-5">
     <table class="table table-hover" style="width:40%">
       <tr>
-        <th style="align-middle" style="width: 70%"> RÉCOLTE ÉTÉ <%= Time.new.year %> </th>
-        <th style="align-middle" style="width: 30%"> Quantité </th>
+        <th style="width: 200px"> RÉCOLTE ÉTÉ <%= Time.new.year %> </th>
+        <th style="width: 15px"> Quantité </th>
       </tr>
       <% @products_summer.each do |product| %>
         <tr id="product-<%= product.id %>">
