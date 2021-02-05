@@ -184,6 +184,7 @@ input[type=number] {
   size: 200;
   background-repeat: no-repeat;
   position: relative;
+  
 }
 
 .reg-content-text {
@@ -214,6 +215,7 @@ h2,h3,h4,h5,h6 {
       font-size: 15px;
       color: #818181;
       display: block;
+      white-space: nowrap;
 }
 
 .link {
@@ -299,8 +301,8 @@ h2,h3,h4,h5,h6 {
 }
 
 .main {
-  margin-left: 300px;   /* Same as the width of the sidenav */
-  margin-top: 70px;     /* Same as the width of the sidenav */
+  margin-left: 300px; 
+  margin-top: 70px;
   padding: 0px 10px;
 }
 

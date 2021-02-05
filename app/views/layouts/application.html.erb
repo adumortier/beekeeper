@@ -30,16 +30,16 @@
             </div>
           <% end %>
           <body id="main" style="padding-right: 5px; padding-left: 5px;" >
-          <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
-          <script>
+          <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu  <span style= "padding-left:20%"> <%= image_tag "logo.png",:style => "width:35px" %> </span> </span>
+          <%# <script>
             function openNav() {
               document.getElementById("mySidenav").style.width = "100%";
             }
-            /* Close/hide the sidenav */
+          
             function closeNav() {
               document.getElementById("mySidenav").style.width = "0";
             }
-          </script>
+          </script> %>
           <%= yield %>
           </body>
 
@@ -65,8 +65,8 @@
             </div>
           <% end %>
         <body id="main" style="padding-right: 5px; padding-left: 5px;" >
-        <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
-        <script>
+        <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu <span style= "padding-left:20%"> <%= image_tag "logo.png",:style => "width:35px" %> </span> </span>
+        <%# <script>
           function openNav() {
             document.getElementById("mySidenav").style.width = "100%";
           }
@@ -74,7 +74,7 @@
           function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
           }
-        </script>
+        </script> %>
         <%= yield %>
         </body>
 
@@ -97,5 +97,16 @@
       <% end %>
 
     <% end %>
+
+            <script>
+          function openNav() {
+            document.getElementById("mySidenav").style.width = "100%";
+          }
+          /* Close/hide the sidenav */
+          function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+          }
+        </script>
+
 
 </html>
