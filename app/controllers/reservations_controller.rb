@@ -22,11 +22,19 @@ class ReservationsController < ApplicationController
       quantity = booking_params[product.description + '_' + product.season]
       @booking.booking_products.create(product: product, quantity: quantity)
     end
-    unless (@booking.booking_products.pluck(:quantity).empty?) || (@booking.booking_products.pluck(:quantity).sum == 0)
+    if (@booking.booking_products.pluck(:quantity).empty?) || (@booking.booking_products.pluck(:quantity).sum == 0)
+      if @booking.has_comment?
+        flash['danger'] = 'Réservez pour pouvoir envoyer votre message.'
+        redirect_to reservation_new_path
+      else
+        flash['danger'] = 'Indiquez les quantités souhaitées.'
+        redirect_to reservation_new_path
+      end
+    else
       current_user.send_booking_confirmation(@booking)
       flash['success'] = 'Votre réservation a été enregistrée.'
+      redirect_to root_path
     end
-    redirect_to root_path
   end
 
   def destroy

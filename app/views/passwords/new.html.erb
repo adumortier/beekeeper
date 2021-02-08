@@ -3,12 +3,12 @@
 
   <h3> Mot de passe oublié ?</h3>
   <br>
-  <p> Entrez l'adresse mail utilisée lors de votre inscription. </p>
-  <p> Vous recevrez un lien pour renouveler votre mot de passe. </p>
+  <p> Entrez l'adresse email utilisée lors de votre inscription, <br> pour recevoir un lien et réinitialiser votre mot de passe. </p>
   
+  <br>
   <%= form_tag passwords_path, :method => :post do %>
       <%= text_field_tag :email, params[:email], placeholder: ' Email *' %>
       <br><br>  
       <p> <%= submit_tag "Continuer", class: "btn btn-primary"  %> </p>
   <% end %>
-</center>
+</center> 

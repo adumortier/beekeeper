@@ -25,12 +25,12 @@
         <% if browser_info.mobile? %>
           <%= render "partials/current_user_mobile_nav" %>
           <% flash.each do |type, msg| %>
-            <div class="alert alert-info alert-fixed-mobile">
+            <div class="alert alert-<%=type%> alert-fixed-mobile">
               <%= msg %>
             </div>
           <% end %>
           <body id="main" style="padding-right: 5px; padding-left: 5px;" >
-          <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu  <span style= "padding-left:20%"> <%= image_tag "logo.png",:style => "width:35px" %> </span> </span>
+          <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu  <span style= "padding-left:20%"> <%= image_tag "logo.png",:style => "width:35px" %>  </span> <hr></span>
           <%# <script>
             function openNav() {
               document.getElementById("mySidenav").style.width = "100%";
@@ -60,7 +60,7 @@
       <% if browser_info.mobile? %>
         <%= render "partials/visitor_mobile_nav" %>
         <% flash.each do |type, msg| %>
-            <div class="alert alert-info alert-fixed-mobile">
+            <div class="alert alert-<%=type%> alert-fixed-mobile">
               <%= msg %>
             </div>
           <% end %>

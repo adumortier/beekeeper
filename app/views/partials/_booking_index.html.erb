@@ -13,6 +13,7 @@
             <% locals[:products].each do |product| %>
               <th class="align-middle" style="text-align:center;"><%= product.description %></th>
             <% end %>
+            <%# <th class="align-middle" style="text-align:center;"></th> %>
           </tr>
           <% locals[:bookings].each do |booking| %>
             <tr id="booking-<%= booking.id %>">
@@ -34,6 +35,7 @@
                 <% end %>
                 <td class="align-middle" style="text-align:center;"><%= quantity %></td>
               <% end %>
+              <%# <td class="align-middle" style="text-align:center;"><%= link_to "Modifier", "/admin/users/#{booking.user.id}/reservation/#{booking.id}/edit" %> 
           <% end %>
         </table>
     <% end %>

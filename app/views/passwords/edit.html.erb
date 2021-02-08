@@ -6,7 +6,7 @@
     <p> <%= f.password_field :password, :value => @user[:password], placeholder: 'Nouveau mot de passe *'  %> </p>
     <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: 'Confirmation *'  %> </p>
     <br>
-    <a class="btn btn-outline-secondary" href="/profile"> Annuler</a>
+    
     <%= f.submit "Enregistrer", class: "btn btn-primary" %>
   <% end %>
  </div>

@@ -1,6 +1,6 @@
 <center>
 <div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
-<h3> Modifiez votre profil </h3>
+<h4> Modifiez votre profil </h4>
 
   <br>
   <%= form_with model: @user, local: true, url: '/profile', method: :patch do |f| %>
@@ -12,9 +12,9 @@
     <p> <%= f.text_field :city, :value => @user.city %> </p>
     <p> <%= f.text_field :zip_code, :value => @user.zip_code %> </p>
     <br>
+    <a class="btn btn-outline-secondary" href="/profile"> Annuler</a>
     <%= f.submit "Enregistrer", class: "btn btn-primary" %>
   <% end %>
-
 
 
 

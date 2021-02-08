@@ -34,6 +34,24 @@ class Admin::BookingsController < Admin::BaseController
     redirect_to admin_user_path
   end
 
+  def edit 
+    @booking = Booking.find(params[:booking_id])
+    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps')
+    @products_summer = Product.where(year: Time.new.year).where(season: 'été')
+  end
+
+  def update
+    user = User.find(params[:user_id])
+    booking = Booking.find(params[:booking_id])
+    products = Product.where('year = ?', Time.new.year)
+    products.each do |product|
+      quantity = (booking_params[product.description + '_' + product.season].empty? ? 0 : booking_params[product.description + '_' + product.season])
+      booking.booking_products.where(product_id: product.id).update(quantity: quantity)
+    end
+    flash['success'] = "Un email a été envoyé à #{user.first_name + ' ' + user.last_name} pour confirmer la réservation."
+    redirect_to admin_bookings_path
+  end
+
   private
 
   def booking_params

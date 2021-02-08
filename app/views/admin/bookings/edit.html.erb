@@ -3,7 +3,7 @@
 
 <center>
 
-<%= form_for @booking, url: "/admin/users/#{@user.id}/reservation", html: { method: :post } do |f| %>
+<%= form_with model: @booking, local: true, url: "/admin/users/#{@booking.user.id}/reservation/#{@booking.id}", method: :patch do |f| %>
   <div class="my-5">
     <table class="table table-hover" style="width:40%">
       <tr>
@@ -21,7 +21,7 @@
 
  <br><br>
 
- <div>
+ <div class="my-5">
     <table class="table table-hover" style="width:40%">
       <tr>
         <th style="width: 200px"> RÉCOLTE ÉTÉ <%= Time.new.year %> </th>
@@ -39,4 +39,3 @@
 <% end %>
 
 </center>
-

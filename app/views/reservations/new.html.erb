@@ -4,15 +4,16 @@
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Réservez votre miel </h4>
   <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
   <br>
-  <div class="alert alert-success" style="width: <%=browser_info.mobile? ? 100 : 50%>%; font-weight:bold; text-align:center; font-size:16px" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g en cadeau !</div> 
+  <div class="alert alert-success" style="width: <%=browser_info.mobile? ? 100 : 50%>%; font-weight:bold; text-align:center; font-size:15px" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g en cadeau !</div> 
+  <br>
   <%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
     <% unless @products_spring.empty? %>
-      <div class="my-5">
+      <div>
         <table class="table table-hover table-sm" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
         <thead class="thead-light">
           <tr>
-            <th class="align-middle" style="width: 50%"> PRINTEMPS <%= Time.new.year %> </th>
-            <th class="align-middle" style="width: 30"> Prix Unité </th>
+            <th class="align-middle" style="width: <%=browser_info.mobile? ? '145px' : '50%'%>"> PRINTEMPS <%= Time.new.year %> </th>
+            <th class="align-middle" style="width: 30%"> Prix Unité </th>
             <th class="align-middle" style="width: 20%"> Quantité </th>
           </tr>
         </thead>
@@ -28,11 +29,11 @@
     <% end %>
 
     <% unless @products_summer.empty? %>
-      <div class="my-5">
+      <div>
           <table class="table table-hover table-sm" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
           <thead class="thead-light">
           <tr>
-            <th class="align-middle" style="width: 50%"> ÉTÉ <%= Time.new.year %> </th>
+            <th class="align-middle" style="width: <%=browser_info.mobile? ? '145px' : '50%'%>"> ÉTÉ <%= Time.new.year %> </th>
             <th class="align-middle" style="width: 30%"> Prix Unité </th>
             <th class="align-middle" style="width: 20%"> Quantité </th>
           </tr>
@@ -50,8 +51,12 @@
 
 
     <% if browser_info.mobile? %>
-      <center> <%= f.text_area :comment, :value => @booking[:comment], placeholder: 'Ajouter un commentaire (optionnel)', style: "width:80%" %></center> <br><br>
-      <center> <%= f.submit "Confirmer", class: "btn btn-primary" %> </center>
+      <center> <%= f.text_area :comment, :value => @booking[:comment], placeholder: '  Ajouter un commentaire (optionnel)', style: "width:100%; height:50px; font-style:italic;" %></center> 
+      <br>
+      <div style='text-align:right; padding-right:10px'>
+         <a class="btn btn-outline-secondary" href="/"> Annuler</a> <%= f.submit "Confirmer", class: "btn btn-primary" %>
+      </div>
+
     <% else %>
       <%= f.text_area :comment, :value => @booking[:comment], placeholder: '   Ajouter un commentaire (optionnel)', style: "width:50%" %> <br><br>
       <div style='width:50%; text-align:right; padding-right:45px'>
@@ -61,13 +66,7 @@
     <% end %>
     </div>
     <br><br>
-  <% if browser_info.mobile? %>
-    <center>  <p style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"> vous serez contacté(e) quand vos pots seront prêts </p> </center> 
-  <% else %>
-    <div style='width:50%; text-align:right'>
-      <p style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%;"><i> vous serez contacté(e) quand vos pots seront prêts </i></p> 
-    </div>  
-  <% end %>
+  
 
   <% end %>
 <% else %>
