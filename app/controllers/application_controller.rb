@@ -47,6 +47,10 @@ class ApplicationController < ActionController::Base
     User.where(role: 0).order("#{params[:sort]} #{params[:direction]}")
   end
 
+  def require_current_user
+      render file: "/public/403" unless current_user
+  end
+
     protected
 
     def set_cache_buster

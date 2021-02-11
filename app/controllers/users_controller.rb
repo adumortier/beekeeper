@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class UsersController < BaseController
 
+  skip_before_action :require_current_user, only: [:create, :new]
+
   def new
     @user = User.new
   end
@@ -43,5 +45,6 @@ class UsersController < BaseController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :address, :city, :zip_code, :phone_number, :password, :password_confirmation)
   end
+
 end
 
