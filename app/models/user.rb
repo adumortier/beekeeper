@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class User < ApplicationRecord
 
+  include ActiveModel::Dirty
+
   validates_presence_of :first_name, :message => "Merci de renseigner votre prénom."
   validates_presence_of :last_name, :message => "Merci de renseigner votre nom."
   validates_presence_of :address, :message => "Votre addresse n'est pas valide."

@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class UsersController < ApplicationController
+class UsersController < BaseController
 
   def new
     @user = User.new
@@ -23,9 +23,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    @user.update(user_params)
+    @user.assign_attributes(user_params)
+    user_was_updated = @user.changed?
     if @user.save
-      flash[:success] = "Votre profil a été mis à jour."
+      flash[:success] = "Votre profil a été mis à jour." if user_was_updated
       redirect_to profile_path
     else
       flash[:danger] = @user.errors.messages.values[0][0]

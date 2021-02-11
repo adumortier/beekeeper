@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-class ReservationsController < ApplicationController
+class ReservationsController < BaseController
 
   after_action :set_cache_buster, only: :create 
 
