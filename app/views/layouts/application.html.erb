@@ -15,7 +15,7 @@
         <%= render "partials/admin_nav" %>
         <body class="main" >
         <% flash.each do |type, msg| %>
-          <div class="alert alert-admin alert-info">
+          <div class="alert alert-admin alert-<%=type%>">
             <%= msg %>
           </div>
         <% end %>
@@ -54,7 +54,7 @@
       <% if browser_info.mobile? %>
         <%= render "partials/visitor_mobile_nav" %>
         <% flash.each do |type, msg| %>
-            <div class="alert alert-<%=type%> alert-fixed-mobile">
+            <div class="alert alert-<%=type%> alert-fixed-mobile ">
               <%= msg %>
             </div>
           <% end %>

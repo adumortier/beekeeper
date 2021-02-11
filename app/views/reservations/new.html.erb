@@ -4,9 +4,13 @@
   <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Réservez votre miel </h4>
   <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
   <br>
+  <% if browser_info.mobile? %>
   <center>
-    <div class="alert alert-success" style="width: <%=browser_info.mobile? ? 90 : 30%>%; font-weight:bold; text-align:center; font-size:15px" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g en cadeau !</div> 
+    <div class="alert alert-success" style="width: 90%; font-weight:bold; text-align:center; font-size:15px" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g en cadeau !</div> 
   </center>
+  <% else %>
+    <div class="alert alert-success" style="width: 50%; font-weight:bold; text-align:center; font-size:15px" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g en cadeau !</div> 
+  <% end %>
   <br>
   <%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
     <% unless @products_spring.empty? %>
@@ -60,7 +64,7 @@
       </div>
 
     <% else %>
-      <%= f.text_area :comment, :value => @booking[:comment], placeholder: '   Ajouter un commentaire (optionnel)', style: "width:50%" %> <br><br>
+      <%= f.text_area :comment, :value => @booking[:comment], placeholder: '   Ajouter un commentaire (optionnel)', style: "width:50%;font-style:italic;" %> <br><br>
       <div style='width:50%; text-align:right; padding-right:45px'>
       <a class="btn btn-outline-secondary" href="/"> Annuler</a>
       <%= f.submit "Confirmer", class: "btn btn-primary"%>
