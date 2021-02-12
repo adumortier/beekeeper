@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "tempusdominus-bootstrap-4.css";
+// @import "tempusdominus-bootstrap-4.css";
 @import url(https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @import url(https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css);
 @import "bootstrap";
@@ -188,6 +188,35 @@ input[type=number] {
   
 }
 
+.mobile-promo {
+  width: 90%; 
+  font-weight:bold; 
+  text-align:center; 
+  font-size:15px;
+  margin: auto;
+}
+
+.desktop-promo {
+  width: 450px; 
+  font-weight:bold; 
+  text-align:center; 
+  font-size:15px
+}
+
+.mobile-content {
+  padding-left:0%;
+  padding-right:0%;
+}
+
+.text-area-desktop {
+  width:450px;
+}
+
+.desktop-content {
+  padding-left:10%;
+  padding-right:10%;
+}
+
 .reg-content-text {
   font-family: 'lato-regular';
 }
@@ -208,6 +237,18 @@ h2,h3,h4,h5,h6 {
   padding-left: 10%;
   padding-right: 10%;
   text-align: justify;
+}
+
+.product-card-content {
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: justify;
+  float:right;
+}
+
+.modal-text {
+  padding-top:30px; 
+  padding-bottom:30px;
 }
 
 .nav-link {

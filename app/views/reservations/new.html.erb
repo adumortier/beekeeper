@@ -1,80 +1,35 @@
 
 <div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
+
 <% if (!@products_spring.empty? || !@products_summer.empty?) %>
-  <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Réservez votre miel </h4>
-  <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
-  <br>
-  <% if browser_info.mobile? %>
-  <center>
-    <div class="alert alert-success" style="width: 90%; font-weight:bold; text-align:center; font-size:15px" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g en cadeau !</div> 
-  </center>
-  <% else %>
-    <div class="alert alert-success" style="width: 50%; font-weight:bold; text-align:center; font-size:15px" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g en cadeau !</div> 
-  <% end %>
-  <br>
-  <%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
-    <% unless @products_spring.empty? %>
-      <div>
-        <table class="table table-hover table-sm" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
-        <thead class="thead-light">
-          <tr>
-            <th class="align-middle" style="width: <%=browser_info.mobile? ? '145px' : '50%'%>"> PRINTEMPS <%= Time.new.year %> </th>
-            <th class="align-middle" style="width: 30%"> Prix Unité </th>
-            <th class="align-middle" style="width: 20%"> Quantité </th>
-          </tr>
-        </thead>
-          <% @products_spring.each do |product| %>
-            <tr id="product-<%= product.id %>">
-              <td class="align-middle"><%= product.description %></td>
-              <td class="align-middle"><%= "#{product.price} €" %> </td>
-              <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0', max: 100, min: 0, style:"width:40px" %></td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    <% end %>
 
-    <% unless @products_summer.empty? %>
-      <div>
-          <table class="table table-hover table-sm" style="width: <%=browser_info.mobile? ? 100 : 50%>%">
-          <thead class="thead-light">
-          <tr>
-            <th class="align-middle" style="width: <%=browser_info.mobile? ? '145px' : '50%'%>"> ÉTÉ <%= Time.new.year %> </th>
-            <th class="align-middle" style="width: 30%"> Prix Unité </th>
-            <th class="align-middle" style="width: 20%"> Quantité </th>
-          </tr>
-          </thead>
-          <% @products_summer.each do |product| %>
-            <tr id="product-<%= product.id %>">
-              <td class="align-middle"><%= product.description %></td>
-              <td class="align-middle"><%= "#{product.price} €" %></td>
-              <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0', max: 100, min: 0, style:"width:40px" %></td>
-            </tr>
-          <% end %>
-          </table>
-      </div>
-    <% end %>
-
-
-    <% if browser_info.mobile? %>
-      <center> <%= f.text_area :comment, :value => @booking[:comment], placeholder: '  Ajouter un commentaire (optionnel)', style: "width:90%; height:60px; font-style:italic;" %></center> 
-      <br>
-      <div style='text-align:right; padding-right:30px'>
-         <a class="btn btn-outline-secondary" href="/"> Annuler</a> <%= f.submit "Confirmer", class: "btn btn-primary" %>
-      </div>
-
-    <% else %>
-      <%= f.text_area :comment, :value => @booking[:comment], placeholder: '   Ajouter un commentaire (optionnel)', style: "width:50%;font-style:italic;" %> <br><br>
-      <div style='width:50%; text-align:right; padding-right:45px'>
-      <a class="btn btn-outline-secondary" href="/"> Annuler</a>
-      <%= f.submit "Confirmer", class: "btn btn-primary"%>
-      </div>
-    <% end %>
-    </div>
-    <br><br>
+  <h4 class= "<%=browser_info.mobile? ? "mobile-content" : "desktop-content" %>"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Réservez votre miel </h4>
   
+  <div class= "<%=browser_info.mobile? ? "mobile-content" : "desktop-content" %>">
+    <br>
+    <div class="alert alert-success <%= browser_info.mobile? ? "mobile-promo" : "desktop-promo"%>" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g en cadeau !</div>
+    <br>
+    <%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
 
-  <% end %>
+      <%= render "partials/booking_product_form", locals: {products: @products_spring, form: f, booking: @booking, title: 'PRINTEMPS'} %>
+      <%= render "partials/booking_product_form", locals: {products: @products_summer, form: f, booking: @booking, title: 'ÉTÉ'} %>
+
+      <% if browser_info.mobile? %>
+        <center> <%= f.text_area :comment, :value => @booking[:comment], placeholder: '  Ajouter un commentaire (optionnel)', style: "width:90%; height:60px; font-style:italic;" %></center> 
+        <br>
+        <div style='text-align:right; padding-right:30px'>
+          <a class="btn btn-outline-secondary" href="/"> Annuler</a> <%= f.submit "Confirmer", class: "btn btn-primary" %>
+        </div>
+      <% else %>
+        <%= f.text_area :comment, :value => @booking[:comment], placeholder: '   Ajouter un commentaire (optionnel)', style: "width:450px; font-style:italic;" %> <br><br>
+        <div style='width:450px; text-align:right; padding-right:45px'>
+          <a class="btn btn-outline-secondary" href="/"> Annuler</a>
+          <%= f.submit "Confirmer", class: "btn btn-primary"%>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <br><br>
 <% else %>
   <h5> <i class="fa fa-frown-o" aria-hidden="true"></i>  Désolé, il n'y a pas de pots disponibles pour le moment. Revenez nous rendre visite bientôt! </h5>
 <% end %>

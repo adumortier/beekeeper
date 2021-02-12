@@ -41,6 +41,7 @@ class ReservationsController < BaseController
     booking_product = BookingProduct.find(params[:id])
     booking = booking_product.booking
     booking_product.destroy
+    booking.destroy if booking.booking_products.empty?
     if browser_info.mobile?
       flash['success'] = 'Votre modification a été prise en compte.'
     else
