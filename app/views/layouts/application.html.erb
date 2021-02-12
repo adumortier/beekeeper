@@ -38,13 +38,13 @@
           </body>
 
         <% else %>
-          <%= render "partials/current_user_nav" %>
+          <body id="main">
+            <%= render "partials/current_user_nav" %>
             <% flash.each do |type, msg| %>
               <div class="alert alert-<%=type%> alert-fixed" >
                 <%= msg %>
               </div>
             <% end %>
-          <body id="main">
             <%= yield %>
           </body>
         <% end %>  
@@ -75,8 +75,8 @@
         </body>
 
       <% else %>
-        <%= render "partials/visitor_nav" %>
         <body id="main">
+        <%= render "partials/visitor_nav" %>
         <% flash.each do |type, msg| %>
           <div class="alert alert-<%=type%> alert-fixed" >
             <%= msg %>
