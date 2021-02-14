@@ -15,7 +15,7 @@
     <p> <%= f.text_field :city, :value => @user[:city], placeholder: ' Ville *' %>  </p>
     <p> <%= f.text_field :zip_code, :value => @user[:zip_code], placeholder: ' Code postal *' %>  </p>
     <p> <%= f.password_field :password, :value => @user[:password], placeholder: ' Mot de passe *' %>  </p>
-    <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: ' Mot de passe *' %>  </p>
+    <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: 'Confirmation mot de passe *' %>  </p>
     <br>
     <p> <%= f.submit "Continuer", class: "btn btn-primary" %>  </p>
   <% end %> 

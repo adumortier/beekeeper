@@ -2,10 +2,12 @@
 
 class ReservationsController < BaseController
 
+  skip_before_action :require_current_user, only: [:index]
+
   after_action :set_cache_buster, only: :create 
 
   def index
-    @bookings = current_user.bookings.order(created_at: :asc)
+    @bookings = current_user.bookings.order(created_at: :asc) if current_user
   end
 
   def new

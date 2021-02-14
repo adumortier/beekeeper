@@ -1,5 +1,5 @@
 <div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
-
+<% if current_user %>
 <% if @bookings.empty? %>
   <div style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%; padding-bottom: 50px">
     <h4> <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;&nbsp; Vous n'avez pas de réservations </h4>
@@ -72,6 +72,21 @@
 <% end %>
 </div>
 <% end %>
+<% else %>
+<br> 
+  <% if browser_info.mobile? %>
+    <center>
+      <div style="padding-left:0%; padding-right:0%; padding-bottom: &0px">
+        <a class="btn btn-warning link" aria-pressed="true" role="button" data-toggle="modal" data-target="#exampleModal"> Réserver du miel </a>
+      </div>
+    </center>
+  <% else %>
+    <div style="padding-left:12%; padding-right:10%; padding-bottom: 20px">
+        <a class="btn btn-warning btn-lg link" aria-pressed="true" role="button" data-toggle="modal" data-target="#exampleModal"> Réserver du miel </a>
+    </div>
+  <% end %>
+<br>  
+<% end %>
 <br>
 <h4 style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp; Réservations - mode d'emploi </h4>
 <br>
@@ -87,7 +102,6 @@
   <b> <i class="fa fa-forumbee" aria-hidden="true"></i> &nbsp;&nbsp;Quand les récoltes ont-elles lieu ? </b> <br>  <br>
   <i> La récolte de printemps a généralement lieu à la mi-mai et celle d'été à la fin du mois de juillet.</i> <br>  <br>
 
-
   <b> <i class="fa fa-forumbee" aria-hidden="true"></i> &nbsp;&nbsp;Comment payer les pots réservés ? </b> <br>  <br>
   <i> Les réservations de pots ne nécessitent aucun prépaiement et le réglement se fait directement auprès d'Antoine au moment de leur réception. </i><br>  <br>
 
@@ -100,3 +114,31 @@
 
 
 
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title w-100" id="exampleModalLabel">Connectez-vous pour réserver...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-footer justify-content-between" style='text-align:center'>
+        
+          <div style="padding-top:40px; padding-bottom:40px;">
+            Je n'ai pas encore de compte <br><br>
+            <a href="/register" class="btn btn-outline-primary" role="button" aria-pressed="true">Je m'inscris</a>
+            <br><br>
+            ~  OU  ~
+            <br><br>
+            J'ai déjà un compte <br><br>
+            <a href="/login" class="btn btn-outline-primary" role="button" aria-pressed="true">Je me connecte</a>
+            <br><br>
+            <%= link_to "Mot de passe oublié ?", passwords_new_path%>            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
