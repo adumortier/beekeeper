@@ -16,12 +16,11 @@ class Admin::ProductsController < Admin::BaseController
   def create
     @product = Product.create(product_params)
     if @product.valid?
-      flash[:succeeded] = "Votre nouveau produit a été crée"
-      redirect_to admin_products_path
+      flash[:success] = "Votre nouveau produit a été crée"
     else
-      flash[:error] = @product.errors.full_messages.to_sentence
-      redirect_to admin_products_path
+      flash[:danger] = @product.errors.full_messages.to_sentence
     end
+    redirect_to admin_products_path
   end
   
   def destroy

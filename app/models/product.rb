@@ -15,6 +15,10 @@ class Product < ApplicationRecord
   has_many :booking_products
   has_many :bookings, through: :booking_products, dependent: :destroy
 
+  scope :current, -> { where(year: Time.new.year) }
+  scope :spring, -> { where(year: Time.new.year).where(season: 'printemps') }
+  scope :summer, -> { where(year: Time.new.year).where(season: 'été') }
+
   def action
     if status == 'active'
       'désactiver'

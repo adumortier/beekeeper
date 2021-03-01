@@ -37,8 +37,8 @@ Rails.application.routes.draw do
 
     resources :products, except: :show
     resources :users
-    resources :posts
-    
+    resources :posts, except: :show
+
     get '/users/:id/reservation/new', to: 'bookings#new'
     post '/users/:id/reservation', to: 'bookings#create'
     get '/users/:user_id/reservation/:booking_id/edit', to: 'bookings#edit'

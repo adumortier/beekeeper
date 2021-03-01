@@ -4,20 +4,18 @@ class ReservationsController < BaseController
 
   skip_before_action :require_current_user, only: [:index]
 
-  after_action :set_cache_buster, only: :create 
-
   def index
     @bookings = current_user.bookings.order(created_at: :asc) if current_user
   end
 
   def new
     @booking = current_user.bookings.new
-    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps').where(status: 'active').order(price: :asc)
-    @products_summer = Product.where(year: Time.new.year).where(season: 'été').where(status: 'active').order(price: :asc)
+    @products_spring = Product.spring.where(status: 'active').order(price: :asc)
+    @products_summer = Product.summer.where(status: 'active').order(price: :asc)
   end
 
   def create
-    products = Product.where('year = ?', Time.new.year)
+    products = Product.current
     
     @booking = current_user.bookings.create!(comment: booking_params[:comment])
     products.each do |product|
@@ -27,11 +25,11 @@ class ReservationsController < BaseController
     if (@booking.booking_products.pluck(:quantity).empty?) || (@booking.booking_products.pluck(:quantity).sum == 0)
       if @booking.has_comment?
         flash['danger'] = 'Réservez pour pouvoir envoyer votre message.'
-        redirect_to reservation_new_path
       else
         flash['danger'] = 'Indiquez les quantités souhaitées.'
-        redirect_to reservation_new_path
       end
+      @booking.destroy
+      redirect_to reservation_new_path
     else
       current_user.send_booking_confirmation(@booking)
       flash['success'] = 'Votre réservation a été enregistrée.'

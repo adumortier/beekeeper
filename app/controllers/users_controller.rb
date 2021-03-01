@@ -14,7 +14,7 @@ class UsersController < BaseController
       session[:user] = @user.id
       redirect_to root_path
     else
-      flash[:danger] = @user.errors.full_messages.to_sentence
+      flash[:danger] = @user.user_errors
       redirect_to register_path
     end
   end
@@ -31,7 +31,7 @@ class UsersController < BaseController
       flash[:success] = "Votre profil a été mis à jour." if user_was_updated
       redirect_to profile_path
     else
-      flash[:danger] = @user.errors.messages.values[0][0]
+      flash[:danger] = @user.user_errors
       redirect_to profile_edit_path
     end
   end

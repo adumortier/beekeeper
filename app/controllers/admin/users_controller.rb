@@ -13,8 +13,15 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to admin_user_path
+    @user.assign_attributes(user_params)
+    user_was_updated = @user.changed?
+    if @user.save
+      flash[:success] = "Le profil a été mis à jour." if user_was_updated
+      redirect_to admin_user_path
+    else
+      flash[:danger] = @user.user_errors
+      redirect_to edit_admin_user_path
+    end
   end
 
   def index
@@ -36,7 +43,7 @@ class Admin::UsersController < Admin::BaseController
       flash[:success] = "Le nouvel utilisateur a été ajouté"
       redirect_to admin_users_path
     else
-      flash[:error] = @user.errors.full_messages.to_sentence
+      flash[:danger] = @user.user_errors
       redirect_to new_admin_user_path
     end
   end
@@ -44,7 +51,7 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
-    params.require('user').permit(:first_name, :last_name, :phone_number, :email, :address, :created_at, :password, :password_confirmation)
+    params.require('user').permit(:first_name, :last_name, :phone_number, :email, :address, :city, :zip_code, :created_at, :password, :password_confirmation)
   end
 
 end

@@ -5,4 +5,6 @@ class BookingProduct < ApplicationRecord
   belongs_to :booking
   belongs_to :product
 
+  enum status: %w(pending notified)
+
 end

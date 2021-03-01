@@ -3,32 +3,31 @@
 class Admin::BookingsController < Admin::BaseController
 
   def index
-    @spring_products = Product.where({season: 'printemps', year: Time.new.year})
-    @summer_products = Product.where({season: 'été', year: Time.new.year})
+    @spring_products = Product.spring
+    @summer_products = Product.summer
+    current_year = Time.new.year
     if params[:sort].present?
-      @bookings_spring = (params[:season] == 'printemps'? load_bookings : bookings_spring)#Booking.joins(:products).where(products: {season:'printemps'}).where(products: {year:Time.new.year}).distinct ) 
-      @bookings_summer = (params[:season] == 'été'? load_bookings : bookings_summer) #Booking.joins(:products).where(products: {season:'été'}).where(products: {year:Time.new.year}).distinct )
+      season = params[:season]
+      @bookings_spring = (season == 'printemps'? load_bookings : bookings_spring)
+      @bookings_summer = (season == 'été'? load_bookings : bookings_summer)
     else
-      @bookings_spring = Booking.joins(:products).where(products: {season:'printemps'}).where(products: {year:Time.new.year}).distinct
-      @bookings_summer = Booking.joins(:products).where(products: {season:'été'}).where(products: {year:Time.new.year}).distinct
+      booking_and_products = Booking.joins(:products)
+      @bookings_spring = booking_and_products.where(products: {season:'printemps'}).where(products: {year: current_year}).distinct
+      @bookings_summer = booking_and_products.where(products: {season:'été'}).where(products: {year: current_year}).distinct
     end
   end
 
   def new
     @user = User.find(params[:id])
     @booking = @user.bookings.new
-    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps')
-    @products_summer = Product.where(year: Time.new.year).where(season: 'été')
+    @products_spring = Product.spring
+    @products_summer = Product.summer
   end
 
   def create
     user = User.find(params[:id])
-    products = Product.where('year = ?', Time.new.year)
     @booking = user.bookings.create
-    products.each do |product|
-      quantity = (booking_params[product.description + '_' + product.season].empty? ? 0 : booking_params[product.description + '_' + product.season])
-      @booking.booking_products.create(product: product, quantity: quantity)
-    end
+    @booking.add_booking_products(Product.current, booking_params)
     user.send_admin_booking_confirmation(@booking)
     flash['success'] = "Un email a été envoyé à #{user.first_name + ' ' + user.last_name} pour confirmer la réservation."
     redirect_to admin_user_path
@@ -36,19 +35,21 @@ class Admin::BookingsController < Admin::BaseController
 
   def edit 
     @booking = Booking.find(params[:booking_id])
-    @products_spring = Product.where(year: Time.new.year).where(season: 'printemps')
-    @products_summer = Product.where(year: Time.new.year).where(season: 'été')
+    @products_spring = Product.spring
+    @products_summer = Product.summer
   end
 
   def update
+    booking_product = BookingProduct.find(params[:booking_id])
+    booking = booking_product.booking
+    
+    season = booking_product.product.season
+    booking_products = BookingProduct.joins(:product).where(products:{season: season}).where(booking_id: booking.id)
     user = User.find(params[:user_id])
-    booking = Booking.find(params[:booking_id])
-    products = Product.where('year = ?', Time.new.year)
-    products.each do |product|
-      quantity = (booking_params[product.description + '_' + product.season].empty? ? 0 : booking_params[product.description + '_' + product.season])
-      booking.booking_products.where(product_id: product.id).update(quantity: quantity)
-    end
-    flash['success'] = "Un email a été envoyé à #{user.first_name + ' ' + user.last_name} pour confirmer la réservation."
+    user.send_admin_pickup_notification(booking, booking_products)
+    booking_products.update(status: :notified)
+    
+    flash['success'] = "Un email a été envoyé à #{user.first_name + ' ' + user.last_name} pour confirmer la disponibilité des pots."
     redirect_to admin_bookings_path
   end
 
@@ -58,6 +59,5 @@ class Admin::BookingsController < Admin::BaseController
     product_description = Product.all.pluck(:description,:season).map {|prod| prod.join('_')}
     params.require(:booking).permit(product_description)
   end
-
 
 end

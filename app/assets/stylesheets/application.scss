@@ -62,6 +62,30 @@
     font-family: 'lato-bold';
 }
 
+.alert-fixed-mobile {
+    position:sticky; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:0; 
+    margin-top: 0px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alert-admin {
+  top: 20px; 
+  width: 1000px;
+  z-index:9999;   
+  position:fixed; 
+  border-radius:0px;
+  margin-left: 0%;
+  margin-right: 50%;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: 'lato-bold';
+}
+
 .popover {
   padding-left: 20px;
   padding-right: 20px;
@@ -101,29 +125,6 @@ input[type=number] {
   border-radius: 5px;
   text-align: center;
 }
-
-.alert-fixed-mobile {
-    position:sticky; 
-    top: 0px; 
-    left: 0px; 
-    width: 100%;
-    z-index:0; 
-    border-radius:0px 0px 10px 10px;
-    margin-top: 0px;
-    text-align: center;
-    font-weight: bold;
-}
-
-// .hero-text-style-mobile {
-//   color: rgb(255, 255, 255);
-//   font-size: 40px;
-//   padding-top: 8%;
-//   padding-right: 200px;
-//   padding-bottom: 7%;
-//   padding-left: 200px;
-//   text-align: center;
-//   font-family: 'pacifico';
-// }
 
 #bg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), asset-data-url("background.jpg");
@@ -204,8 +205,8 @@ input[type=number] {
 }
 
 .mobile-content {
-  padding-left:0%;
-  padding-right:0%;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .text-area-desktop {
@@ -275,12 +276,13 @@ h2,h3,h4,h5,h6 {
   height: 100%;
   width: 270px;
   position: fixed;
+  float: left;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #febf43;
   overflow-x: hidden;
-  padding-top: 0px;
+  padding-top: 30px;
 }
 
 .sidenav a {
@@ -293,27 +295,6 @@ h2,h3,h4,h5,h6 {
 
 .btn-warning {
     background-color: #febf43 !important;
-}
-
-.sidenav_visitor {
-  height: 100%;
-  width: 0px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color:#febf43;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.sidenav_visitor a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 15px;
-  color: #818181;
-  display: block;
-  text-align:center;
 }
 
 .sidenav_mobile {
@@ -348,17 +329,11 @@ h2,h3,h4,h5,h6 {
   padding: 0px 10px;
 }
 
-.alert-admin {
-  top: 0px; 
-  left: 0px; 
-  width: 100%;
-  z-index:9999;   
-  position:fixed; 
-  border-radius:0px;
-  margin-top: 40px;
-  margin-left: 310px;
+.main_admin {
+  margin-left: 280px; 
+  margin-top: 70px;
+  padding: 0px 20px ;
 }
-
 
 #main {
   transition: margin-left .5s;

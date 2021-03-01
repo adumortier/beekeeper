@@ -3,10 +3,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :current_admin, :login, :bookings_spring, :bookings_summer, :browser_info
+  helper_method :current_user, :current_admin, :login, :bookings_spring, :bookings_summer, :browser_info, :mobile_user?, :desktop_user?, :mobile_visitor?
 
   def current_user
-    @current_user ||= User.find(session[:user]) if session[:user]
+    user = session[:user]
+    @current_user ||= User.find(user) if user
   end
 
   def login(user)
@@ -14,7 +15,19 @@ class ApplicationController < ActionController::Base
   end
 
   def current_admin
-    current_user && current_user.admin?
+    current_user&.admin?
+  end
+
+  def mobile_user?
+    current_user && browser_info.mobile?
+  end
+
+  def desktop_user?
+    current_user && !browser_info.mobile?
+  end
+
+  def mobile_visitor?
+    !current_user && browser_info.mobile?
   end
 
   def bookings_spring
@@ -33,13 +46,18 @@ class ApplicationController < ActionController::Base
   private 
 
   def load_bookings
-    case params[:sort]
+    current_year = Time.new.year
+    bookings_users = Booking.joins(:user)
+    direction = params[:direction]
+    season = params[:season]
+    sort = params[:sort]
+    case sort
     when 'users.last_name'
-      Booking.joins(:user).merge(User.order("last_name #{params[:direction]}")).joins(:products).where('products.season = ?', params[:season]).where('products.year = ?' ,Time.new.year).uniq
+      bookings_users.merge(User.order("last_name #{direction}")).joins(:products).where('products.season = ?', season).where('products.year = ?', current_year).uniq
     when 'users.email'
-      Booking.joins(:user).merge(User.order("email  #{params[:direction]}")).joins(:products).where('products.season = ?', params[:season]).where('products.year = ?' ,Time.new.year).uniq
+      bookings_users.merge(User.order("email  #{direction}")).joins(:products).where('products.season = ?', season).where('products.year = ?', current_year).uniq
     when 'created_at'
-      Booking.joins(:products).where('products.season = ?', params[:season]).where('products.year = ?' ,Time.new.year).order("#{params[:sort]} #{params[:direction]}").distinct
+      Booking.joins(:products).where('products.season = ?', season).where('products.year = ?', current_year).order("#{sort} #{direction}").distinct
     end
   end
 
@@ -48,15 +66,15 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-      render file: "/public/403" unless current_user
+    render file: "/public/403" unless current_user
   end
 
-    protected
+  protected
 
-    def set_cache_buster
-      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-      response.headers["Pragma"] = "no-cache"
-      response.headers["Expires"] = "#{1.year.ago}"
-    end
-    
+#  def set_cache_buster
+#    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+#    response.headers["Pragma"] = "no-cache"
+#    response.headers["Expires"] = "#{1.year.ago}"
+#  end
+
 end

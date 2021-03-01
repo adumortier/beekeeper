@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+  <body>
+    Bonjour <%= @user.first_name %>, <br>
+
+    <p> La réservation de miel que vous avez passée le <%= @booking.created_at.strftime("%d/%m/%Y") %> est maintenant disponible. </p>
+
+    <p> Description : </p>
+
+    <ul>
+    
+    <% @booking_products.each do |booking_product| %>
+      <% unless booking_product.quantity.nil? || booking_product.quantity == 0%>
+        <li> <%= booking_product.quantity.to_s%>  &#215; <%= booking_product.product.description + ' - ' + booking_product.product.season + ' ' + booking_product.product.year.to_s %> </li>
+      <% end %>
+    <% end %>
+    </ul>
+
+    <p> Nous vous invitons à venir retirer le miel en main propre au 61 rue de Philadelphie, 02300 Villequier-Aumont. </p>
+
+    <p> Afin de faciliter le retrait du miel, merci de bien vouloir prévenir Antoine de votre passage par téléphone au 06 79 15 79 20.</p>
+
+    <p> Merci de votre patience et de votre confiance !
+
+    <p> Cordialement, </p>
+
+    <p> Antoine (et ses filles) </p>
+
+    <% if Rails.env.production? %>
+      <%= link_to "Les Filles d'Antoine", "https://www.lesfillesdantoine.com" %>  
+    <% else %>
+      <%= link_to "Les Filles d'Antoine", "http://localhost:3000" %>  
+    <% end %>
+
+  </body>
+
+</html>
