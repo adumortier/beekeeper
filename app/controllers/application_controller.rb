@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :current_admin, :login, :bookings_spring, :bookings_summer, :browser_info, :mobile_user?, :desktop_user?, :mobile_visitor?
+  helper_method :current_user, :current_admin, :login, :bookings_spring, :bookings_summer, :browser_info, :mobile_user?, :desktop_user?, :mobile_visitor?, :current_class?
 
   def current_user
     user = session[:user]
@@ -41,6 +41,10 @@ class ApplicationController < ActionController::Base
   def browser_info
     Browser::Base.include(Browser::Aliases)
     Browser.new(request.env["HTTP_USER_AGENT"])
+  end
+
+  def current_class?(*test_paths)
+    test_paths.any? { |test_path| request.path == test_path } ? 'active' : ''
   end
 
   private 

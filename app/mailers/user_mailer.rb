@@ -44,6 +44,16 @@ class UserMailer < ApplicationMailer
     )
   end
 
+  def message_to_admin(user, booking)
+    @user = user
+    @booking = booking
+    mail(
+      reply_to: ENV["GMAIL_USERNAME"],
+      to: ENV["GMAIL_USERNAME"],
+      subject: @user.first_name + ' ' + @user.last_name + ' vous a envoyé un message !'
+    )
+  end
+
   def notify_pickup_availability(user, booking, booking_products)
     @user = user
     @booking = booking

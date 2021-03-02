@@ -47,6 +47,10 @@ class User < ApplicationRecord
     UserMailer.notify_pickup_availability(self, booking, booking_products).deliver
   end
 
+  def send_message_to_admin(booking)
+    UserMailer.message_to_admin(self, booking).deliver
+  end
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64

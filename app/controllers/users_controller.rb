@@ -15,7 +15,7 @@ class UsersController < BaseController
       redirect_to root_path
     else
       flash[:danger] = @user.user_errors
-      redirect_to register_path
+      render 'users/new'
     end
   end
 

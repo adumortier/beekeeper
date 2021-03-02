@@ -5,7 +5,7 @@ class ReservationsController < BaseController
   skip_before_action :require_current_user, only: [:index]
 
   def index
-    @bookings = current_user.bookings.order(created_at: :asc) if current_user
+    @bookings = current_user.bookings.order(created_at: :desc) if current_user
   end
 
   def new
@@ -32,6 +32,7 @@ class ReservationsController < BaseController
       redirect_to reservation_new_path
     else
       current_user.send_booking_confirmation(@booking)
+      current_user.send_message_to_admin(@booking)
       flash['success'] = 'Votre réservation a été enregistrée.'
       redirect_to root_path
     end
