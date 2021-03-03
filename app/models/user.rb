@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates_presence_of :address, message: 'adresse'
   validates_presence_of :city, message: 'ville'
   validates_presence_of :zip_code, message: 'code postal'
-  validates_presence_of :email, message: "email"
+  validates_presence_of :email, message: 'email'
   validates :phone_number, telephone_number: {country: :FR, types: [:fixed_line, :mobile], message: "Le numéro de téléphone n'est pas valide."}
 
   validates :email, uniqueness: { message: "Cette adresse email est déjà utilisée."}

@@ -19,8 +19,11 @@ class PasswordsController < ApplicationController
   end
 
   def reset
-    @user = User.find_by_password_reset_token!(params[:id])
-    if @user.password_reset_sent_at < 1.hour.ago
+    @user = User.find_by_password_reset_token(params[:id])
+    if @user.nil?
+      flash[:danger] = "Le lien n'est plus valide. Recommencez la procédure s'il vous plaît."
+      redirect_to passwords_new_path
+    elsif @user.password_reset_sent_at < 1.hour.ago
       flash[:danger] = 'La réinitialisation du mot de passe a expiré.'
       redirect_to passwords_new_path
     end

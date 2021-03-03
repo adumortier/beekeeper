@@ -11,7 +11,7 @@ gem 'rails', '~> 5.2.0'
 gem 'telephone_number'
 gem 'bootsnap', require: false
 gem 'image_processing'
-
+gem "mini_magick"
 gem 'google-cloud-storage', '~> 1.11', require: false
 
 gem 'dotenv-rails', '~> 2.7'

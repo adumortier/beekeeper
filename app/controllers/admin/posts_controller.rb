@@ -1,3 +1,5 @@
+require "image_processing/mini_magick"
+
 class Admin::PostsController < Admin::BaseController
 
   def index 
@@ -13,9 +15,16 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def create
-    post = current_user.posts.create(post_params)
-    post.images.attach(post_params[:images])
-    redirect_to admin_posts_path
+    if post_params[:images].nil?
+      flash[:danger] = "Il manque une image pour ce post."
+      redirect_to new_admin_post_path
+    else
+      processed = Post.resize_image(post_params[:images].first.tempfile)
+      post_params[:images].first.tempfile = processed
+      post = current_user.posts.create(post_params)
+      post.images.attach(post_params[:images])
+      redirect_to admin_posts_path
+    end
   end
 
   def update

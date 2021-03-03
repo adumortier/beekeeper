@@ -4,7 +4,7 @@
   <br>
   <%= form_with model: @user, url: "/passwords/#{params[:id]}", local: true, method: :patch do |f| %>
     <p> <%= f.password_field :password, :value => @user[:password], placeholder: 'Mot de passe *'  %> </p>
-    <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: 'Confirmation *'  %> </p>
+    <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: 'Confirmation mot de passe*'  %> </p>
     <br>
     <%= f.submit "Continuer", class: "btn btn-primary" %>
   <% end %>
