@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   validates_presence_of :content, optional: true
 
   def self.resize_image(image)
-    ImageProcessing::MiniMagick.source(image).resize_to_limit(500, 500).convert("png").call
+    ImageProcessing::MiniMagick.source(image).resize_to_limit(600, 600).convert("png").call
   end
-  
+
 end
