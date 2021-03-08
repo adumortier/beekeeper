@@ -29,6 +29,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.2.4.4)
       activesupport (= 5.2.4.4)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (5.2.4.4)
       activemodel (= 5.2.4.4)
       activesupport (= 5.2.4.4)
@@ -45,6 +49,7 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
+    ast (2.4.2)
     autoprefixer-rails (10.0.1.0)
       execjs
     bcrypt (3.1.16)
@@ -90,6 +95,12 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    draper (4.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
     erubi (1.9.0)
     execjs (2.7.0)
     faraday (1.0.1)
@@ -172,6 +183,8 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     os (1.1.1)
+    parser (3.0.0.0)
+      ast (~> 2.4.1)
     pg (1.2.3)
     popper_js (1.16.0)
     pry (0.13.1)
@@ -215,6 +228,8 @@ GEM
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
       uber (< 0.2.0)
+    request_store (1.5.0)
+      rack (>= 1.4)
     retriable (3.1.2)
     rexml (3.2.4)
     rspec-core (3.9.3)
@@ -256,6 +271,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    scout_apm (4.0.4)
+      parser
     shoulda-matchers (3.1.3)
       activesupport (>= 4.0.0)
     signet (0.14.0)
@@ -310,6 +327,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   dotenv-rails (~> 2.7)
+  draper
   figaro
   google-cloud-storage (~> 1.11)
   image_processing
@@ -324,6 +342,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rspec-rails
   sass-rails (~> 5.0)
+  scout_apm
   shoulda-matchers (~> 3.1)
   simplecov
   telephone_number
