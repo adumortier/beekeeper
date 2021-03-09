@@ -1,116 +1,77 @@
 <div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
+
 <% if current_user %>
-<% if @bookings.empty? %>
-  <div style="padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-bottom: 50px">
-    <h4> <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;&nbsp; Vous n'avez pas de réservations </h4>
-    <br>
-    <br>
-    <% if browser_info.mobile? %>
-    <center>
-    <div style="padding-left:0%; padding-right:0%; padding-bottom: &0px">
-        <a class="btn btn-warning link" href="/reservation/new">Réservez du miel</a>
-    </div>
-    </center>
-    <% else %>
-      <div style="padding-left:12%; padding-right:10%; padding-bottom: 20px">
-          <a class="btn btn-warning btn-lg link" href="/reservation/new">Réservez du miel</a>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <h4 style="padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? '5px' : '10%' %>"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Nouvelle Réservation </h4>
-  <br><br>
-  
-  <% if browser_info.mobile? %>
-    <center>
-    <div style="padding-left:0%; padding-right:0%; padding-bottom: &0px">
-        <a class="btn btn-warning link" href="/reservation/new">Réservez du miel</a>
-    </div>
-    </center>
+
+  <% if @bookings.empty? %>
+
+      <h4 class="<%= browser_type %>-head" > <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;&nbsp; Vous n'avez pas de réservations </h4>
+      <br> <br>
+      <%= render "partials/booking_button" %>
+      <br>
+
   <% else %>
-    <div style="padding-left:12%; padding-right:10%; padding-bottom: 20px">
-        <a class="btn btn-warning btn-lg link" href="/reservation/new">Réservez du miel</a>
-    </div>
-  <% end %>
 
+      <h4 class="<%= browser_type %>-head"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Nouvelle Réservation </h4>
+      <br><br>
+      <%= render "partials/booking_button" %>
+      <br><br>
+      <h4 class="<%= browser_type %>-head"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp; Mes Réservations </h4>
+      <br>
 
+      <% @bookings.each do |booking| %>
 
-<br><br>
-<h4 style="padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? '5px' : '10%' %>"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp; Mes Réservations </h4>
+        <h5 class="<%= browser_type %>-content" > <%= booking.published_at %> </h5>
 
-<div class="my-5"></div>
-<% @bookings.each do |booking| %>
-  <% if !booking.booking_products.empty?%>
-    <h5 style="padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? '5px' : '10%' %>"> <%= booking.created_at.strftime("%d/%m/%Y") %> </h5>
-    <div style="padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? '5px' : '10%' %>">
-    <table class="table table-hover table-sm" style="width: <%=browser_info.mobile? ? "100%" : "450px"%>;">
-    <thead class="thead-light">
-    <tr>
-      <th class="align-middle" style="width: 15%"> Produit </th>
-      <th class="align-middle" style="width: 30%"> Récolte</th>
-      <% if browser_info.mobile? %>
-        <th class="align-middle" style="width: 4%"> Qté </div>  </th>
-      <% else %>
-        <th class="align-middle" style="width: 4%"> Quantité </div>  </th>
+        <div class="<%= browser_type %>-content" >
+
+          <table class="table table-hover table-sm <%= browser_type %>-table" >
+
+            <thead class="thead-light">
+              <tr>
+                <th class="align-middle" style="width: 15%"> Produit </th>
+                <th class="align-middle" style="width: 30%"> Récolte</th>
+                <th class="align-middle" style="width: 4%"> <%= browser_info.mobile? ? 'Qté' : 'Quantité' %>  </div>  </th>
+                <th class="align-middle" style="width: 5%"></th>
+              </tr>
+            </thead>
+
+            <% booking.booking_products.each do |booking_product| %>
+              <tr id="product-<%= booking_product.product.id %>">
+                <td class="align-middle">  <%= booking_product.product_description  %></td>
+                <td class="align-middle"><%= booking_product.season_year  %></td>  
+                <td class="align-middle" style="text-align:center"><%= booking_product.quantity %></td>
+                <% if booking_product.notified? %>
+                  <td class="align-middle"> <span class="badge badge-success">disponible</span> </td>
+                <% else %>
+                  <td class="align-middle"> <a href= <%="/reservation/#{booking_product.id}"%> class=" badge badge-pill badge-primary" data-method="delete">  annuler</a> </td>
+                <% end %>
+              </tr>  
+            <% end %>
+
+          </table>
+
+        </div>
+
+        </br>
+
       <% end %>
-      <th class="align-middle" style="width: 5%"></th>
-    </tr>
-    </thead>
-    <% booking.booking_products.each do |booking_product| %>
-      <tr id="product-<%= booking_product.product.id %>">
-        <td class="align-middle">  <%= booking_product.product.description  %></td>
-        <td class="align-middle"><%= booking_product.product.season + ' ' + booking_product.product.year.to_s  %></td>  
-        <td class="align-middle" style="text-align:center"><%= booking_product.quantity %></td>
-        <% if booking_product.notified? %>
-          <td class="align-middle"> <span class="badge badge-pill badge-success">disponible</span> </td>
-        <% else %>
-          <td class="align-middle"> <a href= <%="/reservation/#{booking_product.id}"%> class=" badge badge-pill badge-primary" data-method="delete">  annuler</a> </td>
-        <% end %>
-        </td>
-      </tr>
-    <% end %>
-    </table>
-    </div>
-    </br>
+    
   <% end %>
-<% end %>
-</div>
-<% end %>
+
 <% else %>
-<br> 
-  <% if browser_info.mobile? %>
-    <center>
-      <div style="padding-left:0%; padding-right:0%; padding-bottom: &0px">
-        <a class="btn btn-warning link" aria-pressed="true" role="button" data-toggle="modal" data-target="#exampleModal"> Réserver du miel </a>
-      </div>
-    </center>
-  <% else %>
-    <div style="padding-left:12%; padding-right:10%; padding-bottom: 20px">
-        <a class="btn btn-warning btn-lg link" aria-pressed="true" role="button" data-toggle="modal" data-target="#exampleModal"> Réserver du miel </a>
-    </div>
-  <% end %>
-<br>  
+
+  <br> 
+  <div class="<%= browser_type %>-booking">
+    <a class="btn btn-warning <%=browser_info.mobile? ? '' : 'btn-lg' %> link" aria-pressed="true" role="button" data-toggle="modal" data-target="#connectModal"> Réserver du miel </a>
+  </div>
+  <br>  
+
 <% end %>
+
 <br>
-<h4 style="padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? '5px' : '10%' %>"> <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp; Réservations - mode d'emploi </h4>
+<h4 class="<%= browser_type %>-head"> <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp; Réservations - mode d'emploi </h4>
 <br>
 
-<div style="margin-left:<%=browser_info.mobile? ? '5px' : '10%' %>;width:<%=browser_info.mobile? ? "98%" : "550px" %>; text-align:justify;margin-right:200px" class="alert alert-success img-responsive" role="alert">
-
-  <b> <i class="fa fa-forumbee" aria-hidden="true"></i> &nbsp;&nbsp; Pourquoi réserver ?</b>  <br>  <br>
-  <i>Les réservations vous assurent que les pots de miel que vous souhaitez seront bien mis de côté pour vous après chaque récolte.</i> <br>  <br>
-
-  <b> <i class="fa fa-forumbee" aria-hidden="true"></i> &nbsp;&nbsp;J'ai réservé... et maintenant ? </b> <br>  <br>
-  <i> Une fois la récolte du miel terminée, vous serez informé(e) par email et il ne vous restera plus qu'à venir le retirer en main propre.</i> <br>  <br>
-
-  <b> <i class="fa fa-forumbee" aria-hidden="true"></i> &nbsp;&nbsp;Quand les récoltes ont-elles lieu ? </b> <br>  <br>
-  <i> La récolte de printemps a généralement lieu à la mi-mai et celle d'été à la fin du mois de juillet.</i> <br>  <br>
-
-  <b> <i class="fa fa-forumbee" aria-hidden="true"></i> &nbsp;&nbsp;Comment payer les pots réservés ? </b> <br>  <br>
-  <i> Les réservations de pots ne nécessitent aucun prépaiement et le règlement se fait directement auprès d'Antoine au moment de leur réception. </i><br>  <br>
-
-  <b> <i class="fa fa-forumbee" aria-hidden="true"></i> &nbsp;&nbsp;Comment annuler ma réservation ? </b> <br>  <br>
-  <i> Vous pouvez retirer des produits de vos réservations en cliquant sur le bouton 'Annuler' à la droite de chaque réservation. </i>
-</div>
+<%= render "partials/booking_manual" %>
 
 <%= render "partials/connexion_modal" %>

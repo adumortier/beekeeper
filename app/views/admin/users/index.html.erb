@@ -15,11 +15,11 @@
       </tr>
       <% @users.each do |user| %>
         <tr id="user-<%= user.id %>">
-          <td class="align-middle"><%= link_to user.first_name.capitalize + ' ' + user.last_name.capitalize, "/admin/users/#{user.id}" %></td>
+          <td class="align-middle"><%= link_to user.full_name, "/admin/users/#{user.id}" %></td>
           <td class="align-middle"><%= user.email %></td>
-          <td class="align-middle"><%=user.address%>, <%=user.zip_code%> <%=user.city.capitalize%></td>
+          <td class="align-middle"><%=user.full_address %></td>
           <td class="align-middle" style="text-align:center;"><%= user.phone_number %></td>
-          <td class="align-middle" style="text-align:center;"><%= user.created_at.strftime("%d/%m/%Y") %></td>
+          <td class="align-middle" style="text-align:center;"><%= user.published_at %></td>
           <td class="align-middle"> <a href= <%="/admin/users/#{user.id}/edit" %>><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Modifier</a> </td>
           <td class="align-middle"> <a href= <%="/admin/users/#{user.id}" %> data-method="delete"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Effacer</a> </td>
           </td>

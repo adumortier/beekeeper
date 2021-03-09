@@ -1,18 +1,18 @@
 
 <div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
 
-<% if (!@products_spring.empty? || !@products_summer.empty?) %>
+<% if (!products_spring.empty? || !products_summer.empty?) %>
 
-  <h4 class= "<%=browser_info.mobile? ? "mobile-content" : "desktop-content" %>"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Réservez votre miel </h4>
+  <h4 class="<%= browser_type %>-content"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Réservez votre miel </h4>
   
-  <div class= "<%=browser_info.mobile? ? "mobile-content" : "desktop-content" %>">
+  <div class="<%= browser_type %>-content">
     <br>
-    <div class="alert alert-success <%= browser_info.mobile? ? "mobile-promo" : "desktop-promo"%>" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g en cadeau !</div>
+    <div class="alert alert-success <%= browser_type %>-promo" > 5kg achetés&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp;500g en cadeau !</div>
     <br>
     <%= form_for @booking, url: "/reservation", html: { method: :post } do |f| %>
 
-      <%= render "partials/booking_product_form", locals: {products: @products_spring, form: f, booking: @booking, title: 'PRINTEMPS'} %>
-      <%= render "partials/booking_product_form", locals: {products: @products_summer, form: f, booking: @booking, title: 'ÉTÉ'} %>
+      <%= render "partials/booking_product_form", locals: {products: products_spring, form: f, booking: @booking, title: 'PRINTEMPS'} %>
+      <%= render "partials/booking_product_form", locals: {products: products_summer, form: f, booking: @booking, title: 'ÉTÉ'} %>
 
       <% if browser_info.mobile? %>
         <center> <%= f.text_area :comment, :value => @booking[:comment], placeholder: '  Ajouter un commentaire (optionnel)', style: "width:90%; height:60px; font-style:italic;" %></center> 
@@ -31,7 +31,7 @@
   </div>
   <br><br>
 <% else %>
-  <h4 class= "<%=browser_info.mobile? ? "mobile-content" : "desktop-content" %>"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Encore un peu de patience! </h4>
+  <h4 class="<%= browser_type %>-content"> <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>&nbsp;&nbsp; Encore un peu de patience! </h4>
   <br>
   <div style="margin-left:<%=browser_info.mobile? ? '5px' : '10%' %>;width:<%=browser_info.mobile? ? "98%" : "550px" %>; text-align:justify;margin-right:200px" class="alert alert-info img-responsive" role="alert">
     <i>Désolé, il n'y a pas de pots disponibles pour le moment. Revenez nous rendre visite bientôt!</i>

@@ -6,7 +6,6 @@
   <br>
   <%= form_for @user, url: '/users', html: { method: :post } do |f| %>
 
-    
     <p> <%= f.text_field :first_name, :value => @user[:first_name], placeholder: ' Prénom *' %> </p>
     <p> <%= f.text_field :last_name, :value => @user[:last_name], placeholder: ' Nom *' %>  </p>
     <p> <%= f.text_field :email, :value => @user[:email], placeholder: ' Email *' %>  </p>

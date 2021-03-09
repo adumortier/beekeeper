@@ -1,14 +1,14 @@
 
 <% if current_admin %>
+
   <br><br><br><br>
   <h4><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp; Mon Profil</h4>
 
   <br> <br>
 
-  <p><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.first_name.capitalize %> <%=@user.last_name.capitalize %> </p>
-  <p><i class="fa fa-envelope-open-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.email%> </p>
-  <p><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.phone_number%> </p>
-  <p><i class="fa fa-map-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.address%>,&nbsp;&nbsp;<%=@user.zip_code%> &nbsp;<%=@user.city.capitalize%> </p>
+  <div >
+    <%= render "partials/profile_table", locals: {user: @user} %>
+  </div>
   <br>
 
   <a class="btn btn-outline-primary" href='/profile/edit'><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Modifier</a>
@@ -18,27 +18,21 @@
 
   <div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
 
-  <h4 style="padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp; Mon Profil</h4>
+  <h4 class="<%=browser_type%>-head"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp; Mon Profil</h4>
 
-  <br> <br>
-
-  <p style="padding-left: <%=browser_info.mobile? ? 2 : 10%>%; padding-right: <%=browser_info.mobile? ? 2 : 10%>%"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.first_name.capitalize %> <%=@user.last_name.capitalize %> </p>
-  <p style="padding-left: <%=browser_info.mobile? ? 2 : 10%>%; padding-right: <%=browser_info.mobile? ? 2 : 10%>%"><i class="fa fa-envelope-open-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.email%> </p>
-  <p style="padding-left: <%=browser_info.mobile? ? 2 : 10%>%; padding-right: <%=browser_info.mobile? ? 2 : 10%>%"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.phone_number%> </p>
-  <p style="padding-left: <%=browser_info.mobile? ? 2 : 10%>%; padding-right: <%=browser_info.mobile? ? 2 : 10%>%"><i class="fa fa-map-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.address%>,&nbsp;&nbsp;<%=@user.zip_code%> &nbsp;<%=@user.city.capitalize%> </p>
+  <br> 
+  <div class="<%=browser_type%>-content">
+    <%= render "partials/profile_table", locals: {user: @user} %>
+  </div>
+  
   <br>
 
-  <div style="padding-left: <%=browser_info.mobile? ? 2 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%">
-  <% if browser_info.mobile? %>
-    <center>
+  <div class="<%=browser_type%>-content">
+    <% if browser_info.mobile? %> <center> <% end %>
     <a class="btn btn-primary" href='/profile/edit'><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; Modifier votre profil&nbsp;</a>
     <br><br>
     <a class="btn btn-outline-secondary" href='/user/password/edit'><i class="fa fa-lock" aria-hidden="true"></i>&nbsp; Changer mot de passe</a> 
-    </center>
-  <% else %>
-    <a class="btn btn-primary" href='/profile/edit'><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; Modifier votre profil&nbsp;</a>
-    <br><br>
-    <a class="btn btn-outline-secondary" href='/user/password/edit'><i class="fa fa-lock" aria-hidden="true"></i>&nbsp; Changer mot de passe</a> 
-  <% end %>
+    <% if browser_info.mobile? %> </center> <% end %>
   <div>
+
 <% end %>

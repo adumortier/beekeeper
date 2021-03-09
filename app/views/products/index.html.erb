@@ -1,8 +1,8 @@
 <div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
 
-<h4 style="padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? 0 : 10%>%"> <i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;&nbsp; Les Produits d'Antoine</h4> 
+<h4 class="<%=browser_type %>-head"> <i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;&nbsp; Les Produits d'Antoine</h4> 
 <br> 
-<div style="padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? 0 : 10%>%" >
+<div class="<%=browser_type %>-content">
 
   <div class="card img-responsive border-white">
     <div class="card-header h5"> Le miel de printemps </div>
@@ -53,35 +53,11 @@
     <% if current_user %>
       <a class= "<%= browser_info.mobile? ? "btn btn-warning link" : "btn btn-warning btn-lg link" %>" role="button" href="/reservation/new"> Réservez du miel</a>
     <% else %>
-      <a class= "<%= browser_info.mobile? ? "btn btn-warning link" : "btn btn-warning btn-lg link" %>" role="button" aria-pressed="true" data-toggle="modal" data-target="#connectModal">Réservez du miel</a>
+      <a class="btn btn-warning <%=browser_info.mobile? ? '' : 'btn-lg' %> link" aria-pressed="true" role="button" data-toggle="modal" data-target="#connectModal"> Réserver du miel </a>
     <% end %>
     <br> <br>
   </center>
 
 </div>
 
-
-<%# MODAL TO INVITE USERS TO CONNECT %>
-<div class="modal" id="connectModal" tabindex="-1" role="dialog" aria-labelledby="connectModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h5 class="modal-title w-100" id="connectModalLabel">Connectez-vous pour réserver...</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-footer justify-content-between" style='text-align:center'>
-        <div class="modal-text">
-          Je n'ai pas encore de compte <br><br>
-          <a href="/register" class="btn btn-outline-primary" role="button" aria-pressed="true">Je m'inscris</a>
-          <br><br>
-          ~  OU  ~
-          <br><br>
-          J'ai déjà un compte <br><br>
-          <a href="/login" class="btn btn-outline-primary" role="button" aria-pressed="true">Je me connecte</a>
-        </div>  
-      </div>
-    </div>
-  </div>
-</div>
+<%= render "partials/connexion_modal" %>
