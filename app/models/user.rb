@@ -8,13 +8,14 @@ class User < ApplicationRecord
   validates_presence_of :address, message: 'adresse'
   validates_presence_of :city, message: 'ville'
   validates_presence_of :zip_code, message: 'code postal'
+  validates_format_of :zip_code, :with => /\d{5}/, :message => 'code postal à 5 chiffres'
   validates_presence_of :email, message: 'email'
   validates :phone_number, telephone_number: {country: :FR, types: [:fixed_line, :mobile], message: "Le numéro de téléphone n'est pas valide."}
 
-  validates :email, uniqueness: { message: "Cette adresse email est déjà utilisée."}
+  validates :email, uniqueness: { message: 'Cette adresse email est déjà utilisée.'}
     
   
-  validates_confirmation_of :password, message: "Le mot de passe et la confirmation doivent être identiques."
+  validates_confirmation_of :password, message: 'Le mot de passe et la confirmation doivent être identiques.'
 
   has_many :bookings, dependent: :destroy
   has_many :posts

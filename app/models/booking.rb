@@ -7,6 +7,8 @@ class Booking < ApplicationRecord
 
   validates_presence_of :comment, allow_blank: true
 
+  scope :user_bookings, ->(email) { joins(:user).where('email = ?', email) }
+
   def has_comment?
     return true unless (comment.nil? || comment == '')
   end
@@ -17,5 +19,5 @@ class Booking < ApplicationRecord
       booking_products.create(product: product, quantity: quantity)
     end
   end
-  
+
 end
