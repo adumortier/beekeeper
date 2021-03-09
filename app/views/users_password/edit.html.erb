@@ -1,11 +1,12 @@
 <center>
 <div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
-  <h3> Modifiez votre mot de passe  </h3>
+  <h4> Modifiez votre mot de passe  </h4>
   <br>
   <%= form_with model: @user, url: '/user/password', local: true, method: :patch do |f| %>
     <p> <%= f.password_field :password, :value => @user[:password], placeholder: 'Nouveau mot de passe *'  %> </p>
-    <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: 'Confirmation *'  %> </p>
+    <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: 'Confirmation mot de passe *'  %> </p>
     <br>
+    <a class="btn btn-outline-secondary" href="/profile"> Annuler</a>
     <%= f.submit "Enregistrer", class: "btn btn-primary" %>
   <% end %>
  </div>

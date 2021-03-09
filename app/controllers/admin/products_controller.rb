@@ -15,18 +15,12 @@ class Admin::ProductsController < Admin::BaseController
   
   def create
     @product = Product.create(product_params)
-    if @product.valid?
-      flash[:succeeded] = "Votre nouveau produit a été crée"
-      redirect_to admin_products_path
-    else
-      flash[:error] = @product.errors.full_messages.to_sentence
-      redirect_to admin_products_path
-    end
+    @product.valid? ? notify_create : notify_error(@product)
   end
   
   def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
+    product = Product.find(params[:id])
+    product.destroy
     redirect_to admin_products_path
   end
   
@@ -40,6 +34,16 @@ class Admin::ProductsController < Admin::BaseController
 
   def product_params
     params.require('product').permit(:description, :price, :year, :season, :status)
+  end
+
+  def notify_create
+    flash[:success] = 'Votre nouveau produit a été crée.'
+    redirect_to admin_products_path
+  end
+
+  def notify_error(product)
+    flash[:danger] = product.errors.full_messages.to_sentence
+    redirect_to admin_products_path
   end
 
 end

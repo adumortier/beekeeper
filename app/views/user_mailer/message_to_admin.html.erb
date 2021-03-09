@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+
+  <body>
+    Bonjour Antoine, <br>
+
+    <p> <%= @user.first_name + ' ' + @user.last_name %> a passé la commande suivante : </p>
+
+    <p> Description : </p>
+
+    <ul>
+    <% @booking.booking_products.each do |booking_product| %>
+      <% unless booking_product.quantity.nil? || booking_product.quantity == 0%>
+        <li> <%= booking_product.quantity.to_s%>  &#215; <%= booking_product.product.description + ' - ' + booking_product.product.season + ' ' + booking_product.product.year.to_s %> </li>
+      <% end %>
+    <% end %>
+    </ul>
+
+    <p> Et vous a laissé le message ci-dessous : </p>
+
+    <% if @booking.has_comment? %>
+      <p> <i> " <%= @booking.comment %> "</i> </p>
+    <% end %>
+
+    Répondre à <%= mail_to @user.email, "#{@user.first_name + ' ' + @user.last_name }", subject: "merci pour la commande de miel et le message !" %>
+
+    <p> Cordialement, </p>
+
+    <p> Antoine et ses filles </p>
+
+    <% if Rails.env.production? %>
+      <%= link_to "Les Filles d'Antoine", "https://www.lesfillesdantoine.com" %>  
+    <% else %>
+      <%= link_to "Les Filles d'Antoine", "http://localhost:3000" %>  
+    <% end %>
+
+  </body>
+
+</html>

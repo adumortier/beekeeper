@@ -2,13 +2,32 @@
   <div class=<%=browser_info.mobile? ? "top-nav-content-mobile" : "top-nav-content" %>> </div>
 
   <h3> Mot de passe oublié ?</h3>
-  <br>
-  <p> Entrez l'adresse mail utilisée lors de votre inscription. </p>
-  <p> Vous recevrez un lien pour renouveler votre mot de passe. </p>
+  <br><br>  
   
+  <div class="alert alert-primary password-reset" role="alert">
+    <p> <i class="fa fa-arrow-down" aria-hidden="true"></i> &nbsp;Entrez l'email de votre compte. </p>
+  </div>
+  
+  <br>
   <%= form_tag passwords_path, :method => :post do %>
       <%= text_field_tag :email, params[:email], placeholder: ' Email *' %>
+      
       <br><br>  
+
       <p> <%= submit_tag "Continuer", class: "btn btn-primary"  %> </p>
   <% end %>
-</center>
+<br><br>  
+  <div class="alert alert-primary password-reset" role="alert">
+    <p> <i class="fa fa-arrow-down" aria-hidden="true"></i> &nbsp;Recevez notre email. </p>
+  </div>
+  <br>
+  <div class="alert alert-primary password-reset" role="alert">
+    <p> <i class="fa fa-arrow-down" aria-hidden="true"></i> &nbsp; Cliquez sur le lien de réinitialisation. </p>
+  </div>
+  <br>
+  <div class="alert alert-primary password-reset" role="alert">
+    <p> <i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp; Entrez un nouveau mot de passe.</p>
+  </div>
+  <br>
+
+</center> 

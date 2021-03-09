@@ -1,11 +1,16 @@
 <center>
 
-<%= form_for @user, url: '/admin/users', html: { method: :post } do |f| %>
+  <br><br><br><br>
+  <h3> Créez le compte </h3>
+  <br>
+  <%= form_for @user, url: '/admin/users', html: { method: :post } do |f| %>
     <p> <%= f.text_field :first_name, :value => @user[:first_name], placeholder: ' Prénom *' %> </p>
     <p> <%= f.text_field :last_name, :value => @user[:last_name], placeholder: ' Nom *' %>  </p>
     <p> <%= f.text_field :email, :value => @user[:email], placeholder: ' Email *' %>  </p>
-    <p> <%= f.text_field :phone_number, :value => @user[:phone_number], placeholder: ' Téléphone *' %>  </p>
+    <p> <%= f.text_field :phone_number, :data => {:mask=> '09 99 99 99 99'}, :value => @user[:phone_number], placeholder: ' Téléphone *' %>  </p>
     <p> <%= f.text_field :address, :value => @user[:address], placeholder: ' Adresse *' %>  </p>
+    <p> <%= f.text_field :city, :value => @user[:city], placeholder: ' Ville *' %>  </p>
+    <p> <%= f.text_field :zip_code, :value => @user[:zip_code], placeholder: ' Code postal *' %>  </p>
     <p> <%= f.password_field :password, :value => @user[:password], placeholder: ' Mot de passe *' %>  </p>
     <p> <%= f.password_field :password_confirmation, :value => @user[:password_confirmation], placeholder: ' Mot de passe *' %>  </p>
     <br>

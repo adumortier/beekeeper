@@ -3,17 +3,16 @@
 
   <h4><i class="fa fa-address-card" aria-hidden="true"></i> Profil client </h4>
   <br><br>
-  <p><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.first_name.capitalize %> <%=@user.last_name.capitalize %> </p>
-  <p><i class="fa fa-envelope-open-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.email%> </p>
-  <p><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.phone_number%> </p>
-  <p><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.address%>,&nbsp;&nbsp;<%=@user.zip_code%> &nbsp;&nbsp;<%=@user.city.capitalize%> </p>
+  <div>
+    <%= render "partials/profile_table", locals: {user: @user} %>
+  </div>
   <br>
   <a href= <%="/admin/users/#{@user.id}/edit" %> class="btn btn-outline-secondary" %> Modifier</a>
   <br><br><br> 
 
 <h4><i class="fa fa-shopping-basket" aria-hidden="true"></i> Historique des réservations </h4>
  <div class="my-5">
-    <table class="table table-hover" style="width: 80%">
+    <table class="table table-hover" style="width: 840px">
 
     <tr>
       <th class="align-middle">Date</th>
@@ -25,12 +24,12 @@
 
     <% @bookings.each do |booking| %>
       <% booking.booking_products.each do |booking_product| %>
-        <% if booking_product.quantity != 0 %>
+        <% unless booking_product.quantity.zero? %>
           <tr>
-            <td class="align-middle"><%= booking_product.created_at.strftime("%d/%m/%Y") %></td>
-            <td class="align-middle"><%= booking_product.product.description %></td> 
-            <td class="align-middle"><%= booking_product.product.season %></td>
-            <td class="align-middle" style="text-align:center;"><%= booking_product.product.year %></td>
+            <td class="align-middle"><%= booking_product.published_at %></td>
+            <td class="align-middle"><%= booking_product.product_description %></td> 
+            <td class="align-middle"><%= booking_product.product_season %></td>
+            <td class="align-middle" style="text-align:center;"><%= booking_product.product_year %></td>
             <td class="align-middle" style="text-align:center;"><%= booking_product.quantity %></td>
           </tr>
         <% end %>

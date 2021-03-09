@@ -10,7 +10,7 @@
 
 <% unless @posts.empty? %>
 
-  <h3 style="font-family: 'lato-bold';padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%; padding-bottom: <%=browser_info.mobile? ? 25 : 20%>px">  <i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;&nbsp; Les news... </h3>
+  <h3 style="font-family: 'lato-bold';padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? 0 : 10%>%; padding-bottom: <%=browser_info.mobile? ? 25 : 20%>px">  <i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;&nbsp; Les news... </h3>
 
   <% @posts.each do |post| %>
     <div id= <%="post-#{post.id}" %> style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%" >
@@ -27,15 +27,14 @@
           <%= post.content %>
         </div>
         <br>
+        
         <div style="center;">
-          <%= image_tag(post.images[0], size: '500', class: "img-responsive", style: "padding-bottom: 30px; padding-left: 30px; padding-right: 30px;") %>
+          <%= image_tag(post.images[0], size: '500', class: "img-responsive", style: "padding-bottom: 10px; padding-left: 30px; padding-right: 30px;") %>
         </div>
+
       </div>
       <br> <br>
     </div>
     
   <% end %>
 <% end %>
-
-
-

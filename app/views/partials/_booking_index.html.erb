@@ -4,15 +4,17 @@
     <% else %>
         <h5> Récolte <%= locals[:season] %> <%=locals[:products].first.year %></h5>
         <div class="my-5"></div>
-        <table class="table table-hover" style="width: 80%">
+        <table class="table table-hover" style="width: 840px">
           <tr>
-            <th class="align-middle" style="width: 200px"><%= sortable "printemps", "users.last_name", "Client" %></th>
-            <th class="align-middle"><%= sortable "printemps", "users.email", "Email" %></th>
+            <th class="align-middle" style="width: 200px"><%= sortable locals[:season], "users.last_name", "Client" %></th>
+            <th class="align-middle"><%= sortable locals[:season], "users.email", "Email" %></th>
             <th class="align-middle"></th>
-            <th class="align-middle" style="text-align:center;"><%= sortable "printemps", "created_at", "Date commande" %></th>
+            <th class="align-middle" style="text-align:center;"><%= sortable locals[:season], "created_at", "Date commande" %></th>
             <% locals[:products].each do |product| %>
               <th class="align-middle" style="text-align:center;"><%= product.description %></th>
             <% end %>
+            
+            <th class="align-middle" style="text-align:center;"></th> 
           </tr>
           <% locals[:bookings].each do |booking| %>
             <tr id="booking-<%= booking.id %>">
@@ -25,14 +27,21 @@
               <% end %>  
 
               <td class="align-middle" style="text-align:center;"><%= booking.created_at.strftime("%d/%m/%Y") %></td>
+              <% book_prod = nil %> 
               <% locals[:products].each do |product| %>
                 <% quantity = 0 %> 
                 <% booking.booking_products.each do |booking_product| %>
                   <% if booking_product.product.season == locals[:season] && product.description == booking_product.product.description %>
                     <% quantity = booking_product.quantity %> 
+                    <% book_prod = booking_product %> 
                   <% end %>
                 <% end %>
                 <td class="align-middle" style="text-align:center;"><%= quantity %></td>
+              <% end %>
+              <% if book_prod.pending? %>
+                <td class="align-middle" style="text-align:center;"><%= link_to '<i class="fa fa-envelope-o" aria-hidden="true"></i>'.html_safe, "/admin/users/#{booking.user.id}/reservation/#{book_prod.id}", method: :patch %> </td>
+              <% else %>
+                <td class="align-middle" style="text-align:center;"><span class="badge badge-pill badge-success">envoyé</span>  </td>
               <% end %>
           <% end %>
         </table>

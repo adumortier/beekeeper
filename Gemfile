@@ -11,7 +11,7 @@ gem 'rails', '~> 5.2.0'
 gem 'telephone_number'
 gem 'bootsnap', require: false
 gem 'image_processing'
-
+gem "mini_magick"
 gem 'google-cloud-storage', '~> 1.11', require: false
 
 gem 'dotenv-rails', '~> 2.7'
@@ -24,6 +24,8 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'figaro'
+gem 'draper'
+gem 'scout_apm'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

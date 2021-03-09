@@ -1,0 +1,41 @@
+<br>
+<br>
+
+<center>
+
+<%= form_with model: @booking, local: true, url: "/admin/users/#{@booking.user.id}/reservation/#{@booking.id}", method: :patch do |f| %>
+  <div class="my-5">
+    <table class="table table-hover" style="width:40%">
+      <tr>
+        <th class="align-middle" style="width: 200px"> RÉCOLTE PRINTEMPS <%= Time.new.year %> </th>
+        <th class="align-middle" style="width: 15px"> Quantité </th>
+      </tr>
+      <% @products_spring.each do |product| %>
+        <tr id="product-<%= product.id %>">
+          <td class="align-middle"><%= f.label product.description %></td>
+          <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0' %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+ <br><br>
+
+ <div class="my-5">
+    <table class="table table-hover" style="width:40%">
+      <tr>
+        <th style="width: 200px"> RÉCOLTE ÉTÉ <%= Time.new.year %> </th>
+        <th style="width: 15px"> Quantité </th>
+      </tr>
+      <% @products_summer.each do |product| %>
+        <tr id="product-<%= product.id %>">
+          <td class="align-middle"><%= f.label product.description %></td>
+          <td class="align-middle"><%= f.number_field (product.description + '_' + product.season).to_sym, :value => @booking[(product.description + '_' + product.season).to_sym], placeholder: '0' %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <%= f.submit "Confirmer", class: "btn btn-primary" %>
+<% end %>
+
+</center>

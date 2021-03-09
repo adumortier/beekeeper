@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html style="font-size: 80%;">
+
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>Les Filles d'Antoine</title>
@@ -10,92 +11,30 @@
     <%= favicon_link_tag asset_path('logo.png') %>
   </head>
 
-    <% if current_user %>
-      <% if current_user.admin? %>
-        <%= render "partials/admin_nav" %>
-        <body class="main" >
-        <% flash.each do |type, msg| %>
-          <div class="alert alert-admin alert-info">
-            <%= msg %>
-          </div>
-        <% end %>
-          <%= yield %>
-        </body>
-      <% else %>
-        <% if browser_info.mobile? %>
-          <%= render "partials/current_user_mobile_nav" %>
-          <% flash.each do |type, msg| %>
-            <div class="alert alert-info alert-fixed-mobile">
-              <%= msg %>
-            </div>
-          <% end %>
-          <body id="main" style="padding-right: 5px; padding-left: 5px;" >
-          <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
-          <script>
-            function openNav() {
-              document.getElementById("mySidenav").style.width = "100%";
-            }
-            /* Close/hide the sidenav */
-            function closeNav() {
-              document.getElementById("mySidenav").style.width = "0";
-            }
-          </script>
-          <%= yield %>
-          </body>
-
-        <% else %>
-          <%= render "partials/current_user_nav" %>
-            <% flash.each do |type, msg| %>
-              <div class="alert alert-<%=type%> alert-fixed" >
-                <%= msg %>
-              </div>
-            <% end %>
-          <body id="main">
-            <%= yield %>
-          </body>
-        <% end %>  
-      <% end %>  
-
-    <% else %>
-      <% if browser_info.mobile? %>
-        <%= render "partials/visitor_mobile_nav" %>
-        <% flash.each do |type, msg| %>
-            <div class="alert alert-info alert-fixed-mobile">
-              <%= msg %>
-            </div>
-          <% end %>
-        <body id="main" style="padding-right: 5px; padding-left: 5px;" >
-        <span class="reg-content-text" style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; menu</span>
-        <script>
-          function openNav() {
-            document.getElementById("mySidenav").style.width = "100%";
-          }
-          /* Close/hide the sidenav */
-          function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-          }
-        </script>
-        <%= yield %>
-        </body>
-
-      <% else %>
-        <%= render "partials/visitor_nav" %>
-        <body id="main">
-        <% flash.each do |type, msg| %>
-          <div class="alert alert-<%=type%> alert-fixed" >
-            <%= msg %>
-          </div>
-        <% end %>
-            <%= yield %>
-          <div id="page-container">
-            <div id="content-wrap">
-            
-            </div>
-              <%= render "partials/footer"%>
-          </div>
-        </body>
-      <% end %>
-
-    <% end %>
+  <% if current_admin %>
+    <%= render "partials/navs/admin_user_nav" %>
+    <%= render "partials/admin_user_body" %>
+  <% elsif mobile_user? %>
+    <%= render "partials/navs/mobile_user_nav" %>
+    <%= render "partials/mobile_body" %>
+  <% elsif desktop_user? %>
+    <%= render "partials/navs/desktop_user_nav" %>
+    <%= render "partials/desktop_body" %>
+  <% elsif mobile_visitor? %>
+    <%= render "partials/navs/mobile_visitor_nav" %>
+    <%= render "partials/mobile_body" %>
+  <% else %>
+    <%= render "partials/navs/desktop_visitor_nav" %>
+    <%= render "partials/desktop_body" %>
+  <% end %>
+  
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "100%";
+    }
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
 
 </html>

@@ -1,0 +1,16 @@
+<% flash.each do |type, msg| %>
+  <div class="alert alert-<%=type%> alert-fixed-mobile ">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <%= msg %>
+  </div>
+<% end %>
+
+<body id="main">
+
+  <div class="mobile-top-bar">
+    <span class="reg-content-text top-menu-mobile" onclick="openNav()">&#9776; menu <span style= "padding-left:20%"> <%= image_tag "logo.png",:style => "width:35px" %> </span> </span>
+  </div>
+  
+  <%= yield %>
+
+</body>

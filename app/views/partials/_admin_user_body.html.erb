@@ -1,0 +1,12 @@
+<body class="main_admin" >
+
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-admin alert-<%=type%>">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <%= msg %>
+    </div>
+  <% end %>
+
+  <%= yield %>
+
+</body>

@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "tempusdominus-bootstrap-4.css";
+// @import "tempusdominus-bootstrap-4.css";
 @import url(https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @import url(https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css);
 @import "bootstrap";
@@ -44,8 +44,8 @@
     width:80%;
     text-align: center;
     font-family: 'pacifico';
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
 .alert-fixed {
@@ -62,11 +62,63 @@
     font-family: 'lato-bold';
 }
 
+.alert-fixed-mobile {
+    position:sticky; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:0; 
+    margin-top: 0px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.alert-admin {
+  top: 20px; 
+  width: 1000px;
+  z-index:9999;   
+  position:fixed; 
+  border-radius:0px;
+  margin-left: 0%;
+  margin-right: 50%;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: 'lato-bold';
+}
+
 .popover {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.password-reset {
+  width: 270px; 
+  text-align: left;
+}
+
+.active {
+  color: #000;
+  border-bottom: 2px solid #664110;
+  padding-bottom: 0px;
+}
+
+.mobile-top-bar {
+  background-color: #febf43; 
+  padding-left: 5px; 
+  margin-left: -5px; 
+  margin-right: -5px; 
+  padding-bottom: 5px;
+}
+
+.mobile-table {
+  width: 100%;
+}
+
+.desktop-table {
+  width: 450px;
 }
 
 textarea {
@@ -102,27 +154,6 @@ input[type=number] {
   text-align: center;
 }
 
-.alert-fixed-mobile {
-    position:sticky; 
-    top: 0px; 
-    left: 0px; 
-    width: 100%;
-    z-index:0; 
-    border-radius:0px;
-    margin-top: 35px;
-}
-
-// .hero-text-style-mobile {
-//   color: rgb(255, 255, 255);
-//   font-size: 40px;
-//   padding-top: 8%;
-//   padding-right: 200px;
-//   padding-bottom: 7%;
-//   padding-left: 200px;
-//   text-align: center;
-//   font-family: 'pacifico';
-// }
-
 #bg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), asset-data-url("background.jpg");
   width: 100%;
@@ -142,7 +173,6 @@ input[type=number] {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;
-  margin-top: 20px;
   margin-bottom: 25px;
 }
 
@@ -168,8 +198,26 @@ input[type=number] {
 }
 
 .top-nav-content-mobile {
-  margin-top: 45px;
+  margin-top: 25px;
 }
+
+.top-menu-mobile {
+  padding-left: 5px; 
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.mobile-head {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.desktop-head {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+
 
 #page-container {
   position: relative;
@@ -184,6 +232,49 @@ input[type=number] {
   size: 200;
   background-repeat: no-repeat;
   position: relative;
+  
+}
+
+.mobile-promo {
+  width: 90%; 
+  font-weight:bold; 
+  text-align:center; 
+  font-size:15px;
+  margin: auto;
+}
+
+.mobile-booking {
+  padding-left:0%;
+  padding-right:0%;
+  padding-bottom: 0px;
+  text-align:center; 
+}
+
+.desktop-booking {
+  padding-left:12%; 
+  padding-right:10%; 
+  padding-bottom: 20px;
+}
+
+.desktop-promo {
+  width: 450px; 
+  font-weight:bold; 
+  text-align:center; 
+  font-size:15px
+}
+
+.mobile-content {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.text-area-desktop {
+  width:450px;
+}
+
+.desktop-content {
+  padding-left:10%;
+  padding-right:10%;
 }
 
 .reg-content-text {
@@ -208,17 +299,29 @@ h2,h3,h4,h5,h6 {
   text-align: justify;
 }
 
+.product-card-content {
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: justify;
+  float:right;
+}
+
+.modal-text {
+  padding-top:30px; 
+  padding-bottom:30px;
+}
+
 .nav-link {
-      padding: 10px 20px 10px 0px;
-      text-decoration: none;
-      font-size: 15px;
-      color: #818181;
-      display: block;
+  padding: 0px 4px 0px 0px;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+  white-space: nowrap;
 }
 
 .link {
-      text-decoration: none;
-      color: #818181;
+  text-decoration: none;
+  color: #818181;
 }
 
 .navbar-nav > li{
@@ -231,12 +334,13 @@ h2,h3,h4,h5,h6 {
   height: 100%;
   width: 270px;
   position: fixed;
+  float: left;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #febf43;
   overflow-x: hidden;
-  padding-top: 0px;
+  padding-top: 30px;
 }
 
 .sidenav a {
@@ -249,27 +353,6 @@ h2,h3,h4,h5,h6 {
 
 .btn-warning {
     background-color: #febf43 !important;
-}
-
-.sidenav_visitor {
-  height: 100%;
-  width: 0px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color:#febf43;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.sidenav_visitor a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 15px;
-  color: #818181;
-  display: block;
-  text-align:center;
 }
 
 .sidenav_mobile {
@@ -298,31 +381,17 @@ h2,h3,h4,h5,h6 {
   color: #f1f1f1;
 }
 
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
 .main {
-  margin-left: 300px;   /* Same as the width of the sidenav */
-  margin-top: 70px;     /* Same as the width of the sidenav */
+  margin-left: 300px; 
+  margin-top: 70px;
   padding: 0px 10px;
 }
 
-.alert-admin {
-  top: 0px; 
-  left: 0px; 
-  width: 100%;
-  z-index:9999;   
-  position:fixed; 
-  border-radius:0px;
-  margin-top: 40px;
-  margin-left: 310px;
+.main_admin {
+  margin-left: 280px; 
+  margin-top: 70px;
+  padding: 0px 20px ;
 }
-
 
 #main {
   transition: margin-left .5s;

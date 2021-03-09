@@ -9,10 +9,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@product1 = Product.create!(description: 'pot de 1kg', price: 13.5, year: Time.new.year, season: 'printemps', status: 'active')
-@product2 = Product.create!(description: 'pot de 500g', price: 7, year: Time.new.year, season: 'printemps', status: 'active')
-@product3 = Product.create!(description: 'pot de 1kg', price: 14.0, year: Time.new.year, season: 'été', status: 'active')
-@product4 = Product.create!(description: 'pot de 500g', price: 7, year: Time.new.year, season: 'été', status: 'active') 
+@product1 = Product.create!(description: 'pot 1kg', price: 13.5, year: Time.new.year, season: 'printemps', status: 'active')
+@product2 = Product.create!(description: 'pot 500g', price: 7, year: Time.new.year, season: 'printemps', status: 'active')
+@product3 = Product.create!(description: 'pot 1kg', price: 14.0, year: Time.new.year, season: 'été', status: 'active')
+@product4 = Product.create!(description: 'pot 500g', price: 7, year: Time.new.year, season: 'été', status: 'active') 
 
 @admin_user = User.create!(first_name: "Antoine",
                                 last_name: "Dumortier",
