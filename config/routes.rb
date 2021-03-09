@@ -2,7 +2,6 @@
 Rails.application.routes.draw do
 
   get '/', to: 'welcome#index', as: 'root'
-  get '/about', to: 'about#index'
   
   get '/register', to: 'users#new'
   post '/users', to: 'users#create'
@@ -29,10 +28,9 @@ Rails.application.routes.draw do
   get '/reservation', to: 'reservations#index'
   get '/reservation/new', to: 'reservations#new'
   post '/reservation', to: 'reservations#create'
-  delete '/reservation/:id', to: 'reservations#destroy'
+  delete '/reservation/:id', to: 'booking_products#destroy'
 
   namespace :admin do
-    get '/', to: 'dashboard#index'
     get '/bookings', to: 'bookings#index'
 
     resources :products, except: :show
@@ -44,5 +42,7 @@ Rails.application.routes.draw do
     get '/users/:user_id/reservation/:booking_id/edit', to: 'bookings#edit'
     patch '/users/:user_id/reservation/:booking_id', to: 'bookings#update'
   end
+
+  match '*path', to: 'static_pages#not_found', via: :all,  constraints: -> (req) { req.fullpath !~ /^\/rails\/active_storage\/blobs\/.*/ } 
 
 end
