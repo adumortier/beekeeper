@@ -3,15 +3,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :current_admin, :login, :bookings_spring, :bookings_summer, :browser_info, :mobile_user?, :desktop_user?, :mobile_visitor?, :current_class?
+  helper_method :current_user, :current_admin, :login, :bookings_spring, :bookings_summer, :browser_info, :mobile_user?, :desktop_user?, :mobile_visitor?, :current_class?, :browser_type, :products_spring, :products_summer
 
   def current_user
     user = session[:user]
     @current_user ||= User.find(user) if user
   end
 
-  def login(user)
-    session[:user] = user.id
+  def session_store(id)
+    session[:user] = id
   end
 
   def current_admin
@@ -38,9 +38,22 @@ class ApplicationController < ActionController::Base
     @bookings_summer ||= Booking.joins(:products).where(products: {season:'été'}).where(products: {year:Time.new.year}).distinct
   end
 
+  def products_spring
+    @products_spring ||= Product.current_year.spring.active
+  end
+
+  def products_summer
+    @products_summer ||= Product.current_year.summer.active
+  end
+
   def browser_info
     Browser::Base.include(Browser::Aliases)
     Browser.new(request.env["HTTP_USER_AGENT"])
+  end
+
+  def browser_type
+    Browser::Base.include(Browser::Aliases)
+    @browser_type ||= Browser.new(request.env["HTTP_USER_AGENT"]).mobile? ? 'mobile' : 'desktop'
   end
 
   def current_class?(*test_paths)
@@ -66,19 +79,11 @@ class ApplicationController < ActionController::Base
   end
 
   def load_users
-    User.where(role: 0).order("#{params[:sort]} #{params[:direction]}")
+    User.where(role: 0).order("#{params[:sort]} #{params[:direction]}").decorate
   end
 
   def require_current_user
-    render file: "/public/403" unless current_user
+    render file: '/public/403' unless current_user
   end
-
-  protected
-
-#  def set_cache_buster
-#    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-#    response.headers["Pragma"] = "no-cache"
-#    response.headers["Expires"] = "#{1.year.ago}"
-#  end
 
 end

@@ -8,19 +8,23 @@ class UsersPasswordController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
-      flash[:success] = 'Votre mot de passe a été mis à jour'
-      redirect_to profile_path and return
-    else 
-      flash[:danger] = 'Le mot de passe et la confirmation doivent être identiques.'
-      redirect_to user_password_edit_path
-    end
+    current_user.update(user_params) ? notify_update : notify_error
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :address, :city, :state, :zip_code, :email, :password, :password_confirmation)
+    params.require(:user).permit(:password, :password_confirmation)
+  end
+
+  def notify_update
+    flash[:success] = 'Votre mot de passe a été mis à jour.'
+    redirect_to profile_path
+  end
+
+  def notify_error
+    flash[:danger] = 'Le mot de passe et la confirmation doivent être identiques.'
+    redirect_to user_password_edit_path
   end
 
 end

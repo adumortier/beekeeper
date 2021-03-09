@@ -3,8 +3,8 @@
 class Admin::BookingsController < Admin::BaseController
 
   def index
-    @spring_products = Product.spring
-    @summer_products = Product.summer
+    @products_spring = Product.spring
+    @products_summer = Product.summer
     current_year = Time.new.year
     if params[:sort].present?
       season = params[:season]
@@ -27,7 +27,7 @@ class Admin::BookingsController < Admin::BaseController
   def create
     user = User.find(params[:id])
     @booking = user.bookings.create
-    @booking.add_booking_products(Product.current, booking_params)
+    @booking.add_booking_products(Product.current_year, booking_params)
     user.send_admin_booking_confirmation(@booking)
     flash['success'] = "Un email a été envoyé à #{user.first_name + ' ' + user.last_name} pour confirmer la réservation."
     redirect_to admin_user_path
