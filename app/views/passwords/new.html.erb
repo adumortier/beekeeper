@@ -8,11 +8,11 @@
     <p> <i class="fa fa-arrow-down" aria-hidden="true"></i> &nbsp;Entrez l'email de votre compte. </p>
   </div>
   
-  <br>
   <%= form_tag passwords_path, :method => :post do %>
       <%= text_field_tag :email, params[:email], placeholder: ' Email *', style: "vertical-align:middle" %> &nbsp;&nbsp;
       <%= submit_tag "Continuer", class: "btn btn-primary"  %> 
   <% end %>
+  <br>
   <br>
   <div class="alert alert-primary password-reset" role="alert">
     <p> <i class="fa fa-arrow-down" aria-hidden="true"></i> &nbsp;Recevez notre email. </p>
