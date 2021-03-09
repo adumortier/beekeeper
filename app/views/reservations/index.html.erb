@@ -43,7 +43,7 @@
                 <% if booking_product.notified? %>
                   <td class="align-middle"> <span class="badge badge-success">disponible</span> </td>
                 <% else %>
-                  <td class="align-middle"> <a href= <%="/reservation/#{booking_product.id}"%> class=" badge badge-pill badge-primary" data-method="delete">  annuler</a> </td>
+                  <td class="align-middle" style="text-align:center"> <a href= <%="/reservation/#{booking_product.id}"%>  data-confirm="Vous allez effacer ce produit de la réservation. Êtes vous sûr(e) ?" data-method="delete">  <i class="fa fa-trash-o" aria-hidden="true"></i> </a> </td>
                 <% end %>
               </tr>  
             <% end %>
