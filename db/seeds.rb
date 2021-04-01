@@ -75,7 +75,7 @@
                                 last_name: "Dumortier",
                                 phone_number: "0323380681",
                                 email: "elisabeth@example.com",
-                                address: "4 rue du Touquet, 02300 Villequier-Aumont",
+                                address: "4 rue du Touquet",
                                 city: "Villequier-Aumont",
                                 zip_code: "02300",
                                 password: "pass",
@@ -85,3 +85,13 @@
 @booking6.booking_products.create!(product: @product1, quantity: 1)
 @booking6.booking_products.create!(product: @product2, quantity: 1)
 
+@user5 = User.create!(first_name: "Philippe",
+                                last_name: "Daillan",
+                                phone_number: "0323380681",
+                                email: "philippe@example.com",
+                                address: "5 rue du Marché",
+                                city: "Paris",
+                                zip_code: "75009",
+                                password: "pass",
+                                role: 0
+                              )
