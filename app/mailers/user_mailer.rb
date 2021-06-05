@@ -50,7 +50,7 @@ class UserMailer < ApplicationMailer
     mail(
       reply_to: ENV["GMAIL_USERNAME"],
       to: ENV["GMAIL_USERNAME"],
-      subject: @user.first_name + ' ' + @user.last_name + ' vous a envoyé un message !'
+      subject: @user.first_name + ' ' + @user.last_name + ' vous a réservé des pots !'
     )
   end
 
