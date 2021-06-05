@@ -48,6 +48,4 @@ class PasswordsController < ApplicationController
     flash[:danger] = message
     redirect_to path
   end
-
-
 end
