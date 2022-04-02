@@ -65,5 +65,4 @@ class UserMailer < ApplicationMailer
       subject: "Les Filles d'Antoine | Votre réservation est prête !"
     )
   end
-
 end

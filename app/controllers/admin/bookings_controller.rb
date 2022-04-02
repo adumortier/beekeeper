@@ -3,8 +3,8 @@
 class Admin::BookingsController < Admin::BaseController
 
   def index
-    @products_spring = Product.spring
-    @products_summer = Product.summer
+    @products_spring = Product.spring.current_year
+    @products_summer = Product.summer.current_year
     current_year = Time.new.year
     if params[:sort].present?
       season = params[:season]

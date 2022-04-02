@@ -11,7 +11,7 @@ class BookingProductsController < ApplicationController
   private
 
   def notify_destroy
-    flash['success'] = 'Votre modification a été prise en compte.' + (browser_info.mobile? ? '' : ' Nous vous envoyons un email de confirmation.')
+    flash['success'] = 'Votre modification a été prise en compte.'
     redirect_to reservation_path
   end
 
