@@ -8,6 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
+gem 'redis'
+gem 'sidekiq', '~> 5.2.10'
 gem 'telephone_number'
 gem 'bootsnap', require: false
 gem 'image_processing'
