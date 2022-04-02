@@ -29,27 +29,27 @@ class User < ApplicationRecord
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
     save!
-    UserMailer.forgot_password(self).deliver
+    UserMailer.forgot_password(self).deliver_later
   end
 
   def send_booking_confirmation(booking)
-    UserMailer.confirm_booking(self, booking).deliver
+    UserMailer.confirm_booking(self, booking).deliver_later
   end
 
   def send_change_confirmation(booking)
-    UserMailer.confirm_booking_change(self, booking).deliver
+    UserMailer.confirm_booking_change(self, booking).deliver_later
   end
 
   def send_admin_booking_confirmation(booking)
-    UserMailer.confirm_admin_booking(self, booking).deliver
+    UserMailer.confirm_admin_booking(self, booking).deliver_later
   end
 
   def send_admin_pickup_notification(booking, booking_products)
-    UserMailer.notify_pickup_availability(self, booking, booking_products).deliver
+    UserMailer.notify_pickup_availability(self, booking, booking_products).deliver_later
   end
 
   def send_message_to_admin(booking)
-    UserMailer.message_to_admin(self, booking).deliver
+    UserMailer.message_to_admin(self, booking).deliver_later
   end
 
   def generate_token(column)
