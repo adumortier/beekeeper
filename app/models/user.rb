@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def send_admin_pickup_notification(booking, booking_products)
-    UserMailer.notify_pickup_availability(self, booking, booking_products).deliver_later
+    UserMailer.notify_pickup_availability(self, booking, booking_products).deliver_now
   end
 
   def send_message_to_admin(booking)
