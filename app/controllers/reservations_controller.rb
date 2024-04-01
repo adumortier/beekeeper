@@ -28,7 +28,7 @@ class ReservationsController < BaseController
 
   def notify_booking(booking)
     current_user.send_booking_confirmation(booking)
-    current_user.send_message_to_admin(booking) if booking.has_comment?
+    current_user.send_message_to_admin(booking)
     flash['success'] = 'Votre réservation a été enregistrée.'
     redirect_to root_path
   end

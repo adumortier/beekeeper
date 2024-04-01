@@ -1,8 +1,7 @@
 class WelcomeController < ApplicationController
 
   def index
-    Rails.logger.info "Check out this info!"
-    @posts = Post.most_recent_first
+    @posts = Post.most_recent_first.paginate(:page => params[:page], :per_page => 3)
   end
 
 end

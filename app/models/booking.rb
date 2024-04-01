@@ -10,7 +10,7 @@ class Booking < ApplicationRecord
   scope :user_bookings, ->(email) { joins(:user).where('email = ?', email) }
 
   def has_comment?
-    return true unless (comment.nil? || comment == '')
+    comment.present?
   end
 
   def add_booking_products(products, params)

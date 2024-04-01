@@ -85,5 +85,4 @@ class ApplicationController < ActionController::Base
   def require_current_user
     render file: '/public/403' unless current_user
   end
-
 end

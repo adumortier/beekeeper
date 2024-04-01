@@ -8,6 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
+gem 'redis'
+gem 'sidekiq', '~> 5.2.10'
 gem 'telephone_number'
 gem 'bootsnap', require: false
 gem 'image_processing'
@@ -26,6 +28,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'figaro'
 gem 'draper'
 gem 'scout_apm'
+gem 'will_paginate', '~> 3.1.0'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

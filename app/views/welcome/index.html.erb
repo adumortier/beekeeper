@@ -9,9 +9,10 @@
 </center>
 
 <% unless @posts.empty? %>
-
   <h3 style="font-family: 'lato-bold';padding-left: <%=browser_info.mobile? ? '5px' : '10%' %>; padding-right: <%=browser_info.mobile? ? 0 : 10%>%; padding-bottom: <%=browser_info.mobile? ? 25 : 20%>px">  <i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;&nbsp; Les news... </h3>
 
+  <div class="<%= browser_type %>-content digg_pagination" > <%= will_paginate @posts, :previous_label => '← Précédent', :next_label => 'Suivant →'  %> </div> 
+  <br>
   <% @posts.each do |post| %>
     <div id= <%="post-#{post.id}" %> style="padding-left: <%=browser_info.mobile? ? 0 : 10%>%; padding-right: <%=browser_info.mobile? ? 0 : 10%>%" >
       <div class="card img-responsive border-white">
@@ -19,7 +20,7 @@
           <% if browser_info.mobile? %>
             <h5> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h5>
           <% else %>
-            <h3> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h3>
+            <h4> <b> <%= post.created_at.strftime("%d/%m/%Y") %> - <%= post.title %> </b></h4>
           <% end %>
         </div>
         <br> 
@@ -37,4 +38,5 @@
     </div>
     
   <% end %>
+  <div class="<%= browser_type %>-content digg_pagination" > <%= will_paginate @posts, :previous_label => '← Précédent', :next_label => 'Suivant →'  %> </div> 
 <% end %>

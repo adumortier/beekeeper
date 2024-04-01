@@ -7,5 +7,4 @@ class BaseController < ApplicationController
   def require_current_user
     render file: '/public/403' unless current_user
   end
-
 end

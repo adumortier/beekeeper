@@ -5,7 +5,7 @@
   <body>
     Bonjour Antoine, <br>
 
-    <p> <%= @user.first_name + ' ' + @user.last_name %> a passé la commande suivante : </p>
+    <p> <%= @user.first_name + ' ' + @user.last_name %> a fait la réservation suivante : </p>
 
     <p> Description : </p>
 
@@ -17,13 +17,11 @@
     <% end %>
     </ul>
 
-    <p> Et vous a laissé le message ci-dessous : </p>
-
     <% if @booking.has_comment? %>
+      <p> Et vous a laissé le message ci-dessous : </p>
       <p> <i> " <%= @booking.comment %> "</i> </p>
+      Répondre à <%= mail_to @user.email, "#{@user.first_name + ' ' + @user.last_name }", subject: "merci pour la réservation de miel et le message !" %>
     <% end %>
-
-    Répondre à <%= mail_to @user.email, "#{@user.first_name + ' ' + @user.last_name }", subject: "merci pour la commande de miel et le message !" %>
 
     <p> Cordialement, </p>
 
